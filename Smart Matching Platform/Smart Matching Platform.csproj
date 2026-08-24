@@ -11,13 +11,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Validators\Auth\" />
-    <Folder Include="Validators\JobSeeker\" />
-    <Folder Include="Validators\Employer\" />
-    <Folder Include="Validators\Applications\" />
-    <Folder Include="Validators\ContactRequest\" />
-    <Folder Include="Validators\Vacancy\" />
-  </ItemGroup>
-
 </Project>
