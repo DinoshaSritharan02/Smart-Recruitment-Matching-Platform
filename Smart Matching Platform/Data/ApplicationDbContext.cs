@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmartRecruitmentMatchingPlatform.API.Data.Configurations;
 using SmartRecruitmentMatchingPlatform.API.Models.Entities;
+using Smart_Matching_Platform.Data.Seed;
 
 namespace SmartRecruitmentMatchingPlatform.API.Data;
 
@@ -33,7 +34,8 @@ public class ApplicationDbContext : DbContext
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
 
         modelBuilder.ApplyConfiguration(new NotificationConfiguration());
-
         modelBuilder.ApplyConfiguration(new ContactRequestConfiguration());
+
+        SkillSeed.Seed(modelBuilder);
     }
 }

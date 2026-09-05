@@ -1,30 +1,30 @@
-﻿//using Microsoft.EntityFrameworkCore;
-//using SmartRecruitmentMatchingPlatform.API.Data;
-//using SmartRecruitmentMatchingPlatform.API.Models.Entities;
+﻿//using microsoft.entityframeworkcore;
+//using smartrecruitmentmatchingplatform.api.data;
+//using smartrecruitmentmatchingplatform.api.models.entities;
 
-//namespace SmartRecruitmentMatchingPlatform.API.Repositories;
+//namespace smartrecruitmentmatchingplatform.api.repositories;
 
-//public class MatchingRepository : IMatchingRepository
+//public class matchingrepository : imatchingrepository
 //{
-//    private readonly ApplicationDbContext _context;
+//    private readonly applicationdbcontext _context;
 
-//    public MatchingRepository(ApplicationDbContext context)
+//    public matchingrepository(applicationdbcontext context)
 //    {
 //        _context = context;
 //    }
 
-//    public async Task<JobSeekerProfile?> GetJobSeekerAsync(Guid userId)
+//    public async task<jobseekerprofile?> getjobseekerasync(guid userid)
 //    {
-//        return await _context.JobSeekerProfiles
-//            .Include(x => x.Skills)
-//            .FirstOrDefaultAsync(x => x.UserId == userId);
+//        return await _context.jobseekerprofiles
+//            .include(x => x.skills)
+//            .firstordefaultasync(x => x.userid == userid);
 //    }
 
-//    public async Task<List<Vacancy>> GetAllVacanciesAsync()
+//    public async task<list<vacancy>> getallvacanciesasync()
 //    {
-//        return await _context.Vacancies
-//            .Include(x => x.RequiredSkills)
-//            .Include(x => x.Employer)
-//            .ToListAsync();
+//        return await _context.vacancies
+//            .include(x => x.requiredskills)
+//            .include(x => x.employer)
+//            .tolistasync();
 //    }
 //}

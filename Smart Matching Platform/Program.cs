@@ -1,10 +1,11 @@
+using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Smart_Matching_Platform.Data;
 using Smart_Matching_Platform.Repositories;
+using Smart_Matching_Platform.Repositories.Interfaces;
 using Smart_Matching_Platform.Services;
-
-using FluentValidation;
-using Microsoft.EntityFrameworkCore;
+using Smart_Matching_Platform.Services.Interfaces;
 using SmartRecruitmentMatchingPlatform.API.Data;
 using SmartRecruitmentMatchingPlatform.API.Extensions;
 using SmartRecruitmentMatchingPlatform.API.Mapping;
@@ -23,6 +24,15 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<IEmployerRepository, EmployerRepository>();
 builder.Services.AddScoped<IEmployerService, EmployerService>();
+
+builder.Services.AddScoped<IVacancyRepository, VacancyRepository>();
+builder.Services.AddScoped<IVacancyService, VacancyService>();
+
+builder.Services.AddScoped<ISkillRepository, SkillRepository>();
+builder.Services.AddScoped<ISkillService, SkillService>();
+
+builder.Services.AddScoped<IApplicationRepository, ApplicationRepository>();
+builder.Services.AddScoped<IApplicationService, ApplicationService>();
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();

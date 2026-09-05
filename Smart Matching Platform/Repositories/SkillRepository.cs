@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Smart_Matching_Platform.Data;
+using SmartRecruitmentMatchingPlatform.API.Data;
 using Smart_Matching_Platform.Models.Entities;
 
 namespace Smart_Matching_Platform.Repositories
