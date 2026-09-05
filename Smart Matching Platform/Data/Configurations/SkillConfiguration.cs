@@ -1,9 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Smart_Matching_Platform.Models.Entities;
 
-namespace Smart_Matching_Platform.Data.Configurations
-{
+using SmartRecruitmentMatchingPlatform.API.Models.Entities;
+
+namespace SmartRecruitmentMatchingPlatform.API.Models.Entities;
+
+
+
     public class SkillConfiguration : IEntityTypeConfiguration<Skill>
     {
         public void Configure(EntityTypeBuilder<Skill> builder)
@@ -18,4 +21,3 @@ namespace Smart_Matching_Platform.Data.Configurations
                 .IsUnique();
         }
     }
-}

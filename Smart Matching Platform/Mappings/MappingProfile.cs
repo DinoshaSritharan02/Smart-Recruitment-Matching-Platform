@@ -9,19 +9,11 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        // ==========================
         // Authentication
-        // ==========================
-
         CreateMap<RegisterJobSeekerRequestDto, User>();
-
         CreateMap<RegisterEmployerRequestDto, User>();
 
-
-        // ==========================
         // Job Seeker Profile
-        // ==========================
-
         CreateMap<JobSeekerProfile, JobSeekerProfileDto>()
             .ForMember(dest => dest.FirstName,
                 opt => opt.MapFrom(src => src.User.FirstName))
@@ -30,46 +22,25 @@ public class MappingProfile : Profile
             .ForMember(dest => dest.Email,
                 opt => opt.MapFrom(src => src.User.Email))
             .ForMember(dest => dest.Skills,
-                opt => opt.MapFrom(src => src.Skills.Select(s => s.SkillName)));
+                opt => opt.MapFrom(src =>
+                    src.JobSeekerSkills.Select(x => x.Skill.Name)));
 
         CreateMap<UpdateJobSeekerProfileDto, JobSeekerProfile>();
 
-
-        // ==========================
         // Education
-        // ==========================
-
         CreateMap<Education, EducationDto>();
-
         CreateMap<CreateEducationDto, Education>();
-
         CreateMap<UpdateEducationDto, Education>();
 
-
-        // ==========================
         // Experience
-        // ==========================
-
         CreateMap<Experience, ExperienceDto>();
-
         CreateMap<CreateExperienceDto, Experience>();
-
         CreateMap<UpdateExperienceDto, Experience>();
 
-
-        // ==========================
-        // CV Metadata
-        // ==========================
-
+        // CV
         CreateMap<CvMetadata, CvMetadataDto>();
 
-
-        // ==========================
         // Skills
-        // ==========================
-
-        CreateMap<AddSkillDto, JobSeekerSkill>()
-            .ForMember(dest => dest.SkillName,
-                opt => opt.MapFrom(src => src.SkillName));
+        CreateMap<AddSkillDto, JobSeekerSkill>();
     }
 }

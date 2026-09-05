@@ -1,4 +1,4 @@
-﻿namespace Smart_Matching_Platform.Models.Entities
+﻿namespace SmartRecruitmentMatchingPlatform.API.Models.Entities
 {
     public class VacancySkill
     {

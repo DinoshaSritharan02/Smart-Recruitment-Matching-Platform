@@ -1,4 +1,4 @@
-﻿namespace Smart_Matching_Platform.Repositories.Interfaces
+﻿namespace SmartRecruitmentMatchingPlatform.API.Repositories.Interfaces
 {
     public interface IVacancyRepository
     {

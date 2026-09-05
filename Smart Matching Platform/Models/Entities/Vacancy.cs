@@ -1,5 +1,5 @@
-﻿using Smart_Matching_Platform.Enums;
-namespace Smart_Matching_Platform.Models.Entities
+﻿using SmartRecruitmentMatchingPlatform.API.Enums;
+namespace SmartRecruitmentMatchingPlatform.API.Models.Entities
 {
     public class Vacancy
     {

@@ -1,8 +1,8 @@
-﻿using Smart_Matching_Platform.Models.DTOs.Employer;
-using Smart_Matching_Platform.Models.Entities;
-using Smart_Matching_Platform.Repositories;
+﻿using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Employer;
+using SmartRecruitmentMatchingPlatform.API.Models.Entities;
+using SmartRecruitmentMatchingPlatform.API.Repositories;
 
-namespace Smart_Matching_Platform.Services
+namespace SmartRecruitmentMatchingPlatform.API.Services
 {
     public class EmployerService : IEmployerService
     {

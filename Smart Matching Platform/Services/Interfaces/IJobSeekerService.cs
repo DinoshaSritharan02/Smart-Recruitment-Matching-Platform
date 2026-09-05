@@ -10,7 +10,7 @@ public interface IJobSeekerService
 
     Task AddSkillAsync(Guid userId, AddSkillDto dto);
 
-    Task RemoveSkillAsync(Guid userId, string skillName);
+    Task RemoveSkillAsync(Guid userId, int skillId);
 
     Task AddEducationAsync(Guid userId, CreateEducationDto dto);
 

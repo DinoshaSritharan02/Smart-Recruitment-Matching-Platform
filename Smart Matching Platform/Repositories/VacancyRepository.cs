@@ -1,4 +1,4 @@
-﻿namespace Smart_Matching_Platform.Repositories
+﻿namespace SmartRecruitmentMatchingPlatform.API.Repositories
 {
     public class VacancyRepository
     {

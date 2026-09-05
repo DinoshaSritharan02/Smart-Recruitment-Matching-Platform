@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Smart_Matching_Platform.Models.Entities;
+using SmartRecruitmentMatchingPlatform.API.Models.Entities;
 
-namespace Smart_Matching_Platform.Data.Configurations
+namespace SmartRecruitmentMatchingPlatform.API.Data.Configurations
 {
     public class EmployerConfiguration : IEntityTypeConfiguration<Employer>
     {

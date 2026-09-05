@@ -23,8 +23,9 @@ public class JobSeekerRepository : IJobSeekerRepository
     {
         return await _context.JobSeekerProfiles
             .Include(x => x.User)
-            .Include(x => x.Skills)
-            .Include(x => x.Educations)
+			.Include(x => x.JobSeekerSkills)
+	             .ThenInclude(x => x.Skill)
+			.Include(x => x.Educations)
             .Include(x => x.Experiences)
             .Include(x => x.CvMetadata)
             .FirstOrDefaultAsync(x => x.UserId == userId);
@@ -52,14 +53,15 @@ public class JobSeekerRepository : IJobSeekerRepository
         return Task.CompletedTask;
     }
 
-    public async Task<JobSeekerSkill?> GetSkillAsync(Guid profileId, string skillName)
-    {
-        return await _context.JobSeekerSkills.FirstOrDefaultAsync(x =>
-            x.JobSeekerProfileId == profileId &&
-            x.SkillName == skillName);
-    }
+	public async Task<JobSeekerSkill?> GetSkillAsync(Guid profileId, int skillId)
+	{
+		return await _context.JobSeekerSkills
+			.FirstOrDefaultAsync(x =>
+				x.JobSeekerProfileId == profileId &&
+				x.SkillId == skillId);
+	}
 
-    public async Task AddEducationAsync(Education education)
+	public async Task AddEducationAsync(Education education)
     {
         await _context.Educations.AddAsync(education);
     }

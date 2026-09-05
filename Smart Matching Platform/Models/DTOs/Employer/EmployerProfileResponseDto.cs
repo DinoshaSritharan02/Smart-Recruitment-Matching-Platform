@@ -1,4 +1,4 @@
-﻿namespace Smart_Matching_Platform.Models.DTOs.Employer
+﻿namespace SmartRecruitmentMatchingPlatform.API.Models.DTOs.Employer
 {
     public class EmployerProfileResponseDto
     {

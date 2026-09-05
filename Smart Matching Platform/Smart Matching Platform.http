@@ -1,6 +1,6 @@
-@Smart_Matching_Platform_HostAddress = http://localhost:5143
+@SmartRecruitmentMatchingPlatform.API_HostAddress = http://localhost:5143
 
-GET {{Smart_Matching_Platform_HostAddress}}/weatherforecast/
+GET {{SmartRecruitmentMatchingPlatform.API_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
