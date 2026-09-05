@@ -25,6 +25,9 @@ public class ApplicationDbContext : DbContext
     public DbSet<Notification> Notifications => Set<Notification>();
 
     public DbSet<ContactRequest> ContactRequests => Set<ContactRequest>();
+    public DbSet<Employer> Employers => Set<Employer>();
+
+    public DbSet<Vacancy> Vacancies => Set<Vacancy>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

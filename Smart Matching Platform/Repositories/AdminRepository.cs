@@ -44,11 +44,11 @@ public class AdminRepository : IAdminRepository
         return await _context.Vacancies.CountAsync();
     }
 
-    public async Task<int> GetTotalApplicationsAsync()
+    public Task<int> GetTotalApplicationsAsync()
     {
-        return await _context.Applications.CountAsync();
+        // TODO: Replace after merging Member 2's Application entity
+        return Task.FromResult(0);
     }
-
     public async Task SaveChangesAsync()
     {
         await _context.SaveChangesAsync();
