@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using Smart_Matching_Platform.Data;
+using Smart_Matching_Platform.Repositories;
+using Smart_Matching_Platform.Services;
+
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using SmartRecruitmentMatchingPlatform.API.Data;
@@ -8,8 +13,16 @@ using SmartRecruitmentMatchingPlatform.API.Validators.JobSeeker;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("DefaultConnection")));
 // Add Controllers
 builder.Services.AddControllers();
+
+builder.Services.AddControllers();
+
+builder.Services.AddScoped<IEmployerRepository, EmployerRepository>();
+builder.Services.AddScoped<IEmployerService, EmployerService>();
 
 // Swagger
 builder.Services.AddEndpointsApiExplorer();
