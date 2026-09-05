@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmartRecruitmentMatchingPlatform.API.Data.Configurations;
 using SmartRecruitmentMatchingPlatform.API.Models.Entities;
+using Smart_Matching_Platform.Data.Seed;
+using Smart_Matching_Platform.Models.Entities;
 
 namespace SmartRecruitmentMatchingPlatform.API.Data;
 
@@ -29,6 +31,8 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Vacancy> Vacancies => Set<Vacancy>();
 
+    public DbSet<Application> Applications => Set<Application>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -36,7 +40,8 @@ public class ApplicationDbContext : DbContext
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
 
         modelBuilder.ApplyConfiguration(new NotificationConfiguration());
-
         modelBuilder.ApplyConfiguration(new ContactRequestConfiguration());
+
+        SkillSeed.Seed(modelBuilder);
     }
 }
