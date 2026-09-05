@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="16.2.0" />
     <PackageReference Include="BCrypt.Net-Next" Version="4.2.0" />
+    <PackageReference Include="FluentValidation" Version="12.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.19" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.19">
       <PrivateAssets>all</PrivateAssets>
@@ -20,6 +22,24 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Constants\" />
+    <Folder Include="Data\Migirations\" />
+    <Folder Include="Data\Seed\" />
+    <Folder Include="Enums\" />
+    <Folder Include="Extenstions\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Matching\" />
+    <Folder Include="Middleware\" />
+    <Folder Include="Models\Common\" />
+    <Folder Include="Storage\" />
+    <Folder Include="Validators\Applications\" />
+    <Folder Include="Validators\Auth\" />
+    <Folder Include="Validators\ContactRequest\" />
+    <Folder Include="Validators\JobSeeker\" />
+    <Folder Include="Validators\Vacancy\" />
   </ItemGroup>
 
 </Project>

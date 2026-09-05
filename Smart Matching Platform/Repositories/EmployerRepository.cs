@@ -1,0 +1,46 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Smart_Matching_Platform.Data;
+using Smart_Matching_Platform.Models.Entities;
+
+namespace Smart_Matching_Platform.Repositories
+{
+    public class EmployerRepository : IEmployerRepository
+    {
+        private readonly ApplicationDbContext _context;
+
+        public EmployerRepository(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<Employer?> GetByIdAsync(int id)
+        {
+            return await _context.Set<Employer>()
+                .FirstOrDefaultAsync(e => e.Id == id);
+        }
+
+        public async Task<Employer?> GetByUserIdAsync(int userId)
+        {
+            return await _context.Set<Employer>()
+                .FirstOrDefaultAsync(e => e.UserId == userId);
+        }
+
+        public async Task AddAsync(Employer employer)
+        {
+            await _context.Set<Employer>().AddAsync(employer);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateAsync(Employer employer)
+        {
+            _context.Set<Employer>().Update(employer);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<bool> ExistsByUserIdAsync(int userId)
+        {
+            return await _context.Set<Employer>()
+                .AnyAsync(e => e.UserId == userId);
+        }
+    }
+}
