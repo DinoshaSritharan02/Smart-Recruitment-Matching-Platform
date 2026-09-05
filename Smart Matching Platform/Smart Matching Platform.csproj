@@ -28,7 +28,6 @@
     <Folder Include="Constants\" />
     <Folder Include="Data\Migirations\" />
     <Folder Include="Data\Seed\" />
-    <Folder Include="Enums\" />
     <Folder Include="Extenstions\" />
     <Folder Include="Helpers\" />
     <Folder Include="Matching\" />
