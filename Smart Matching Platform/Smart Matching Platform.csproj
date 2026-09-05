@@ -8,9 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="16.2.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="BCrypt.Net-Next" Version="4.2.0" />
     <PackageReference Include="FluentValidation" Version="12.1.1" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.19" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.19">
       <PrivateAssets>all</PrivateAssets>
@@ -25,20 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Constants\" />
-    <Folder Include="Data\Migirations\" />
-    <Folder Include="Data\Seed\" />
-    <Folder Include="Extenstions\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="Matching\" />
-    <Folder Include="Middleware\" />
-    <Folder Include="Models\Common\" />
-    <Folder Include="Storage\" />
-    <Folder Include="Validators\Applications\" />
-    <Folder Include="Validators\Auth\" />
-    <Folder Include="Validators\ContactRequest\" />
-    <Folder Include="Validators\JobSeeker\" />
-    <Folder Include="Validators\Vacancy\" />
+    <Folder Include="Storage\CVs\" />
   </ItemGroup>
 
 </Project>
