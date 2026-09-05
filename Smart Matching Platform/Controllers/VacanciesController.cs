@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Smart_Matching_Platform.Models.DTOs.Vacancy;
+using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Vacancy;
 using Smart_Matching_Platform.Services;
+using SmartRecruitmentMatchingPlatform.API.Services;
 using System.Security.Claims;
 
 namespace Smart_Matching_Platform.Controllers

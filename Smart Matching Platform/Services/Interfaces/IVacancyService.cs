@@ -1,7 +1,6 @@
-﻿using Smart_Matching_Platform.Models.DTOs.Vacancy;
+﻿using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Vacancy;
 
 namespace Smart_Matching_Platform.Services
-namespace SmartRecruitmentMatchingPlatform.API.Services
 {
     public interface IVacancyService
     {

@@ -1,4 +1,5 @@
 ﻿using Smart_Matching_Platform.Enums;
+using SmartRecruitmentMatchingPlatform.API.Models.Entities;
 
 namespace Smart_Matching_Platform.Models.Entities
 {

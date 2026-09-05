@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Smart_Matching_Platform.Models.DTOs.Vacancy;
-using Smart_Matching_Platform.Models.Entities;
+using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Vacancy;
+using SmartRecruitmentMatchingPlatform.API.Models.Entities;
 
 namespace Smart_Matching_Platform.Mappings
 {

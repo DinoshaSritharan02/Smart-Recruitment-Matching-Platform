@@ -28,13 +28,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // Add Controllers
 builder.Services.AddControllers();
 
-builder.Services.AddControllers();
-
 builder.Services.AddScoped<IEmployerRepository, EmployerRepository>();
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 builder.Services.AddScoped<IContactRequestRepository, ContactRequestRepository>();
-builder.Services.AddScoped<ISkillRepository, SkillRepository>();
 
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();

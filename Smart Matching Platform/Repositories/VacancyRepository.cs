@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Smart_Matching_Platform.Enums;
-using Smart_Matching_Platform.Models.Entities;
+using SmartRecruitmentMatchingPlatform.API.Enums;
+using SmartRecruitmentMatchingPlatform.API.Models.Entities;
 using SmartRecruitmentMatchingPlatform.API.Data;
 
 namespace Smart_Matching_Platform.Repositories
