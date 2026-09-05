@@ -12,18 +12,22 @@ public class JobSeekerSkillConfiguration : IEntityTypeConfiguration<JobSeekerSki
 
         builder.HasKey(x => x.Id);
 
-        builder.Property(x => x.SkillName)
-            .IsRequired()
-            .HasMaxLength(100);
+        builder.Property(x => x.SkillId)
+            .IsRequired();
+
+        builder.HasOne(x => x.JobSeekerProfile)
+            .WithMany(x => x.JobSeekerSkills)
+            .HasForeignKey(x => x.JobSeekerProfileId);
+
+        builder.HasOne(x => x.Skill)
+            .WithMany(x => x.JobSeekerSkills)
+            .HasForeignKey(x => x.SkillId)
+            .OnDelete(DeleteBehavior.Restrict);
 
         builder.HasIndex(x => new
         {
             x.JobSeekerProfileId,
-            x.SkillName
+            x.SkillId
         }).IsUnique();
-
-        builder.HasOne(x => x.JobSeekerProfile)
-            .WithMany(x => x.Skills)
-            .HasForeignKey(x => x.JobSeekerProfileId);
     }
 }

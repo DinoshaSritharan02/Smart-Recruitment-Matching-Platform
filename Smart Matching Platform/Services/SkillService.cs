@@ -1,7 +1,7 @@
-﻿using Smart_Matching_Platform.Models.DTOs.Skill;
-using Smart_Matching_Platform.Repositories;
+﻿using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Skill;
+using SmartRecruitmentMatchingPlatform.API.Repositories;
 
-namespace Smart_Matching_Platform.Services
+namespace SmartRecruitmentMatchingPlatform.API.Services
 {
     public class SkillService : ISkillService
     {

@@ -22,7 +22,8 @@ public class JobSeekerProfile
 
     public string ProfessionalSummary { get; set; } = string.Empty;
 
-    public ICollection<JobSeekerSkill> Skills { get; set; } = new List<JobSeekerSkill>();
+    public ICollection<JobSeekerSkill> JobSeekerSkills { get; set; }
+    = new List<JobSeekerSkill>();
 
     public ICollection<Education> Educations { get; set; } = new List<Education>();
 

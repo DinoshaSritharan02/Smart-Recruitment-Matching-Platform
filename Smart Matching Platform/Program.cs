@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using Smart_Matching_Platform.Data;
-using Smart_Matching_Platform.Repositories;
-using Smart_Matching_Platform.Services;
+using SmartRecruitmentMatchingPlatform.API.Data;
+using SmartRecruitmentMatchingPlatform.API.Repositories;
+using SmartRecruitmentMatchingPlatform.API.Services;
 
 using FluentValidation;
 using Microsoft.EntityFrameworkCore;

@@ -2,5 +2,5 @@
 
 public class AddSkillDto
 {
-    public string SkillName { get; set; } = string.Empty;
+    public int SkillId { get; set; }
 }

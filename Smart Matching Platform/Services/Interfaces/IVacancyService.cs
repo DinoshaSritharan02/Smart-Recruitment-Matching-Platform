@@ -1,4 +1,4 @@
-﻿namespace Smart_Matching_Platform.Services.Interfaces
+﻿namespace SmartRecruitmentMatchingPlatform.API.Services
 {
     public interface IVacancyService
     {

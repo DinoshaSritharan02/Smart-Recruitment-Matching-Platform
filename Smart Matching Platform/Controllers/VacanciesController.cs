@@ -1,4 +1,4 @@
-﻿namespace Smart_Matching_Platform.Controllers
+﻿namespace SmartRecruitmentMatchingPlatform.API.Controllers
 {
     public class VacanciesController
     {
