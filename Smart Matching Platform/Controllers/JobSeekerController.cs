@@ -50,10 +50,10 @@ public class JobSeekerController : ControllerBase
         return Ok();
     }
 
-    [HttpDelete("skills/{skillName}")]
-    public async Task<IActionResult> RemoveSkill(string skillName)
+    [HttpDelete("skills/{skillId:int}")]
+    public async Task<IActionResult> RemoveSkill(int skillId)
     {
-        await _jobSeekerService.RemoveSkillAsync(GetUserId(), skillName);
+        await _jobSeekerService.RemoveSkillAsync(GetUserId(), skillId);
 
         return NoContent();
     }

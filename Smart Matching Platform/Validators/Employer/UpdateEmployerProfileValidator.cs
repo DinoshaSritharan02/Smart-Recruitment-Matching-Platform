@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Smart_Matching_Platform.Models.DTOs.Employer;
+using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Employer;
 
-namespace Smart_Matching_Platform.Validators.Employer
+namespace SmartRecruitmentMatchingPlatform.API.Validators.Employer
 {
     public class UpdateEmployerProfileValidator
         : AbstractValidator<UpdateEmployerProfileRequestDto>

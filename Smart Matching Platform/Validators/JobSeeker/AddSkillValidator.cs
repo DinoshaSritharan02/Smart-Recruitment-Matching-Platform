@@ -7,8 +7,8 @@ public class AddSkillValidator : AbstractValidator<AddSkillDto>
 {
     public AddSkillValidator()
     {
-        RuleFor(x => x.SkillName)
-            .NotEmpty()
-            .MaximumLength(100);
+        RuleFor(x => x.SkillId)
+            .GreaterThan(0)
+            .WithMessage("Please select a valid skill.");
     }
 }

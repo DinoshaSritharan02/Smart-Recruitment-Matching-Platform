@@ -1,4 +1,4 @@
-﻿namespace Smart_Matching_Platform.Models.DTOs.Vacancy
+﻿namespace SmartRecruitmentMatchingPlatform.API.Models.DTOs.Vacancy
 {
     public class VacancyListItemDto
     {

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmartRecruitmentMatchingPlatform.API.Data;
-using Smart_Matching_Platform.Models.Entities;
+using SmartRecruitmentMatchingPlatform.API.Models.Entities;
 
-namespace Smart_Matching_Platform.Repositories
+namespace SmartRecruitmentMatchingPlatform.API.Repositories
 {
     public class SkillRepository : ISkillRepository
     {

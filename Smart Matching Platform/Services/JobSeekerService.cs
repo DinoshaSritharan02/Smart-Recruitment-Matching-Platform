@@ -12,15 +12,19 @@ public class JobSeekerService : IJobSeekerService
     private readonly ICvStorageService _cvStorageService;
     private readonly IMapper _mapper;
 
+    private readonly ISkillRepository _skillRepository;
+
     public JobSeekerService(
-        IJobSeekerRepository jobSeekerRepository,
-        ICvMetadataRepository cvMetadataRepository,
-        ICvStorageService cvStorageService,
-        IMapper mapper)
+    IJobSeekerRepository jobSeekerRepository,
+    ICvMetadataRepository cvMetadataRepository,
+    ICvStorageService cvStorageService,
+    ISkillRepository skillRepository,
+    IMapper mapper)
     {
         _jobSeekerRepository = jobSeekerRepository;
         _cvMetadataRepository = cvMetadataRepository;
         _cvStorageService = cvStorageService;
+        _skillRepository = skillRepository;
         _mapper = mapper;
     }
 
@@ -54,30 +58,35 @@ public class JobSeekerService : IJobSeekerService
         if (profile == null)
             throw new Exception("Profile not found.");
 
-        var existingSkill = await _jobSeekerRepository
-            .GetSkillAsync(profile.Id, dto.SkillName);
+        var skill = await _skillRepository.GetByIdAsync(dto.SkillId);
+
+        if (skill == null)
+            throw new Exception("Skill not found.");
+
+        var existingSkill = await _jobSeekerRepository.GetSkillAsync(profile.Id, dto.SkillId);
 
         if (existingSkill != null)
             throw new Exception("Skill already exists.");
 
-        var skill = _mapper.Map<JobSeekerSkill>(dto);
+        var jobSeekerSkill = new JobSeekerSkill
+        {
+            Id = Guid.NewGuid(),
+            JobSeekerProfileId = profile.Id,
+            SkillId = dto.SkillId
+        };
 
-        skill.Id = Guid.NewGuid();
-        skill.JobSeekerProfileId = profile.Id;
-
-        await _jobSeekerRepository.AddSkillAsync(skill);
+        await _jobSeekerRepository.AddSkillAsync(jobSeekerSkill);
         await _jobSeekerRepository.SaveChangesAsync();
     }
 
-    public async Task RemoveSkillAsync(Guid userId, string skillName)
+    public async Task RemoveSkillAsync(Guid userId, int skillId)
     {
         var profile = await _jobSeekerRepository.GetByUserIdAsync(userId);
 
         if (profile == null)
             throw new Exception("Profile not found.");
 
-        var skill = await _jobSeekerRepository
-            .GetSkillAsync(profile.Id, skillName);
+        var skill = await _jobSeekerRepository.GetSkillAsync(profile.Id, skillId);
 
         if (skill == null)
             throw new Exception("Skill not found.");

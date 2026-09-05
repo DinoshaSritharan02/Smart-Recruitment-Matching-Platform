@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Smart_Matching_Platform.Models.DTOs.Employer;
-using Smart_Matching_Platform.Services;
+using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Employer;
+using SmartRecruitmentMatchingPlatform.API.Services;
 using System.Security.Claims;
 
-namespace Smart_Matching_Platform.Controllers
+namespace SmartRecruitmentMatchingPlatform.API.Controllers
 {
     [ApiController]
     [Route("api/employer/profile")]

@@ -1,4 +1,4 @@
-﻿namespace Smart_Matching_Platform.Models.DTOs.Skill
+﻿namespace SmartRecruitmentMatchingPlatform.API.Models.DTOs.Skill
 {
     public class SkillResponseDto
     {

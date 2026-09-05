@@ -16,7 +16,7 @@ public interface IJobSeekerRepository
 
     Task RemoveSkillAsync(JobSeekerSkill skill);
 
-    Task<JobSeekerSkill?> GetSkillAsync(Guid profileId, string skillName);
+    Task<JobSeekerSkill?> GetSkillAsync(Guid profileId, int skillId);
 
     Task AddEducationAsync(Education education);
 
