@@ -4,14 +4,14 @@ namespace SmartRecruitmentMatchingPlatform.API.Services
 {
     public interface IEmployerService
     {
-        Task<EmployerProfileResponseDto?> GetProfileAsync(int userId);
+        Task<EmployerProfileResponseDto?> GetProfileAsync(Guid userId);
 
         Task<EmployerProfileResponseDto> CreateProfileAsync(
-            int userId,
+            Guid userId,
             UpdateEmployerProfileRequestDto request);
 
         Task<EmployerProfileResponseDto?> UpdateProfileAsync(
-            int userId,
+            Guid userId,
             UpdateEmployerProfileRequestDto request);
     }
 }

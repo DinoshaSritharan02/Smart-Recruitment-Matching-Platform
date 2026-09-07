@@ -1,21 +1,23 @@
-﻿using Smart_Matching_Platform.Enums;
-using Smart_Matching_Platform.Models.DTOs.Application;
+﻿using SmartRecruitmentMatchingPlatform.API.Enums;
+using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Application;
 
-namespace Smart_Matching_Platform.Services.Interfaces
+namespace SmartRecruitmentMatchingPlatform.API.Services.Interfaces
 {
     public interface IApplicationService
     {
         Task<bool> UpdateStatusAsync(
-            int employerId,
-            int applicationId,
-            ApplicationStatus status);
+    Guid userId,
+    int applicationId,
+    ApplicationStatus status);
+
+        Task<bool> ApplyForVacancyAsync(Guid userId, int vacancyId);
 
         Task<List<ApplicationResponseDto>> GetApplicantsByVacancyAsync(
-            int employerId,
+            Guid userId,
             int vacancyId);
 
         Task<List<RankedApplicantResponseDto>> GetRankedApplicantsAsync(
-            int employerId,
+            Guid userId,
             int vacancyId);
     }
 }

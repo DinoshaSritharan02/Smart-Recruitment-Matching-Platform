@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Smart_Matching_Platform.Models.DTOs.Application;
+using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Application;
 
-namespace Smart_Matching_Platform.Validators.Application
+namespace SmartRecruitmentMatchingPlatform.API.Validators.Application
 {
     public class UpdateApplicationStatusValidator
         : AbstractValidator<UpdateApplicationStatusRequestDto>

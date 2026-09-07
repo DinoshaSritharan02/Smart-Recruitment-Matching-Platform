@@ -3,7 +3,7 @@ using SmartRecruitmentMatchingPlatform.API.Enums;
 using SmartRecruitmentMatchingPlatform.API.Models.Entities;
 using SmartRecruitmentMatchingPlatform.API.Data;
 
-namespace Smart_Matching_Platform.Repositories
+namespace SmartRecruitmentMatchingPlatform.API.Repositories
 {
     public class VacancyRepository : IVacancyRepository
     {

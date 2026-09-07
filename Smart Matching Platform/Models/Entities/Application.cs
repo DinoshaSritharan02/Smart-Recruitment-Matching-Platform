@@ -1,13 +1,15 @@
-﻿using Smart_Matching_Platform.Enums;
+﻿using SmartRecruitmentMatchingPlatform.API.Enums;
 using SmartRecruitmentMatchingPlatform.API.Models.Entities;
 
-namespace Smart_Matching_Platform.Models.Entities
+namespace SmartRecruitmentMatchingPlatform.API.Models.Entities
 {
     public class Application
     {
         public int Id { get; set; }
 
-        public int JobSeekerId { get; set; }
+        public Guid JobSeekerProfileId { get; set; }
+
+        public JobSeekerProfile JobSeekerProfile { get; set; } = null!;
 
         public int VacancyId { get; set; }
 

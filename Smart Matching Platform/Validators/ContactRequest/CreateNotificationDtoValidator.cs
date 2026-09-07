@@ -8,8 +8,8 @@ namespace SmartRecruitmentMatchingPlatform.API.Validators
         public CreateNotificationDtoValidator()
         {
             RuleFor(x => x.UserId)
-                .GreaterThan(0)
-                .WithMessage("A valid User ID is required.");
+              .NotEmpty()
+               .WithMessage("A valid User ID is required.");
 
             RuleFor(x => x.Title)
                 .NotEmpty()

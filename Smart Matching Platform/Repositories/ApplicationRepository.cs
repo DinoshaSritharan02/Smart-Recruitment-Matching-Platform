@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmartRecruitmentMatchingPlatform.API.Data;
-using Smart_Matching_Platform.Models.Entities;
-using Smart_Matching_Platform.Repositories.Interfaces;
+using SmartRecruitmentMatchingPlatform.API.Models.Entities;
+using SmartRecruitmentMatchingPlatform.API.Repositories.Interfaces;
 
-namespace Smart_Matching_Platform.Repositories
+namespace SmartRecruitmentMatchingPlatform.API.Repositories
 {
     public class ApplicationRepository : IApplicationRepository
     {
@@ -30,11 +30,11 @@ namespace Smart_Matching_Platform.Repositories
                 .ToListAsync();
         }
 
-        public async Task<List<Application>> GetByJobSeekerIdAsync(int jobSeekerId)
+        public async Task<List<Application>> GetByJobSeekerProfileIdAsync(Guid jobSeekerProfileId)
         {
             return await _context.Set<Application>()
                 .Include(a => a.Vacancy)
-                .Where(a => a.JobSeekerId == jobSeekerId)
+                .Where(a => a.JobSeekerProfileId == jobSeekerProfileId)
                 .OrderByDescending(a => a.AppliedAt)
                 .ToListAsync();
         }
@@ -51,11 +51,11 @@ namespace Smart_Matching_Platform.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<bool> ExistsAsync(int jobSeekerId, int vacancyId)
+        public async Task<bool> ExistsAsync(Guid jobSeekerProfileId, int vacancyId)
         {
             return await _context.Set<Application>()
                 .AnyAsync(a =>
-                    a.JobSeekerId == jobSeekerId &&
+                    a.JobSeekerProfileId == jobSeekerProfileId &&
                     a.VacancyId == vacancyId);
         }
     }

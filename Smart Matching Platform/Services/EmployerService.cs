@@ -13,7 +13,7 @@ namespace SmartRecruitmentMatchingPlatform.API.Services
             _employerRepository = employerRepository;
         }
 
-        public async Task<EmployerProfileResponseDto?> GetProfileAsync(int userId)
+        public async Task<EmployerProfileResponseDto?> GetProfileAsync(Guid userId)
         {
             var employer = await _employerRepository.GetByUserIdAsync(userId);
 
@@ -24,7 +24,7 @@ namespace SmartRecruitmentMatchingPlatform.API.Services
         }
 
         public async Task<EmployerProfileResponseDto> CreateProfileAsync(
-            int userId,
+            Guid userId,
             UpdateEmployerProfileRequestDto request)
         {
             var existingEmployer = await _employerRepository.GetByUserIdAsync(userId);
@@ -51,7 +51,7 @@ namespace SmartRecruitmentMatchingPlatform.API.Services
         }
 
         public async Task<EmployerProfileResponseDto?> UpdateProfileAsync(
-            int userId,
+            Guid userId,
             UpdateEmployerProfileRequestDto request)
         {
             var employer = await _employerRepository.GetByUserIdAsync(userId);

@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Smart_Matching_Platform.Models.Entities;
+using SmartRecruitmentMatchingPlatform.API.Models.Entities;
 
-namespace Smart_Matching_Platform.Data.Configurations
+namespace SmartRecruitmentMatchingPlatform.API.Data.Configurations
 {
     public class ApplicationConfiguration : IEntityTypeConfiguration<Application>
     {
@@ -10,9 +10,8 @@ namespace Smart_Matching_Platform.Data.Configurations
         {
             builder.HasKey(a => a.Id);
 
-            builder.Property(a => a.JobSeekerId)
-                .IsRequired();
-
+            builder.Property(a => a.JobSeekerProfileId)
+    .IsRequired();
             builder.Property(a => a.VacancyId)
                 .IsRequired();
 
@@ -28,8 +27,13 @@ namespace Smart_Matching_Platform.Data.Configurations
             builder.Property(a => a.UpdatedAt)
                 .IsRequired();
 
-            builder.HasIndex(a => new { a.JobSeekerId, a.VacancyId })
-                .IsUnique();
+            builder.HasIndex(a => new { a.JobSeekerProfileId, a.VacancyId })
+     .IsUnique();
+
+            builder.HasOne(a => a.JobSeekerProfile)
+    .WithMany()
+    .HasForeignKey(a => a.JobSeekerProfileId)
+    .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne(a => a.Vacancy)
                 .WithMany()

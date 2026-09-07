@@ -78,11 +78,11 @@ namespace SmartRecruitmentMatchingPlatform.API.Controllers
             return Ok(profile);
         }
 
-        private int? GetUserId()
+        private Guid? GetUserId()
         {
             var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            if (int.TryParse(userIdClaim, out var userId))
+            if (Guid.TryParse(userIdClaim, out var userId))
                 return userId;
 
             return null;

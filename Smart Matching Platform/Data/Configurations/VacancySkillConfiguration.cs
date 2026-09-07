@@ -21,9 +21,9 @@ namespace SmartRecruitmentMatchingPlatform.API.Data.Configurations
                 .OnDelete(DeleteBehavior.Cascade);
 
             builder.HasOne(vs => vs.Skill)
-                .WithMany()
-                .HasForeignKey(vs => vs.SkillId)
-                .OnDelete(DeleteBehavior.Restrict);
+     .WithMany(s => s.VacancySkills)
+     .HasForeignKey(vs => vs.SkillId)
+     .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Smart_Matching_Platform.Enums
+﻿namespace SmartRecruitmentMatchingPlatform.API.Enums
 {
     public enum ApplicationStatus
     {

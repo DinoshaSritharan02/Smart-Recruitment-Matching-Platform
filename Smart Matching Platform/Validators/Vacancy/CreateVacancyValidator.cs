@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Vacancy;
 
-namespace Smart_Matching_Platform.Validators.Vacancy
+namespace SmartRecruitmentMatchingPlatform.API.Validators.Vacancy
 {
     public class CreateVacancyValidator : AbstractValidator<CreateVacancyRequestDto>
     {

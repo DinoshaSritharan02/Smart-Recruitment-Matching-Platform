@@ -38,6 +38,11 @@ namespace SmartRecruitmentMatchingPlatform.API.Data.Configurations
             builder.Property(v => v.UpdatedAt)
                 .IsRequired();
 
+            builder.HasOne(v => v.Employer)
+    .WithMany(e => e.Vacancies)
+    .HasForeignKey(v => v.EmployerId)
+    .OnDelete(DeleteBehavior.Restrict);
+
             builder.HasIndex(v => v.EmployerId);
         }
     }

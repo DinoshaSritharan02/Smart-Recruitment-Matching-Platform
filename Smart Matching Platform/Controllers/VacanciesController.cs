@@ -1,11 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Vacancy;
-using Smart_Matching_Platform.Services;
 using SmartRecruitmentMatchingPlatform.API.Services;
 using System.Security.Claims;
 
-namespace Smart_Matching_Platform.Controllers
+namespace SmartRecruitmentMatchingPlatform.API.Controllers
 {
     [ApiController]
     [Route("api/vacancies")]
@@ -127,12 +126,12 @@ namespace Smart_Matching_Platform.Controllers
             return Ok(vacancy);
         }
 
-        private int? GetUserId()
+        private Guid? GetUserId()
         {
             var userIdClaim =
                 User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            if (int.TryParse(userIdClaim, out var userId))
+            if (Guid.TryParse(userIdClaim, out var userId))
                 return userId;
 
             return null;

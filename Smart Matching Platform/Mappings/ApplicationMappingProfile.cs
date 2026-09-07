@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Smart_Matching_Platform.Models.DTOs.Application;
-using Smart_Matching_Platform.Models.Entities;
+using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Application;
+using SmartRecruitmentMatchingPlatform.API.Models.Entities;
 
-namespace Smart_Matching_Platform.Mappings
+namespace SmartRecruitmentMatchingPlatform.API.Mappings
 {
     public class ApplicationMappingProfile : Profile
     {

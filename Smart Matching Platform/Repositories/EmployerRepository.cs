@@ -19,7 +19,7 @@ namespace SmartRecruitmentMatchingPlatform.API.Repositories
                 .FirstOrDefaultAsync(e => e.Id == id);
         }
 
-        public async Task<Employer?> GetByUserIdAsync(int userId)
+        public async Task<Employer?> GetByUserIdAsync(Guid userId)
         {
             return await _context.Set<Employer>()
                 .FirstOrDefaultAsync(e => e.UserId == userId);
@@ -37,7 +37,7 @@ namespace SmartRecruitmentMatchingPlatform.API.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<bool> ExistsByUserIdAsync(int userId)
+        public async Task<bool> ExistsByUserIdAsync(Guid userId)
         {
             return await _context.Set<Employer>()
                 .AnyAsync(e => e.UserId == userId);

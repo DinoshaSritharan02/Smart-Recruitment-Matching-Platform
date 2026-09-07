@@ -1,10 +1,8 @@
-﻿//using SmartRecruitmentMatchingPlatform.API.Models.Entities;
+﻿using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Matching;
 
-//namespace SmartRecruitmentMatchingPlatform.API.Repositories;
+namespace SmartRecruitmentMatchingPlatform.API.Repositories;
 
-//public interface IMatchingRepository
-//{
-//    Task<JobSeekerProfile?> GetJobSeekerAsync(Guid userId);
-
-//    Task<List<Vacancy>> GetAllVacanciesAsync();
-//}
+public interface IMatchingRepository
+{
+    Task<List<MatchResultDto>> GetMatchesAsync(Guid userId);
+}

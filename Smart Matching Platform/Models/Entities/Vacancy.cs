@@ -7,6 +7,8 @@ namespace SmartRecruitmentMatchingPlatform.API.Models.Entities
 
         public int EmployerId { get; set; }
 
+        public Employer Employer { get; set; } = null!;
+
         public string Title { get; set; } = string.Empty;
 
         public string? Description { get; set; }

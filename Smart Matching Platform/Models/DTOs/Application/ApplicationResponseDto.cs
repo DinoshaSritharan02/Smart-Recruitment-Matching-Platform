@@ -1,11 +1,11 @@
-﻿using Smart_Matching_Platform.Enums;
+﻿using SmartRecruitmentMatchingPlatform.API.Enums;
 
-namespace Smart_Matching_Platform.Models.DTOs.Application
+namespace SmartRecruitmentMatchingPlatform.API.Models.DTOs.Application
 {
     public class ApplicationResponseDto
     {
         public int Id { get; set; }
-        public int JobSeekerId { get; set; }
+        public Guid JobSeekerProfileId { get; set; }
         public int VacancyId { get; set; }
         public ApplicationStatus Status { get; set; }
         public decimal? MatchScore { get; set; }

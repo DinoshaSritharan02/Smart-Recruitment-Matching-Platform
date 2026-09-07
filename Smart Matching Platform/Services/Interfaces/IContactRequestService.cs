@@ -4,7 +4,7 @@ namespace SmartRecruitmentMatchingPlatform.API.Services.Interfaces;
 
 public interface IContactRequestService
 {
-    Task<IEnumerable<ContactRequestDto>> GetRequestsAsync(int jobSeekerProfileId);
+    Task<IEnumerable<ContactRequestDto>> GetRequestsAsync(Guid jobSeekerProfileId);
 
     Task UpdateStatusAsync(int requestId, UpdateContactRequestStatusDto dto);
 }
