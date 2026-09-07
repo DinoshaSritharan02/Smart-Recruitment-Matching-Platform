@@ -36,6 +36,22 @@ namespace SmartRecruitmentMatchingPlatform.API.Controllers
             return NoContent();
         }
 
+        [HttpGet("unread")]
+        [Authorize]
+        public async Task<IActionResult> GetUnread()
+        {
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrWhiteSpace(userIdClaim))
+                return Unauthorized();
+
+            var userId = Guid.Parse(userIdClaim);
+
+            var notifications = await _notificationService.GetUnreadAsync(userId);
+
+            return Ok(notifications);
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

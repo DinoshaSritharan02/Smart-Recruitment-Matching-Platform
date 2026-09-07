@@ -26,6 +26,12 @@ public class NotificationService : INotificationService
         return _mapper.Map<IEnumerable<NotificationDto>>(notifications);
     }
 
+    public async Task<IEnumerable<NotificationDto>> GetUnreadAsync(Guid userId)
+    {
+        var notifications = await _repository.GetUnreadAsync(userId);
+        return _mapper.Map<IEnumerable<NotificationDto>>(notifications);
+    }
+
     public async Task CreateNotificationAsync(CreateNotificationDto dto)
     {
         var notification = _mapper.Map<Notification>(dto);

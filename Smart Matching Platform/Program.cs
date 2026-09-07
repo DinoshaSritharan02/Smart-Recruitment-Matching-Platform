@@ -3,7 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using SmartRecruitmentMatchingPlatform.API.Data;
 using SmartRecruitmentMatchingPlatform.API.Extensions;
+using SmartRecruitmentMatchingPlatform.API.Helpers;
 using SmartRecruitmentMatchingPlatform.API.Mapping;
+using SmartRecruitmentMatchingPlatform.API.Matching;
 using SmartRecruitmentMatchingPlatform.API.Middleware;
 using SmartRecruitmentMatchingPlatform.API.Repositories;
 using SmartRecruitmentMatchingPlatform.API.Repositories.Implementations;
@@ -31,7 +33,7 @@ builder.Services.AddControllers();
 #endregion
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowAngular", policy =>
+    options.AddPolicy("Angular", policy =>
     {
         policy.WithOrigins("http://localhost:4200")
               .AllowAnyHeader()
@@ -46,10 +48,13 @@ builder.Services.AddScoped<IVacancyRepository, VacancyRepository>();
 builder.Services.AddScoped<ISkillRepository, SkillRepository>();
 builder.Services.AddScoped<IApplicationRepository, ApplicationRepository>();
 builder.Services.AddScoped<IMatchingRepository, MatchingRepository>();
+builder.Services.AddScoped<IMatchingEngine, MatchingEngine>();
 builder.Services.AddScoped<IAdminRepository, AdminRepository>();
 builder.Services.AddScoped<INotificationRepository, NotificationRepository>();
 builder.Services.AddScoped<IContactRequestRepository, ContactRequestRepository>();
 builder.Services.AddScoped<IJobSeekerRepository, JobSeekerRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<ICvMetadataRepository, CvMetadataRepository>();
 
 #endregion
 
@@ -64,8 +69,11 @@ builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
 builder.Services.AddScoped<IContactRequestService, ContactRequestService>();
 builder.Services.AddScoped<IJobSeekerService, JobSeekerService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ICvStorageService, CvStorageService>();
 
 #endregion
+builder.Services.AddScoped<JwtTokenGenerator>();
 
 #region JWT Authentication
 
@@ -118,8 +126,7 @@ builder.Services.AddSwaggerGen(options =>
 
 #endregion
 
-// Registers any additional project services
-builder.Services.AddProjectServices();
+
 
 var app = builder.Build();
 

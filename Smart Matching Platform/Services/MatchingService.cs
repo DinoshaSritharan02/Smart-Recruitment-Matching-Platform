@@ -1,4 +1,5 @@
-﻿using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Matching;
+﻿using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Application;
+using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Matching;
 using SmartRecruitmentMatchingPlatform.API.Repositories;
 
 namespace SmartRecruitmentMatchingPlatform.API.Services
@@ -15,6 +16,10 @@ namespace SmartRecruitmentMatchingPlatform.API.Services
         public async Task<List<MatchResultDto>> GetMatchesAsync(Guid userId)
         {
             return await _matchingRepository.GetMatchesAsync(userId);
+        }
+        public async Task<List<RankedApplicantResponseDto>> GetRankedApplicantsAsync(int vacancyId)
+        {
+            return await _matchingRepository.GetRankedApplicantsAsync(vacancyId);
         }
     }
 }
