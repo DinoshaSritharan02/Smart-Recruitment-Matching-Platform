@@ -1,10 +1,10 @@
-﻿namespace Smart_Matching_Platform.Models.DTOs.Application
+﻿namespace SmartRecruitmentMatchingPlatform.API.Models.DTOs.Application
 {
     public class RankedApplicantResponseDto
     {
         public int ApplicationId { get; set; }
 
-        public int JobSeekerId { get; set; }
+        public Guid JobSeekerProfileId { get; set; }
 
         public decimal? MatchScore { get; set; }
 

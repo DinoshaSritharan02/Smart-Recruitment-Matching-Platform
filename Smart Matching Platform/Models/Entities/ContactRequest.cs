@@ -1,5 +1,5 @@
 ﻿using SmartRecruitmentMatchingPlatform.API.Enums;
-using Smart_Matching_Platform.Models.Entities;
+using SmartRecruitmentMatchingPlatform.API.Models.Entities;
 
 namespace SmartRecruitmentMatchingPlatform.API.Models.Entities;
 
@@ -11,7 +11,7 @@ public class ContactRequest
 
     public Employer Employer { get; set; } = null!;
 
-    public int JobSeekerProfileId { get; set; }
+    public Guid JobSeekerProfileId { get; set; }  
 
     public JobSeekerProfile JobSeekerProfile { get; set; } = null!;
 

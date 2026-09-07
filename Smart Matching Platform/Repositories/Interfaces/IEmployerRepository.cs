@@ -6,12 +6,12 @@ namespace SmartRecruitmentMatchingPlatform.API.Repositories
     {
         Task<Employer?> GetByIdAsync(int id);
 
-        Task<Employer?> GetByUserIdAsync(int userId);
+        Task<Employer?> GetByUserIdAsync(Guid userId);
 
         Task AddAsync(Employer employer);
 
         Task UpdateAsync(Employer employer);
 
-        Task<bool> ExistsByUserIdAsync(int userId);
+        Task<bool> ExistsByUserIdAsync(Guid userId);
     }
 }

@@ -1,9 +1,9 @@
 ﻿using SmartRecruitmentMatchingPlatform.API.Enums;
 using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Vacancy;
 using SmartRecruitmentMatchingPlatform.API.Models.Entities;
-using Smart_Matching_Platform.Repositories;
+using SmartRecruitmentMatchingPlatform.API.Repositories;
 
-namespace Smart_Matching_Platform.Services
+namespace SmartRecruitmentMatchingPlatform.API.Services
 {
     public class VacancyService : IVacancyService
     {

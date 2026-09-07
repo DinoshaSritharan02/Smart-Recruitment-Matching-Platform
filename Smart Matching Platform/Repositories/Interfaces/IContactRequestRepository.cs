@@ -6,7 +6,7 @@ public interface IContactRequestRepository
 {
     Task<ContactRequest?> GetByIdAsync(int id);
 
-    Task<IEnumerable<ContactRequest>> GetForJobSeekerAsync(int jobSeekerProfileId);
+    Task<IEnumerable<ContactRequest>> GetForJobSeekerAsync(Guid jobSeekerProfileId);
 
     Task AddAsync(ContactRequest request);
 

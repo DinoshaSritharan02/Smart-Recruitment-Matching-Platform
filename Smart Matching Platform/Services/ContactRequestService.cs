@@ -23,7 +23,7 @@ public class ContactRequestService : IContactRequestService
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<ContactRequestDto>> GetRequestsAsync(int jobSeekerProfileId)
+    public async Task<IEnumerable<ContactRequestDto>> GetRequestsAsync(Guid jobSeekerProfileId)
     {
         var requests = await _repository.GetForJobSeekerAsync(jobSeekerProfileId);
 

@@ -1,6 +1,6 @@
-﻿using Smart_Matching_Platform.Enums;
+﻿using SmartRecruitmentMatchingPlatform.API.Enums;
 
-namespace Smart_Matching_Platform.Models.DTOs.Application
+namespace SmartRecruitmentMatchingPlatform.API.Models.DTOs.Application
 {
     public class UpdateApplicationStatusRequestDto
     {

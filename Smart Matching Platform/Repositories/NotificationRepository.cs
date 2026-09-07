@@ -14,7 +14,7 @@ public class NotificationRepository : INotificationRepository
         _context = context;
     }
 
-    public async Task<IEnumerable<Notification>> GetByUserIdAsync(int userId)
+    public async Task<IEnumerable<Notification>> GetByUserIdAsync(Guid userId)
     {
         return await _context.Notifications
             .Where(n => n.UserId == userId)

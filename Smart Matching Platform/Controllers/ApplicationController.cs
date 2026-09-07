@@ -1,10 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Smart_Matching_Platform.Models.DTOs.Application;
-using Smart_Matching_Platform.Services.Interfaces;
+using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Application;
+using SmartRecruitmentMatchingPlatform.API.Services.Interfaces;
+using SmartRecruitmentMatchingPlatform.API.Models.Entities;
 using System.Security.Claims;
 
-namespace Smart_Matching_Platform.Controllers
+namespace SmartRecruitmentMatchingPlatform.API.Controllers
 {
     [ApiController]
     [Route("api/applications")]
@@ -18,32 +19,59 @@ namespace Smart_Matching_Platform.Controllers
             _applicationService = applicationService;
         }
 
+        [HttpPost("vacancy/{vacancyId:int}/apply")]
+        [Authorize(Roles = "JobSeeker")]
+        public async Task<IActionResult> ApplyForVacancy(int vacancyId)
+        {
+            var userId = GetUserId();
+
+            if (userId == null)
+                return Unauthorized();
+
+            var applied = await _applicationService.ApplyForVacancyAsync(
+                userId.Value,
+                vacancyId);
+
+            if (!applied)
+            {
+                return BadRequest(new
+                {
+                    message = "Unable to apply. The vacancy may not exist, may be closed, or you have already applied."
+                });
+            }
+
+            return Ok(new
+            {
+                message = "Application submitted successfully."
+            });
+        }
+
         [HttpGet("vacancy/{vacancyId:int}/ranked")]
         public async Task<IActionResult> GetRankedApplicants(int vacancyId)
         {
-            var employerId = GetEmployerId();
+            var userId = GetUserId();
 
-            if (employerId == null)
+            if (userId == null)
                 return Unauthorized();
 
-            var applicants = await _applicationService
-                .GetRankedApplicantsAsync(employerId.Value, vacancyId);
-
+            var applicants = await _applicationService.GetRankedApplicantsAsync(
+    userId.Value,
+    vacancyId);
             return Ok(applicants);
         }
 
         [HttpPut("{applicationId:int}/status")]
         public async Task<IActionResult> UpdateStatus(
-            int applicationId,
-            [FromBody] UpdateApplicationStatusRequestDto request)
+    int applicationId,
+    [FromBody] UpdateApplicationStatusRequestDto request)
         {
-            var employerId = GetEmployerId();
+            var userId = GetUserId();
 
-            if (employerId == null)
+            if (userId == null)
                 return Unauthorized();
 
             var updated = await _applicationService.UpdateStatusAsync(
-                employerId.Value,
+                userId.Value,
                 applicationId,
                 request.Status);
 
@@ -59,13 +87,12 @@ namespace Smart_Matching_Platform.Controllers
             });
         }
 
-        private int? GetEmployerId()
+        private Guid? GetUserId()
         {
-            var employerIdClaim =
-                User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            if (int.TryParse(employerIdClaim, out var employerId))
-                return employerId;
+            if (Guid.TryParse(userIdClaim, out var userId))
+                return userId;
 
             return null;
         }

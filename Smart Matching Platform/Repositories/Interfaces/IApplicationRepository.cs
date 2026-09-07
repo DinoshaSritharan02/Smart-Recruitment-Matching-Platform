@@ -1,6 +1,6 @@
-﻿using Smart_Matching_Platform.Models.Entities;
+﻿using SmartRecruitmentMatchingPlatform.API.Models.Entities;
 
-namespace Smart_Matching_Platform.Repositories.Interfaces
+namespace SmartRecruitmentMatchingPlatform.API.Repositories.Interfaces
 {
     public interface IApplicationRepository
     {
@@ -8,12 +8,12 @@ namespace Smart_Matching_Platform.Repositories.Interfaces
 
         Task<List<Application>> GetByVacancyIdAsync(int vacancyId);
 
-        Task<List<Application>> GetByJobSeekerIdAsync(int jobSeekerId);
+        Task<List<Application>> GetByJobSeekerProfileIdAsync(Guid jobSeekerProfileId);
 
         Task AddAsync(Application application);
 
         Task UpdateAsync(Application application);
 
-        Task<bool> ExistsAsync(int jobSeekerId, int vacancyId);
+        Task<bool> ExistsAsync(Guid jobSeekerProfileId, int vacancyId);
     }
 }

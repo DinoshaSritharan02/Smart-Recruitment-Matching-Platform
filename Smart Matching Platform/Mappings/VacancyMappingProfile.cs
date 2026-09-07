@@ -2,7 +2,7 @@
 using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Vacancy;
 using SmartRecruitmentMatchingPlatform.API.Models.Entities;
 
-namespace Smart_Matching_Platform.Mappings
+namespace SmartRecruitmentMatchingPlatform.API.Mappings
 {
     public class VacancyMappingProfile : Profile
     {

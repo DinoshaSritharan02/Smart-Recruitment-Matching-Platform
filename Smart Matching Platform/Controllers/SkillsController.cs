@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Smart_Matching_Platform.Services;
 using SmartRecruitmentMatchingPlatform.API.Services;
 
-namespace Smart_Matching_Platform.Controllers
+
+namespace SmartRecruitmentMatchingPlatform.API.Controllers
 {
     [ApiController]
     [Route("api/vacancies/skills")]

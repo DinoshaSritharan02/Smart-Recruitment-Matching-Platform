@@ -21,7 +21,7 @@ namespace SmartRecruitmentMatchingPlatform.API.Controllers
         [HttpGet]
         public async Task<IActionResult> GetNotifications()
         {
-            var userId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
+            var userId = Guid.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
 
             var notifications = await _notificationService.GetNotificationsAsync(userId);
 

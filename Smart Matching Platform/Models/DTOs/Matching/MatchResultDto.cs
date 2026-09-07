@@ -2,7 +2,7 @@
 
 public class MatchResultDto
 {
-    public Guid VacancyId { get; set; }
+    public int VacancyId { get; set; }
 
     public string JobTitle { get; set; } = string.Empty;
 

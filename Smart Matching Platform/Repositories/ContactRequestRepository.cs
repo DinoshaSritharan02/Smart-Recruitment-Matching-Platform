@@ -21,7 +21,7 @@ public class ContactRequestRepository : IContactRequestRepository
             .FirstOrDefaultAsync(c => c.Id == id);
     }
 
-    public async Task<IEnumerable<ContactRequest>> GetForJobSeekerAsync(int jobSeekerProfileId)
+    public async Task<IEnumerable<ContactRequest>> GetForJobSeekerAsync(Guid jobSeekerProfileId)
     {
         return await _context.ContactRequests
             .Include(c => c.Employer)

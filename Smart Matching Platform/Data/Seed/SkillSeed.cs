@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmartRecruitmentMatchingPlatform.API.Models.Entities;
 
-namespace Smart_Matching_Platform.Data.Seed
+namespace SmartRecruitmentMatchingPlatform.API.Data.Seed
 {
     public static class SkillSeed
     {

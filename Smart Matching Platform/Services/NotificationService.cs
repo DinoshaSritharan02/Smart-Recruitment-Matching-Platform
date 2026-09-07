@@ -19,7 +19,7 @@ public class NotificationService : INotificationService
         _mapper = mapper;
     }
 
-    public async Task<IEnumerable<NotificationDto>> GetNotificationsAsync(int userId)
+    public async Task<IEnumerable<NotificationDto>> GetNotificationsAsync(Guid userId)
     {
         var notifications = await _repository.GetByUserIdAsync(userId);
 
