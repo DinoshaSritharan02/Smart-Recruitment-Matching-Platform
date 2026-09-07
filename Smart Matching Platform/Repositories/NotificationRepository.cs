@@ -22,6 +22,14 @@ public class NotificationRepository : INotificationRepository
             .ToListAsync();
     }
 
+    public async Task<IEnumerable<Notification>> GetUnreadAsync(Guid userId)
+    {
+        return await _context.Notifications
+            .Where(n => n.UserId == userId && !n.IsRead)
+            .OrderByDescending(n => n.CreatedAt)
+            .ToListAsync();
+    }
+
     public async Task<Notification?> GetByIdAsync(int id)
     {
         return await _context.Notifications

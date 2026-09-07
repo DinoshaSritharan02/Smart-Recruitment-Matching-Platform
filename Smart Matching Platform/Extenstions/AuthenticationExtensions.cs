@@ -36,7 +36,10 @@ public static class AuthenticationExtensions
 
                 ClockSkew = TimeSpan.Zero
             };
-        });
+
+        }
+        
+        );
 
         return services;
     }

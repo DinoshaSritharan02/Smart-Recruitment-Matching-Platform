@@ -5,6 +5,7 @@ namespace SmartRecruitmentMatchingPlatform.API.Services.Interfaces;
 public interface INotificationService
 {
     Task<IEnumerable<NotificationDto>> GetNotificationsAsync(Guid userId);
+    Task<IEnumerable<NotificationDto>> GetUnreadAsync(Guid userId);
 
     Task CreateNotificationAsync(CreateNotificationDto dto);
 

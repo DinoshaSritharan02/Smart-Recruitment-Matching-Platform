@@ -6,6 +6,8 @@
 
         public Guid JobSeekerProfileId { get; set; }
 
+        public string CandidateName { get; set; } = string.Empty;
+
         public decimal? MatchScore { get; set; }
 
         public List<string> MissingSkills { get; set; } = new();

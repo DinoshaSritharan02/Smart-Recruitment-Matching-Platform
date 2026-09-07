@@ -5,6 +5,7 @@ namespace SmartRecruitmentMatchingPlatform.API.Repositories.Interfaces;
 public interface INotificationRepository
 {
     Task<IEnumerable<Notification>> GetByUserIdAsync(Guid userId);
+    Task<IEnumerable<Notification>> GetUnreadAsync(Guid userId);
 
     Task<Notification?> GetByIdAsync(int id);
 

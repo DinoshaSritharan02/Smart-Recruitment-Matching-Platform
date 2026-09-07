@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SmartRecruitmentMatchingPlatform.API.Data;
+using SmartRecruitmentMatchingPlatform.API.Enums;
 using SmartRecruitmentMatchingPlatform.API.Models.Entities;
 using SmartRecruitmentMatchingPlatform.API.Repositories.Interfaces;
 
@@ -18,6 +19,7 @@ public class ContactRequestRepository : IContactRequestRepository
     {
         return await _context.ContactRequests
             .Include(c => c.Employer)
+            .Include(c => c.JobSeekerProfile)
             .FirstOrDefaultAsync(c => c.Id == id);
     }
 
@@ -44,5 +46,14 @@ public class ContactRequestRepository : IContactRequestRepository
     public async Task SaveChangesAsync()
     {
         await _context.SaveChangesAsync();
+    }
+    public async Task<bool> ExistsPendingRequestAsync(
+    int employerId,
+    Guid jobSeekerProfileId)
+    {
+        return await _context.ContactRequests.AnyAsync(x =>
+            x.EmployerId == employerId &&
+            x.JobSeekerProfileId == jobSeekerProfileId &&
+            x.Status == ContactRequestStatus.Pending);
     }
 }

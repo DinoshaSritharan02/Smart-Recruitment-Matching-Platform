@@ -2,6 +2,9 @@
 using SmartRecruitmentMatchingPlatform.API.DTOs.ContactRequests;
 using SmartRecruitmentMatchingPlatform.API.DTOs.Notifications;
 using SmartRecruitmentMatchingPlatform.API.Enums;
+using SmartRecruitmentMatchingPlatform.API.Models.DTOs.ContactRequest;
+using SmartRecruitmentMatchingPlatform.API.Models.Entities;
+using SmartRecruitmentMatchingPlatform.API.Repositories.Implementations;
 using SmartRecruitmentMatchingPlatform.API.Repositories.Interfaces;
 using SmartRecruitmentMatchingPlatform.API.Services.Interfaces;
 
@@ -30,12 +33,25 @@ public class ContactRequestService : IContactRequestService
         return _mapper.Map<IEnumerable<ContactRequestDto>>(requests);
     }
 
-    public async Task UpdateStatusAsync(int requestId, UpdateContactRequestStatusDto dto)
+    public async Task UpdateStatusAsync(
+     int requestId,
+     Guid jobSeekerUserId,
+     UpdateContactRequestStatusDto dto)
     {
         var request = await _repository.GetByIdAsync(requestId);
 
         if (request == null)
             throw new Exception("Contact request not found.");
+
+        // Verify ownership
+        if (request.JobSeekerProfile.UserId != jobSeekerUserId)
+            throw new UnauthorizedAccessException(
+                "You are not allowed to update this contact request.");
+
+        // Only pending requests can be updated
+        if (request.Status != ContactRequestStatus.Pending)
+            throw new InvalidOperationException(
+                "Only pending contact requests can be updated.");
 
         request.Status = dto.Status;
         request.RespondedAt = DateTime.UtcNow;
@@ -51,5 +67,31 @@ public class ContactRequestService : IContactRequestService
                 ? "Your contact request has been accepted."
                 : "Your contact request has been declined."
         });
+    }
+    public async Task<ContactRequestDto> CreateAsync(
+    int employerId,
+    CreateContactRequestDto dto)
+    {
+        var exists = await _repository.ExistsPendingRequestAsync(
+            employerId,
+            dto.JobSeekerProfileId);
+
+        if (exists)
+            throw new InvalidOperationException(
+                "A pending contact request already exists.");
+
+        var request = new ContactRequest
+        {
+            EmployerId = employerId,
+            JobSeekerProfileId = dto.JobSeekerProfileId,
+            Message = dto.Message,
+            Status = ContactRequestStatus.Pending,
+            CreatedAt = DateTime.UtcNow
+        };
+
+        await _repository.AddAsync(request);
+        await _repository.SaveChangesAsync();
+
+        return _mapper.Map<ContactRequestDto>(request);
     }
 }
