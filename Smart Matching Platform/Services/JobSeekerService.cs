@@ -43,11 +43,24 @@ public class JobSeekerService : IJobSeekerService
         var profile = await _jobSeekerRepository.GetByUserIdAsync(userId);
 
         if (profile == null)
-            throw new Exception("Profile not found.");
+        {
+            profile = new JobSeekerProfile
+            {
+                Id = Guid.NewGuid(),
+                UserId = userId
+            };
 
-        _mapper.Map(dto, profile);
+            _mapper.Map(dto, profile);
 
-        await _jobSeekerRepository.UpdateProfileAsync(profile);
+            await _jobSeekerRepository.AddProfileAsync(profile);
+        }
+        else
+        {
+            _mapper.Map(dto, profile);
+
+            await _jobSeekerRepository.UpdateProfileAsync(profile);
+        }
+
         await _jobSeekerRepository.SaveChangesAsync();
     }
 

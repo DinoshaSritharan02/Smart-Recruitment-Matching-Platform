@@ -7,6 +7,7 @@ public interface IJobSeekerRepository
     Task<JobSeekerProfile?> GetByUserIdAsync(Guid userId);
 
     Task<JobSeekerProfile?> GetProfileWithDetailsAsync(Guid userId);
+    Task AddProfileAsync(JobSeekerProfile profile);
 
     Task CreateProfileAsync(JobSeekerProfile profile);
 

@@ -30,6 +30,10 @@ public class JobSeekerRepository : IJobSeekerRepository
             .Include(x => x.CvMetadata)
             .FirstOrDefaultAsync(x => x.UserId == userId);
     }
+    public async Task AddProfileAsync(JobSeekerProfile profile)
+    {
+        await _context.JobSeekerProfiles.AddAsync(profile);
+    }
 
     public async Task CreateProfileAsync(JobSeekerProfile profile)
     {
