@@ -9,7 +9,7 @@ namespace SmartRecruitmentMatchingPlatform.API.Controllers
 {
     [ApiController]
     [Route("api/applications")]
-    [Authorize(Roles = "Employer")]
+    
     public class ApplicationController : ControllerBase
     {
         private readonly IApplicationService _applicationService;
@@ -47,6 +47,7 @@ namespace SmartRecruitmentMatchingPlatform.API.Controllers
         }
 
         [HttpGet("vacancy/{vacancyId:int}/ranked")]
+        [Authorize(Roles = "Employer")]
         public async Task<IActionResult> GetRankedApplicants(int vacancyId)
         {
             var userId = GetUserId();
@@ -59,8 +60,8 @@ namespace SmartRecruitmentMatchingPlatform.API.Controllers
     vacancyId);
             return Ok(applicants);
         }
-
         [HttpPut("{applicationId:int}/status")]
+        [Authorize(Roles = "Employer")]
         public async Task<IActionResult> UpdateStatus(
     int applicationId,
     [FromBody] UpdateApplicationStatusRequestDto request)
