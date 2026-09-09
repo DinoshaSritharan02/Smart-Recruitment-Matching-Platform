@@ -1,0 +1,183 @@
+<section class="bg-gray-50 min-h-screen py-16">
+
+  <div class="max-w-7xl mx-auto px-6">
+
+    <!-- Page Header -->
+    <div class="text-center mb-12">
+      <h1 class="text-5xl font-bold text-gray-900">
+        Browse Jobs
+      </h1>
+
+      <p class="mt-4 text-lg text-gray-600">
+        Discover opportunities that match your skills and career goals.
+      </p>
+    </div>
+
+    <!-- Search Section -->
+    <div class="bg-white rounded-2xl shadow-md p-6 mb-12">
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+        <input
+          type="text"
+          placeholder="Search by Job Title"
+          class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-blue-500 focus:outline-none">
+
+        <input
+          type="text"
+          placeholder="Location"
+          class="w-full rounded-xl border border-gray-300 px-4 py-3 focus:border-blue-500 focus:outline-none">
+
+        <button
+          class="rounded-xl bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-700">
+          Search Jobs
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- Job Cards -->
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+
+      <!-- Card 1 -->
+      <div class="rounded-2xl bg-white p-6 shadow-md transition hover:-translate-y-2 hover:shadow-xl">
+
+        <div class="flex items-center gap-4">
+          <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-blue-100 font-bold text-xl text-blue-600">
+            G
+          </div>
+
+          <div>
+            <h2 class="text-xl font-bold">Software Engineer</h2>
+            <p class="text-gray-500">Google • Colombo</p>
+          </div>
+        </div>
+
+        <div class="mt-5 flex flex-wrap gap-2">
+          <span class="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-700">
+            Full Time
+          </span>
+
+          <span class="rounded-full bg-green-100 px-3 py-1 text-sm text-green-700">
+            Hybrid
+          </span>
+
+          <span class="rounded-full bg-yellow-100 px-3 py-1 text-sm text-yellow-700">
+            LKR 250K
+          </span>
+        </div>
+
+        <p class="mt-5 text-gray-600">
+          Angular • ASP.NET Core • SQL Server
+        </p>
+
+        <div class="mt-6 flex items-center justify-between">
+
+          <span class="text-sm text-gray-500">
+            Posted 2 days ago
+          </span>
+
+          <a
+            routerLink="/job-details/1"
+            class="rounded-xl bg-blue-600 px-5 py-2 text-white font-medium hover:bg-blue-700">
+            View Details
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- Card 2 -->
+      <div class="rounded-2xl bg-white p-6 shadow-md transition hover:-translate-y-2 hover:shadow-xl">
+
+        <div class="flex items-center gap-4">
+          <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-purple-100 font-bold text-xl text-purple-600">
+            D
+          </div>
+
+          <div>
+            <h2 class="text-xl font-bold">UI/UX Designer</h2>
+            <p class="text-gray-500">Dialog Axiata • Colombo</p>
+          </div>
+        </div>
+
+        <div class="mt-5 flex flex-wrap gap-2">
+          <span class="rounded-full bg-purple-100 px-3 py-1 text-sm text-purple-700">
+            Remote
+          </span>
+
+          <span class="rounded-full bg-green-100 px-3 py-1 text-sm text-green-700">
+            LKR 180K
+          </span>
+        </div>
+
+        <p class="mt-5 text-gray-600">
+          Figma • Adobe XD • Tailwind CSS
+        </p>
+
+        <div class="mt-6 flex items-center justify-between">
+
+          <span class="text-sm text-gray-500">
+            Posted Today
+          </span>
+
+          <a
+            routerLink="/job-details/2"
+            class="rounded-xl bg-blue-600 px-5 py-2 text-white font-medium hover:bg-blue-700">
+            View Details
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- Card 3 -->
+      <div class="rounded-2xl bg-white p-6 shadow-md transition hover:-translate-y-2 hover:shadow-xl">
+
+        <div class="flex items-center gap-4">
+          <div class="flex h-14 w-14 items-center justify-center rounded-xl bg-red-100 font-bold text-xl text-red-600">
+            W
+          </div>
+
+          <div>
+            <h2 class="text-xl font-bold">Backend Developer</h2>
+            <p class="text-gray-500">WSO2 • Kandy</p>
+          </div>
+        </div>
+
+        <div class="mt-5 flex flex-wrap gap-2">
+          <span class="rounded-full bg-blue-100 px-3 py-1 text-sm text-blue-700">
+            Full Time
+          </span>
+
+          <span class="rounded-full bg-green-100 px-3 py-1 text-sm text-green-700">
+            LKR 220K
+          </span>
+        </div>
+
+        <p class="mt-5 text-gray-600">
+          .NET • SQL Server • REST API
+        </p>
+
+        <div class="mt-6 flex items-center justify-between">
+
+          <span class="text-sm text-gray-500">
+            Posted 1 week ago
+          </span>
+
+          <a
+            routerLink="/job-details/3"
+            class="rounded-xl bg-blue-600 px-5 py-2 text-white font-medium hover:bg-blue-700">
+            View Details
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
