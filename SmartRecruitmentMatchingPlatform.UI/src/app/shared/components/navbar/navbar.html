@@ -1,0 +1,124 @@
+<nav class="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <div class="flex h-20 items-center justify-between">
+
+      <!-- Logo -->
+      <a routerLink="/" class="flex items-center gap-3" (click)="closeMenu()">
+        <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-600 text-white font-bold">
+          SR
+        </div>
+
+        <div>
+          <h1 class="text-xl font-bold text-gray-900">
+            SmartRecruit
+          </h1>
+          <p class="text-xs text-gray-500">
+            Matching Platform
+          </p>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center gap-8">
+
+        <a
+          routerLink="/"
+          routerLinkActive="text-blue-600 font-semibold"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="text-gray-700 hover:text-blue-600 transition">
+          Home
+        </a>
+
+        <a
+          routerLink="/about"
+          routerLinkActive="text-blue-600 font-semibold"
+          class="text-gray-700 hover:text-blue-600 transition">
+          About
+        </a>
+
+        <a
+          routerLink="/contact"
+          routerLinkActive="text-blue-600 font-semibold"
+          class="text-gray-700 hover:text-blue-600 transition">
+          Contact
+        </a>
+
+      </div>
+
+      <!-- Desktop Buttons -->
+      <div class="hidden lg:flex items-center gap-3">
+        <button
+          class="px-5 py-2 rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-50 transition">
+          Login
+        </button>
+
+        <button
+          class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition">
+          Register
+        </button>
+      </div>
+
+      <!-- Mobile Button -->
+      <button
+        (click)="toggleMenu()"
+        class="lg:hidden rounded-lg p-2 hover:bg-gray-100">
+
+        {{ isMenuOpen ? '✕' : '☰' }}
+
+      </button>
+
+    </div>
+
+    <!-- Mobile Menu -->
+    @if (isMenuOpen) {
+
+      <div class="lg:hidden border-t border-gray-200 py-4">
+
+        <div class="flex flex-col space-y-4">
+
+          <a
+            routerLink="/"
+            (click)="closeMenu()"
+            class="text-gray-700 hover:text-blue-600">
+            Home
+          </a>
+
+          <a
+            routerLink="/about"
+            (click)="closeMenu()"
+            class="text-gray-700 hover:text-blue-600">
+            About
+          </a>
+
+          <a
+            routerLink="/contact"
+            (click)="closeMenu()"
+            class="text-gray-700 hover:text-blue-600">
+            Contact
+          </a>
+          <a
+  routerLink="/jobs"
+  routerLinkActive="text-blue-600 font-semibold"
+  class="text-gray-700 hover:text-blue-600 transition">
+  Browse Jobs
+</a>
+
+          <hr>
+
+          <button class="w-full rounded-lg border border-blue-600 py-2 text-blue-600">
+            Login
+          </button>
+
+          <button class="w-full rounded-lg bg-blue-600 py-2 text-white">
+            Register
+          </button>
+
+        </div>
+
+      </div>
+
+    }
+
+  </div>
+</nav>
