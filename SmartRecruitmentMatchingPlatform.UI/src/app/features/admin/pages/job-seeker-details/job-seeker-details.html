@@ -1,0 +1,54 @@
+<div class="space-y-6">
+
+  <h1 class="text-2xl font-bold">
+    Job Seeker Details
+  </h1>
+
+  <div class="rounded-xl bg-white p-6 shadow">
+
+    <div class="grid grid-cols-2 gap-6">
+
+      <div>
+        <p class="text-sm text-gray-500">ID</p>
+        <p class="font-semibold">{{ jobSeeker.id }}</p>
+      </div>
+
+      <div>
+        <p class="text-sm text-gray-500">Full Name</p>
+        <p class="font-semibold">{{ jobSeeker.fullName }}</p>
+      </div>
+
+      <div>
+        <p class="text-sm text-gray-500">Email</p>
+        <p class="font-semibold">{{ jobSeeker.email }}</p>
+      </div>
+
+      <div>
+        <p class="text-sm text-gray-500">Phone</p>
+        <p class="font-semibold">{{ jobSeeker.phone }}</p>
+      </div>
+
+      <div>
+        <p class="text-sm text-gray-500">Skills</p>
+        <p class="font-semibold">{{ jobSeeker.skills }}</p>
+      </div>
+
+      <div>
+        <p class="text-sm text-gray-500">Experience</p>
+        <p class="font-semibold">{{ jobSeeker.experience }}</p>
+      </div>
+
+      <div>
+        <p class="text-sm text-gray-500">Status</p>
+
+        <span class="rounded-full bg-green-100 px-3 py-1 text-sm text-green-700">
+          {{ jobSeeker.status }}
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
