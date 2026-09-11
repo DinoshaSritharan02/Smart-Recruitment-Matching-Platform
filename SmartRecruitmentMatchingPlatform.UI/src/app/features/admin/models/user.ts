@@ -1,8 +1,9 @@
 export interface User {
-  id: number;
-  fullName: string;
+  id: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  role: 'Admin' | 'Employer' | 'Job Seeker';
-  status: 'Active' | 'Inactive';
-  createdDate: string;
+  role: string;
+  isActive: boolean;
+  createdAt?: string;
 }

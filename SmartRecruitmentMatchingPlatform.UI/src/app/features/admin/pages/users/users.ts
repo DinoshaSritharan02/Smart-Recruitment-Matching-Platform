@@ -1,51 +1,55 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchBar } from '../../components/search-bar/search-bar';
-import { User } from '../../models/user';
+import { AdminService } from '../../services/admin';
+import { UserSummary } from '../../models/user-summary';
+import { RouterModule } from '@angular/router';
+
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [
-  CommonModule,
-  SearchBar
-],
+  imports: [CommonModule, SearchBar,RouterModule],
   templateUrl: './users.html',
   styleUrl: './users.css'
 })
-export class Users {
+export class Users implements OnInit {
+
+  private adminService = inject(AdminService);
+
+  users: UserSummary[] = [];
+
+  ngOnInit(): void {
+    this.loadUsers();
+  }
+
+  loadUsers(): void {
+    this.adminService.getUsers().subscribe({
+      next: (response) => {
+        this.users = response;
+      },
+      error: (err) => console.error(err)
+    });
+  }
 
   onSearch(keyword: string) {
-  console.log('Searching:', keyword);
+    console.log(keyword);
+  }
+  toggleStatus(user: UserSummary) {
 
-  // API integration வந்த பிறகு
-  // this.loadUsers(keyword);
+  this.adminService.updateUserStatus(
+    user.id,
+    { isActive: !user.isActive }
+  ).subscribe({
+
+    next: () => {
+
+      user.isActive = !user.isActive;
+
+    },
+
+    error: err => console.error(err)
+
+  });
+
 }
-
-  users: User[] = [
-    {
-      id: 1,
-      fullName: 'John Silva',
-      email: 'john@gmail.com',
-      role: 'Employer',
-      status: 'Active',
-      createdDate: '2026-09-01'
-    },
-    {
-      id: 2,
-      fullName: 'Kasun Perera',
-      email: 'kasun@gmail.com',
-      role: 'Job Seeker',
-      status: 'Inactive',
-      createdDate: '2026-09-03'
-    },
-    {
-      id: 3,
-      fullName: 'Nimal Fernando',
-      email: 'nimal@gmail.com',
-      role: 'Employer',
-      status: 'Active',
-      createdDate: '2026-09-04'
-    }
-  ];
-
 }

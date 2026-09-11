@@ -1,69 +1,36 @@
-<div class="space-y-6">
+@if(user){
 
-  <div class="flex justify-between items-center">
+<div class="bg-white rounded-xl shadow p-6">
 
-    <h1 class="text-3xl font-bold">
-      User Management
-    </h1>
+    <h2 class="text-2xl font-bold mb-6">
+        User Details
+    </h2>
 
-    <input
-      type="text"
-      placeholder="Search user..."
-      class="border rounded-lg px-4 py-2 w-72">
+    <div class="space-y-3">
 
-  </div>
+        <p><strong>Name:</strong> {{user.firstName}} {{user.lastName}}</p>
 
-  <div class="bg-white rounded-xl shadow overflow-hidden">
+        <p><strong>Email:</strong> {{user.email}}</p>
 
-    <table class="w-full">
+        <p><strong>Role:</strong> {{user.role}}</p>
 
-      <thead class="bg-gray-100">
+        <p><strong>Status:</strong>
+            {{user.isActive ? 'Active' : 'Inactive'}}
+        </p>
 
-        <tr>
+        <p><strong>Created:</strong> {{user.createdAt}}</p>
 
-          <th class="text-left p-4">Name</th>
-          <th class="text-left p-4">Email</th>
-          <th class="text-left p-4">Role</th>
-          <th class="text-left p-4">Status</th>
+    </div>
+    <div class="mt-6">
+    <button
+        (click)="toggleStatus()"
+        class="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
 
-        </tr>
+        {{ user.isActive ? 'Deactivate User' : 'Activate User' }}
 
-      </thead>
-
-      <tbody>
-
-        @for(user of users; track user.id){
-
-        <tr class="border-t hover:bg-gray-50">
-
-          <td class="p-4">{{user.fullName}}</td>
-
-          <td class="p-4">{{user.email}}</td>
-
-          <td class="p-4">{{user.role}}</td>
-
-          <td class="p-4">
-
-            <span
-              class="px-3 py-1 rounded-full text-sm"
-              [class]="user.status==='Active'
-              ? 'bg-green-100 text-green-700'
-              : 'bg-red-100 text-red-700'">
-
-              {{user.status}}
-
-            </span>
-
-          </td>
-
-        </tr>
-
-        }
-
-      </tbody>
-
-    </table>
-
-  </div>
+    </button>
+</div>
 
 </div>
+
+}

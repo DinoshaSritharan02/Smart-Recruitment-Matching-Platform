@@ -19,7 +19,7 @@ export const ADMIN_ROUTES: Routes = [
       {
         path: 'users/:id',
         loadComponent: () =>
-          import('./pages/user-details/user-details').then(m => m.UserDetails)
+          import('./pages/user-details/user-details').then(m => m.UserDetailsComponent)
       },
 {
   path: 'employers',

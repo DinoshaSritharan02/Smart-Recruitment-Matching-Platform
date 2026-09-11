@@ -1,6 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class Dashboard {}
+export class DashboardService {
+
+  private http = inject(HttpClient);
+
+  getStatistics() {
+    return this.http.get(`${environment.apiUrl}/admin/dashboard`);
+  }
+
+}

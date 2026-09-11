@@ -1,38 +1,53 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-interface User {
-  id: number;
-  fullName: string;
-  email: string;
-  role: string;
-  status: string;
-}
+import { AdminService } from '../../services/admin';
+import { UserDetails } from '../../models/user-details';
 
 @Component({
-selector: 'app-user-details',
+  selector: 'app-user-details',
   standalone: true,
   imports: [CommonModule],
- templateUrl: './user-details.html',
-styleUrl: './user-details.css'
+  templateUrl: './user-details.html',
+  styleUrl: './user-details.css'
 })
-export class UserDetails {
+export class UserDetailsComponent implements OnInit {
 
-  users: User[] = [
-    {
-      id: 1,
-      fullName: 'John Silva',
-      email: 'john@gmail.com',
-      role: 'Employer',
-      status: 'Active'
-    },
-    {
-      id: 2,
-      fullName: 'Kamal Perera',
-      email: 'kamal@gmail.com',
-      role: 'Job Seeker',
-      status: 'Inactive'
+  private route = inject(ActivatedRoute);
+  private adminService = inject(AdminService);
+
+  user?: UserDetails;
+
+  ngOnInit(): void {
+
+    const id = this.route.snapshot.paramMap.get('id');
+
+    if (id) {
+      this.adminService.getUserById(id).subscribe({
+        next: (response) => {
+          this.user = response;
+        },
+        error: (err) => console.error(err)
+      });
     }
-  ];
+  }
+  toggleStatus() {
+
+  if (!this.user) return;
+
+  this.adminService.updateUserStatus(this.user.id, {
+    isActive: !this.user.isActive
+  }).subscribe({
+
+    next: () => {
+      this.user!.isActive = !this.user!.isActive;
+    },
+
+    error: err => console.error(err)
+
+  });
+
+}
 
 }

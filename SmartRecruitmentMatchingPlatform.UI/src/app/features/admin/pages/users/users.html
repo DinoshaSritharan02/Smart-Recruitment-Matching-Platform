@@ -49,46 +49,57 @@
 
             <tbody>
 
-                @for(user of users; track user.id){
+@for(user of users; track user.id){
 
-                <tr class="border-t">
+<tr class="border-t">
 
-                    <td class="px-6 py-4">
-                        {{user.id}}
-                    </td>
+    <td class="px-6 py-4">
+        {{ user.id }}
+    </td>
 
-                    <td class="px-6 py-4">
-                        {{user.fullName}}
-                    </td>
+    <td class="px-6 py-4">
+    <a
+      [routerLink]="['/admin/users', user.id]"
+      class="text-blue-600 hover:underline">
 
-                    <td class="px-6 py-4">
-                        {{user.email}}
-                    </td>
+      {{ user.fullName }}
 
-                    <td class="px-6 py-4">
-                        {{user.role}}
-                    </td>
+    </a>
+</td>
 
-                    <td class="px-6 py-4">
+    <td class="px-6 py-4">
+        {{ user.email }}
+    </td>
 
-                        <span
-                            class="rounded-full bg-green-100 px-3 py-1 text-sm text-green-700">
+    <td class="px-6 py-4">
+        {{ user.role }}
+    </td>
 
-                            {{user.status}}
+    <td class="px-6 py-4">
+        <button
+(click)="toggleStatus(user)"
+class="rounded-full px-3 py-1 text-sm"
 
-                        </span>
+[class.bg-green-100]="user.isActive"
+[class.text-green-700]="user.isActive"
 
-                    </td>
+[class.bg-red-100]="!user.isActive"
+[class.text-red-700]="!user.isActive">
 
-                    <td class="px-6 py-4">
-                        {{user.createdDate}}
-                    </td>
+{{ user.isActive ? 'Active' : 'Inactive' }}
 
-                </tr>
+</button>
+    </td>
 
-                }
+    <td class="px-6 py-4">
+        {{ user.createdAt | date:'yyyy-MM-dd' }}
+    </td>
 
-            </tbody>
+</tr>
+
+}
+
+</tbody>
 
         </table>
 
