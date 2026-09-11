@@ -41,6 +41,8 @@ builder.Services.AddCors(options =>
     });
 });
 
+
+
 #region Repository Registration
 
 builder.Services.AddScoped<IEmployerRepository, EmployerRepository>();
@@ -129,6 +131,7 @@ builder.Services.AddSwaggerGen(options =>
 
 
 var app = builder.Build();
+
 
 #region Middleware
 

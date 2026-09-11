@@ -44,5 +44,6 @@ public class ApplicationDbContext : DbContext
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
 
         SkillSeed.Seed(modelBuilder);
+        AdminSeed.Seed(modelBuilder);
     }
 }
