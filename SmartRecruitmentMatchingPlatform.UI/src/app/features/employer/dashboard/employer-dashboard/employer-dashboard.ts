@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 interface DashboardCard {
   title: string;
@@ -11,7 +12,10 @@ interface DashboardCard {
 @Component({
   selector: 'app-employer-dashboard',
   standalone: true,
-  imports: [],
+ imports: [
+  CommonModule,
+  RouterLink
+],
   templateUrl: './employer-dashboard.html',
   styleUrl: './employer-dashboard.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
