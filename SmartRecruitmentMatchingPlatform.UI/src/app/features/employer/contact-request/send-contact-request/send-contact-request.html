@@ -1,0 +1,93 @@
+<div class="max-w-3xl mx-auto p-6">
+
+  <div class="rounded-xl bg-white shadow-lg p-8">
+
+    <h1 class="text-3xl font-bold mb-2">
+      Contact Applicant
+    </h1>
+
+    <p class="text-gray-500 mb-8">
+      Send a message to the selected applicant.
+    </p>
+
+    <form
+      [formGroup]="form"
+      (ngSubmit)="send()"
+      class="space-y-6">
+
+      <div>
+
+        <label
+          for="subject"
+          class="mb-2 block font-medium">
+
+          Subject
+
+        </label>
+
+        <input
+          id="subject"
+          type="text"
+          formControlName="subject"
+          class="w-full rounded-lg border border-gray-300 px-4 py-3">
+
+        @if(form.controls.subject.invalid &&
+            form.controls.subject.touched){
+
+          <p class="mt-2 text-sm text-red-600">
+
+            Subject is required.
+
+          </p>
+
+        }
+
+      </div>
+
+      <div>
+
+        <label
+          for="message"
+          class="mb-2 block font-medium">
+
+          Message
+
+        </label>
+
+        <textarea
+          id="message"
+          rows="6"
+          formControlName="message"
+          class="w-full rounded-lg border border-gray-300 px-4 py-3">
+        </textarea>
+
+        @if(form.controls.message.invalid &&
+            form.controls.message.touched){
+
+          <p class="mt-2 text-sm text-red-600">
+
+            Enter at least 10 characters.
+
+          </p>
+
+        }
+
+      </div>
+
+      <div class="flex justify-end">
+
+        <button
+          type="submit"
+          class="rounded-lg bg-blue-600 px-6 py-3 text-white hover:bg-blue-700">
+
+          Send Request
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>

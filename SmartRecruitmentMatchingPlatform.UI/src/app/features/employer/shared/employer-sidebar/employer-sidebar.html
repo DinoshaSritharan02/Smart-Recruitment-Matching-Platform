@@ -1,0 +1,105 @@
+<div
+  class="fixed inset-y-0 left-0 z-50 w-64 bg-slate-900 text-white transition-transform duration-300"
+  [class.-translate-x-full]="!isOpen"
+  [class.translate-x-0]="isOpen">
+
+  <div class="border-b border-slate-700 p-5">
+
+    <h2 class="text-xl font-bold">
+      Employer Panel
+    </h2>
+
+  </div>
+
+  <nav class="mt-5">
+
+    @for(item of navigationItems; track item.route){
+
+      <a
+        [routerLink]="item.route"
+        routerLinkActive="bg-blue-600"
+        class="flex items-center gap-3 px-5 py-3 hover:bg-slate-800">
+
+        <span>{{ item.icon }}</span>
+
+        <span>{{ item.label }}</span>
+
+      </a>
+
+    }
+
+    <a
+      routerLink="/employer/create-vacancy"
+      routerLinkActive="bg-blue-600"
+      class="flex items-center gap-3 px-5 py-3 hover:bg-slate-800">
+
+      ➕ Create Vacancy
+
+    </a>
+
+    <a
+      routerLink="/employer/required-skills"
+      routerLinkActive="bg-blue-600"
+      class="flex items-center gap-3 px-5 py-3 hover:bg-slate-800">
+
+      🛠 Required Skills
+
+    </a>
+
+    <a
+      routerLink="/employer/application-status"
+      routerLinkActive="bg-blue-600"
+      class="flex items-center gap-3 px-5 py-3 hover:bg-slate-800">
+
+      📋 Application Status
+
+    </a>
+
+    <a
+      routerLink="/employer/contact-request"
+      routerLinkActive="bg-blue-600"
+      class="flex items-center gap-3 px-5 py-3 hover:bg-slate-800">
+
+      📩 Contact Request
+
+    </a>
+
+    <a
+      routerLink="/employer/interviews"
+      routerLinkActive="bg-blue-600"
+      class="flex items-center gap-3 px-5 py-3 hover:bg-slate-800">
+
+      🎤 Interviews
+
+    </a>
+
+    <a
+      routerLink="/employer/schedule-interview"
+      routerLinkActive="bg-blue-600"
+      class="flex items-center gap-3 px-5 py-3 hover:bg-slate-800">
+
+      📅 Schedule Interview
+
+    </a>
+
+    <a
+      routerLink="/employer/notifications"
+      routerLinkActive="bg-blue-600"
+      class="flex items-center gap-3 px-5 py-3 hover:bg-slate-800">
+
+      🔔 Notifications
+
+    </a>
+
+    <a
+      routerLink="/employer/settings"
+      routerLinkActive="bg-blue-600"
+      class="flex items-center gap-3 px-5 py-3 hover:bg-slate-800">
+
+      ⚙ Settings
+
+    </a>
+
+  </nav>
+
+</div>

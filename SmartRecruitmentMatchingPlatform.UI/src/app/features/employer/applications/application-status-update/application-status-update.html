@@ -1,0 +1,66 @@
+<div class="max-w-xl mx-auto rounded-xl bg-white p-8 shadow-lg">
+
+  <h1 class="mb-6 text-2xl font-bold text-slate-900">
+    Update Application Status
+  </h1>
+
+  <form
+    [formGroup]="form"
+    (ngSubmit)="save()"
+    class="space-y-6">
+
+    <div>
+
+      <label
+  for="status"
+  class="mb-2 block text-sm font-medium text-gray-700">
+
+  Application Status
+
+</label>
+
+<select
+  id="status"
+  title="Application Status"
+  formControlName="status"
+  class="w-full rounded-lg border border-gray-300 px-4 py-3">
+
+        <option value="">
+          Select Status
+        </option>
+
+        @for(status of statuses; track status){
+
+          <option [value]="status">
+            {{ status }}
+          </option>
+
+        }
+
+      </select>
+
+      @if(form.controls.status.invalid && form.controls.status.touched){
+
+        <p class="mt-2 text-sm text-red-600">
+          Please select a status.
+        </p>
+
+      }
+
+    </div>
+
+    <div class="flex justify-end">
+
+      <button
+        type="submit"
+        class="rounded-lg bg-blue-600 px-6 py-3 text-white hover:bg-blue-700">
+
+        Update Status
+
+      </button>
+
+    </div>
+
+  </form>
+
+</div>

@@ -1,0 +1,104 @@
+<div class="max-w-7xl mx-auto p-6">
+
+  <div class="flex items-center justify-between mb-8">
+
+    <div>
+
+      <h1 class="text-3xl font-bold text-slate-900">
+        Interviews
+      </h1>
+
+      <p class="mt-2 text-slate-500">
+        Manage scheduled interviews.
+      </p>
+
+    </div>
+
+    <a
+      routerLink="/employer/schedule-interview"
+      class="rounded-lg bg-blue-600 px-5 py-3 text-white hover:bg-blue-700">
+
+      + Schedule Interview
+
+    </a>
+
+  </div>
+
+  <div class="overflow-hidden rounded-xl bg-white shadow">
+
+    <table class="min-w-full">
+
+      <thead class="bg-slate-100">
+
+        <tr>
+
+          <th class="px-6 py-4 text-left">Applicant</th>
+
+          <th class="px-6 py-4 text-left">Vacancy</th>
+
+          <th class="px-6 py-4 text-left">Date</th>
+
+          <th class="px-6 py-4 text-left">Time</th>
+
+          <th class="px-6 py-4 text-left">Mode</th>
+
+          <th class="px-6 py-4 text-left">Interviewer</th>
+
+          <th class="px-6 py-4 text-center">Status</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        @for(interview of interviews(); track interview.id){
+
+        <tr class="border-t">
+
+          <td class="px-6 py-4">
+            {{ interview.applicant }}
+          </td>
+
+          <td class="px-6 py-4">
+            {{ interview.vacancy }}
+          </td>
+
+          <td class="px-6 py-4">
+            {{ interview.interviewDate }}
+          </td>
+
+          <td class="px-6 py-4">
+            {{ interview.interviewTime }}
+          </td>
+
+          <td class="px-6 py-4">
+            {{ interview.mode }}
+          </td>
+
+          <td class="px-6 py-4">
+            {{ interview.interviewer }}
+          </td>
+
+          <td class="px-6 py-4 text-center">
+
+            <span
+              class="rounded-full bg-green-100 px-3 py-1 text-green-700">
+
+              {{ interview.status }}
+
+            </span>
+
+          </td>
+
+        </tr>
+
+        }
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

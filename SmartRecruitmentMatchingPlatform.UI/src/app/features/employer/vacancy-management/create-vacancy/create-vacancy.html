@@ -1,0 +1,90 @@
+<div class="max-w-5xl mx-auto p-6">
+
+  <div class="mb-8">
+    <h1 class="text-4xl font-bold text-slate-900">
+      Create Vacancy
+    </h1>
+
+    <p class="mt-2 text-lg text-slate-600">
+      Fill in the details to publish a new job vacancy.
+    </p>
+  </div>
+
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    class="bg-white rounded-xl shadow-lg p-8 space-y-6">
+
+    <!-- Job Title -->
+    <div>
+      <label for="jobTitle" class="block mb-2 text-sm font-medium text-gray-700">
+  Job Title *
+</label>
+
+<input
+  id="jobTitle"
+  type="text"
+  formControlName="jobTitle"
+  class="w-full rounded-lg border border-gray-300 px-4 py-3"
+/>
+      @if (form.controls.jobTitle.invalid && form.controls.jobTitle.touched) {
+        <p class="mt-2 text-sm text-red-600">
+          Job title is required.
+        </p>
+      }
+    </div>
+
+    <!-- Description -->
+    <div>
+      <label for="description">Job Description *</label>
+
+<textarea
+  id="description"
+  formControlName="jobDescription">
+</textarea>
+      @if (form.controls.jobDescription.invalid && form.controls.jobDescription.touched) {
+        <p class="mt-2 text-sm text-red-600">
+          Description is required.
+        </p>
+      }
+    </div>
+
+    <!-- Location -->
+    <div>
+      <label for="location">Location *</label>
+
+<input
+  id="location"
+  type="text"
+  formControlName="location"
+/>
+      @if (form.controls.location.invalid && form.controls.location.touched) {
+        <p class="mt-2 text-sm text-red-600">
+          Location is required.
+        </p>
+      }
+    </div>
+
+    <!-- Salary -->
+    <div>
+      <label for="salary">Salary</label>
+
+<input
+  id="salary"
+  type="number"
+  formControlName="salary"
+/>
+    </div>
+
+    <!-- Submit -->
+    <div class="flex justify-end">
+      <button
+        type="submit"
+        class="rounded-lg bg-blue-600 px-8 py-3 font-semibold text-white hover:bg-blue-700">
+        Publish Vacancy
+      </button>
+    </div>
+
+  </form>
+
+</div>

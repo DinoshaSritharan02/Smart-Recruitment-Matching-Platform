@@ -1,0 +1,215 @@
+<div class="max-w-4xl mx-auto p-6">
+
+  <div class="bg-white rounded-xl shadow-lg p-8">
+
+    <h1 class="text-3xl font-bold text-slate-900 mb-2">
+      Schedule Interview
+    </h1>
+
+    <p class="text-gray-500 mb-8">
+      Schedule an interview for a shortlisted applicant.
+    </p>
+
+    <form
+      [formGroup]="form"
+      (ngSubmit)="save()"
+      class="space-y-6">
+
+      <!-- Applicant Name -->
+      <div>
+        <label
+          for="applicantName"
+          class="block mb-2 font-medium">
+          Applicant Name
+        </label>
+
+        <input
+          id="applicantName"
+          type="text"
+          formControlName="applicantName"
+          class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-blue-600 focus:outline-none">
+
+        @if(form.controls.applicantName.invalid &&
+        form.controls.applicantName.touched){
+
+          <p class="mt-2 text-sm text-red-600">
+            Applicant name is required.
+          </p>
+
+        }
+      </div>
+
+      <!-- Vacancy -->
+      <div>
+        <label
+          for="vacancy"
+          class="block mb-2 font-medium">
+          Vacancy
+        </label>
+
+        <input
+          id="vacancy"
+          type="text"
+          formControlName="vacancy"
+          class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-blue-600 focus:outline-none">
+
+        @if(form.controls.vacancy.invalid &&
+        form.controls.vacancy.touched){
+
+          <p class="mt-2 text-sm text-red-600">
+            Vacancy is required.
+          </p>
+
+        }
+      </div>
+
+      <!-- Interview Date -->
+      <div>
+        <label
+          for="interviewDate"
+          class="block mb-2 font-medium">
+          Interview Date
+        </label>
+
+        <input
+          id="interviewDate"
+          type="date"
+          formControlName="interviewDate"
+          class="w-full rounded-lg border border-gray-300 px-4 py-3">
+
+        @if(form.controls.interviewDate.invalid &&
+        form.controls.interviewDate.touched){
+
+          <p class="mt-2 text-sm text-red-600">
+            Interview date is required.
+          </p>
+
+        }
+      </div>
+
+      <!-- Interview Time -->
+      <div>
+        <label
+          for="interviewTime"
+          class="block mb-2 font-medium">
+          Interview Time
+        </label>
+
+        <input
+          id="interviewTime"
+          type="time"
+          formControlName="interviewTime"
+          class="w-full rounded-lg border border-gray-300 px-4 py-3">
+
+        @if(form.controls.interviewTime.invalid &&
+        form.controls.interviewTime.touched){
+
+          <p class="mt-2 text-sm text-red-600">
+            Interview time is required.
+          </p>
+
+        }
+      </div>
+
+      <!-- Interview Mode -->
+      <div>
+        <label
+          for="interviewMode"
+          class="block mb-2 font-medium">
+          Interview Mode
+        </label>
+
+        <select
+          id="interviewMode"
+          formControlName="interviewMode"
+          class="w-full rounded-lg border border-gray-300 px-4 py-3">
+
+          <option value="">Select Mode</option>
+          <option value="Online">Online</option>
+          <option value="Physical">Physical</option>
+
+        </select>
+
+        @if(form.controls.interviewMode.invalid &&
+        form.controls.interviewMode.touched){
+
+          <p class="mt-2 text-sm text-red-600">
+            Interview mode is required.
+          </p>
+
+        }
+      </div>
+
+      <!-- Meeting Link -->
+      <div>
+        <label
+          for="meetingLink"
+          class="block mb-2 font-medium">
+          Meeting Link
+        </label>
+
+        <input
+          id="meetingLink"
+          type="url"
+          formControlName="meetingLink"
+          class="w-full rounded-lg border border-gray-300 px-4 py-3">
+      </div>
+
+      <!-- Interviewer -->
+      <div>
+        <label
+          for="interviewer"
+          class="block mb-2 font-medium">
+          Interviewer
+        </label>
+
+        <input
+          id="interviewer"
+          type="text"
+          formControlName="interviewer"
+          class="w-full rounded-lg border border-gray-300 px-4 py-3">
+
+        @if(form.controls.interviewer.invalid &&
+        form.controls.interviewer.touched){
+
+          <p class="mt-2 text-sm text-red-600">
+            Interviewer name is required.
+          </p>
+
+        }
+      </div>
+
+      <!-- Notes -->
+      <div>
+        <label
+          for="notes"
+          class="block mb-2 font-medium">
+          Notes
+        </label>
+
+        <textarea
+          id="notes"
+          rows="4"
+          formControlName="notes"
+          class="w-full rounded-lg border border-gray-300 px-4 py-3">
+        </textarea>
+      </div>
+
+      <!-- Submit -->
+      <div class="flex justify-end">
+
+        <button
+          type="submit"
+          class="rounded-lg bg-blue-600 px-6 py-3 text-white hover:bg-blue-700">
+
+          Schedule Interview
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
