@@ -1,1 +1,17 @@
-<p>search-bar works!</p>
+<div class="flex gap-3">
+
+  <input
+    type="text"
+    [(ngModel)]="keyword"
+    placeholder="Search..."
+    class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-blue-500 focus:outline-none">
+
+  <button
+    (click)="onSearch()"
+    class="rounded-lg bg-blue-600 px-5 py-2 text-white hover:bg-blue-700">
+
+    Search
+
+  </button>
+
+</div>

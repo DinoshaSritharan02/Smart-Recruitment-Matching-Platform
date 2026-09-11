@@ -1,15 +1,25 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { SearchBar } from '../../components/search-bar/search-bar';
 import { User } from '../../models/user';
 @Component({
   selector: 'app-users',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+  CommonModule,
+  SearchBar
+],
   templateUrl: './users.html',
   styleUrl: './users.css'
 })
 export class Users {
+
+  onSearch(keyword: string) {
+  console.log('Searching:', keyword);
+
+  // API integration வந்த பிறகு
+  // this.loadUsers(keyword);
+}
 
   users: User[] = [
     {

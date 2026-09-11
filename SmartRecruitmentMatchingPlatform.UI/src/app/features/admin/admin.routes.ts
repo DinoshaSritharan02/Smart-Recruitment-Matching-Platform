@@ -56,6 +56,13 @@ export const ADMIN_ROUTES: Routes = [
     import('./pages/reports/reports').then(m => m.Reports)
 },
 
+{
+  path: 'settings',
+  loadComponent: () =>
+    import('./pages/settings/settings').then(m => m.Settings)
+},
+
+
     ]
   }
 
