@@ -1,0 +1,80 @@
+<div class="rounded-xl bg-white shadow-lg p-6">
+
+  <div class="flex items-center justify-between">
+
+    <div>
+
+      <h2 class="text-xl font-bold text-slate-900">
+        {{ applicant().fullName }}
+      </h2>
+
+      <p class="text-slate-500">
+        {{ applicant().email }}
+      </p>
+
+      <p class="text-slate-500">
+        {{ applicant().phoneNumber }}
+      </p>
+
+    </div>
+
+    <span
+      class="rounded-full bg-green-100 px-4 py-2 font-semibold text-green-700">
+
+      {{ applicant().matchScore }}%
+
+    </span>
+
+  </div>
+
+  <div class="mt-6 space-y-2">
+
+    <p>
+      <span class="font-semibold">Education:</span>
+
+      {{ applicant().education }}
+    </p>
+
+    <p>
+      <span class="font-semibold">Experience:</span>
+
+      {{ applicant().experience }}
+    </p>
+
+    <p>
+      <span class="font-semibold">Status:</span>
+
+      {{ applicant().applicationStatus }}
+    </p>
+
+  </div>
+
+  <div class="mt-6 flex gap-3">
+
+    <button
+      (click)="view.emit(applicant().id)"
+      class="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
+
+      View
+
+    </button>
+
+    <button
+      (click)="updateStatus.emit(applicant().id)"
+      class="rounded-lg bg-green-600 px-4 py-2 text-white hover:bg-green-700">
+
+      Update Status
+
+    </button>
+
+    <button
+      (click)="contact.emit(applicant().id)"
+      class="rounded-lg bg-purple-600 px-4 py-2 text-white hover:bg-purple-700">
+
+      Contact
+
+    </button>
+
+  </div>
+
+</div>

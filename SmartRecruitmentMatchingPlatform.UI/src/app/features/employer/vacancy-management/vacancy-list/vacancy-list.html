@@ -1,0 +1,118 @@
+<div class="max-w-7xl mx-auto p-6">
+
+  <div class="flex items-center justify-between mb-8">
+    <div>
+      <h1 class="text-4xl font-bold text-slate-900">
+        My Vacancies
+      </h1>
+
+      <p class="mt-2 text-lg text-slate-600">
+        Manage all your published job vacancies.
+      </p>
+    </div>
+
+    <a
+      routerLink="/employer/create-vacancy"
+      class="rounded-lg bg-blue-600 px-6 py-3 text-white font-semibold hover:bg-blue-700">
+      + Create Vacancy
+    </a>
+  </div>
+
+  <div class="overflow-x-auto rounded-xl bg-white shadow-lg">
+
+    <table class="min-w-full">
+
+      <thead class="bg-slate-100">
+
+        <tr>
+
+          <th class="px-6 py-4 text-left">Job Title</th>
+
+          <th class="px-6 py-4 text-left">Location</th>
+
+          <th class="px-6 py-4 text-left">Salary</th>
+
+          <th class="px-6 py-4 text-left">Applications</th>
+
+          <th class="px-6 py-4 text-left">Status</th>
+
+          <th class="px-6 py-4 text-center">Actions</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        @for(vacancy of vacancies(); track vacancy.id){
+
+        <tr class="border-b">
+
+          <td class="px-6 py-4">
+            {{ vacancy.jobTitle }}
+          </td>
+
+          <td class="px-6 py-4">
+            {{ vacancy.location }}
+          </td>
+
+          <td class="px-6 py-4">
+            Rs. {{ vacancy.salary }}
+          </td>
+
+          <td class="px-6 py-4">
+            {{ vacancy.applications }}
+          </td>
+
+          <td class="px-6 py-4">
+
+            <span
+              class="rounded-full px-3 py-1 text-sm font-semibold"
+              [class.bg-green-100]="vacancy.status==='Active'"
+              [class.text-green-700]="vacancy.status==='Active'"
+              [class.bg-red-100]="vacancy.status==='Closed'"
+              [class.text-red-700]="vacancy.status==='Closed'">
+
+              {{ vacancy.status }}
+
+            </span>
+
+          </td>
+
+          <td class="px-6 py-4">
+
+            <div class="flex justify-center gap-2">
+
+              <a
+                [routerLink]="['/employer/view-vacancy', vacancy.id]"
+                class="rounded bg-sky-600 px-3 py-2 text-white">
+                View
+              </a>
+
+              <a
+                [routerLink]="['/employer/edit-vacancy', vacancy.id]"
+                class="rounded bg-yellow-500 px-3 py-2 text-white">
+                Edit
+              </a>
+
+              <button
+                type="button"
+                class="rounded bg-red-600 px-3 py-2 text-white">
+                Delete
+              </button>
+
+            </div>
+
+          </td>
+
+        </tr>
+
+        }
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

@@ -1,0 +1,77 @@
+<div class="space-y-8">
+
+    <div>
+        <h1 class="text-3xl font-bold text-gray-800">
+            Employer Dashboard
+        </h1>
+
+        <p class="text-gray-500 mt-2">
+            Welcome to Smart Recruitment Matching Platform
+        </p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+
+        @for(card of cards(); track card.title){
+
+        <div class="rounded-xl bg-white shadow p-6">
+
+            <div class="flex justify-between items-center">
+
+                <div>
+
+                    <p class="text-gray-500">
+                        {{card.title}}
+                    </p>
+
+                    <h2 class="text-3xl font-bold mt-3">
+                        {{card.value}}
+                    </h2>
+
+                </div>
+
+                <div
+                    class="w-14 h-14 rounded-full flex items-center justify-center text-white text-2xl"
+                    [class]="card.color">
+
+                    {{card.icon}}
+
+                </div>
+
+            </div>
+
+        </div>
+
+        }
+
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-6">
+
+        <div class="bg-white rounded-xl shadow p-6">
+
+            <h2 class="text-xl font-semibold mb-4">
+                Company Overview
+            </h2>
+
+            <p class="text-gray-500">
+                Company information will be loaded from the backend.
+            </p>
+
+        </div>
+
+        <div class="bg-white rounded-xl shadow p-6">
+
+            <h2 class="text-xl font-semibold mb-4">
+                Recent Applicants
+            </h2>
+
+            <p class="text-gray-500">
+                Applicant information will appear here after backend integration.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,135 @@
+<div class="max-w-5xl mx-auto p-6">
+
+  <div class="flex items-center justify-between mb-8">
+
+    <div>
+
+      <h1 class="text-4xl font-bold text-slate-900">
+        Vacancy Details
+      </h1>
+
+      <p class="text-slate-500 mt-2">
+        View complete vacancy information.
+      </p>
+
+    </div>
+
+    <a
+      routerLink="/employer/vacancies"
+      class="rounded-lg border border-gray-300 px-5 py-3 hover:bg-gray-100">
+
+      Back
+
+    </a>
+
+  </div>
+
+  <div class="rounded-xl bg-white shadow-lg p-8">
+
+    <div class="grid md:grid-cols-2 gap-6">
+
+      <div>
+
+        <p class="text-gray-500">Job Title</p>
+
+        <h2 class="text-xl font-semibold">
+          {{ vacancy().jobTitle }}
+        </h2>
+
+      </div>
+
+      <div>
+
+        <p class="text-gray-500">Status</p>
+
+        <span
+          class="rounded-full bg-green-100 text-green-700 px-3 py-1">
+
+          {{ vacancy().status }}
+
+        </span>
+
+      </div>
+
+      <div>
+
+        <p class="text-gray-500">Employment Type</p>
+
+        <p>{{ vacancy().employmentType }}</p>
+
+      </div>
+
+      <div>
+
+        <p class="text-gray-500">Experience Level</p>
+
+        <p>{{ vacancy().experienceLevel }}</p>
+
+      </div>
+
+      <div>
+
+        <p class="text-gray-500">Location</p>
+
+        <p>{{ vacancy().location }}</p>
+
+      </div>
+
+      <div>
+
+        <p class="text-gray-500">Salary</p>
+
+        <p>
+          Rs. {{ vacancy().salaryMin }} - {{ vacancy().salaryMax }}
+        </p>
+
+      </div>
+
+      <div>
+
+        <p class="text-gray-500">
+          Application Deadline
+        </p>
+
+        <p>
+          {{ vacancy().applicationDeadline }}
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="mt-8">
+
+      <h3 class="font-semibold text-lg mb-3">
+        Job Description
+      </h3>
+
+      <p class="text-gray-600 leading-7">
+        {{ vacancy().description }}
+      </p>
+
+    </div>
+
+    <div class="mt-8 flex justify-end gap-4">
+
+      <a
+        routerLink="/employer/edit-vacancy"
+        class="rounded-lg bg-yellow-500 px-6 py-3 text-white hover:bg-yellow-600">
+
+        Edit Vacancy
+
+      </a>
+
+      <button
+        class="rounded-lg bg-red-600 px-6 py-3 text-white hover:bg-red-700">
+
+        Close Vacancy
+
+      </button>
+
+    </div>
+
+  </div>
+
+</div>

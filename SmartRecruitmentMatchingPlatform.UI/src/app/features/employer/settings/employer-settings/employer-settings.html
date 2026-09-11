@@ -1,0 +1,96 @@
+<div class="max-w-3xl mx-auto p-6">
+
+  <div class="rounded-xl bg-white shadow-lg p-8">
+
+    <h1 class="mb-6 text-3xl font-bold">
+      Employer Settings
+    </h1>
+
+    <form
+      [formGroup]="form"
+      (ngSubmit)="save()"
+      class="space-y-6">
+
+      <div>
+
+        <label
+          for="companyName"
+          class="mb-2 block font-medium">
+
+          Company Name
+
+        </label>
+
+        <input
+          id="companyName"
+          type="text"
+          formControlName="companyName"
+          class="w-full rounded-lg border border-gray-300 px-4 py-3">
+
+      </div>
+
+      <div>
+
+        <label
+          for="website"
+          class="mb-2 block font-medium">
+
+          Website
+
+        </label>
+
+        <input
+          id="website"
+          type="url"
+          formControlName="website"
+          class="w-full rounded-lg border border-gray-300 px-4 py-3">
+
+      </div>
+
+      <div class="flex items-center gap-3">
+
+        <input
+          id="emailNotifications"
+          type="checkbox"
+          formControlName="emailNotifications">
+
+        <label for="emailNotifications">
+
+          Email Notifications
+
+        </label>
+
+      </div>
+
+      <div class="flex items-center gap-3">
+
+        <input
+          id="interviewNotifications"
+          type="checkbox"
+          formControlName="interviewNotifications">
+
+        <label for="interviewNotifications">
+
+          Interview Notifications
+
+        </label>
+
+      </div>
+
+      <div class="flex justify-end">
+
+        <button
+          type="submit"
+          class="rounded-lg bg-blue-600 px-6 py-3 text-white hover:bg-blue-700">
+
+          Save Settings
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
