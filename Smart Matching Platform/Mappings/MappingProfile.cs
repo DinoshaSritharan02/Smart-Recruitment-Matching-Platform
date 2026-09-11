@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using SmartRecruitmentMatchingPlatform.API.DTOs.Admin;
 using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Auth;
 using SmartRecruitmentMatchingPlatform.API.Models.DTOs.JobSeeker;
 using SmartRecruitmentMatchingPlatform.API.Models.Entities;
@@ -12,6 +13,7 @@ public class MappingProfile : Profile
         // Authentication
         CreateMap<RegisterJobSeekerRequestDto, User>();
         CreateMap<RegisterEmployerRequestDto, User>();
+        CreateMap<User, UserSummaryDto>();
 
         // Job Seeker Profile
         CreateMap<JobSeekerProfile, JobSeekerProfileDto>()

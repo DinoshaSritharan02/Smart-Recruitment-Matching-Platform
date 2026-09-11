@@ -1,11 +1,8 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-interface DashboardCard {
-  title: string;
-  value: number;
-  icon: string;
-}
+import { AdminService } from '../../services/admin';
+import { DashboardStatistics } from '../../models/dashboard-statistics';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,37 +11,24 @@ interface DashboardCard {
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css'
 })
-export class Dashboard {
+export class Dashboard implements OnInit {
 
-  cards = signal<DashboardCard[]>([
-    {
-      title: 'Total Users',
-      value: 0,
-      icon: '👥'
-    },
-    {
-      title: 'Employers',
-      value: 0,
-      icon: '🏢'
-    },
-    {
-      title: 'Job Seekers',
-      value: 0,
-      icon: '🧑‍💼'
-    },
-    {
-      title: 'Vacancies',
-      value: 0,
-      icon: '📄'
-    },
-    {
-      title: 'Applications',
-      value: 0,
-      icon: '📨'
-    }
-  ]);
+  private adminService = inject(AdminService);
 
-user = {
-  status: 'Active'
-};
+  statistics?: DashboardStatistics;
+
+  ngOnInit(): void {
+    this.loadDashboard();
+  }
+
+  loadDashboard(): void {
+    this.adminService.getDashboard().subscribe({
+      next: (response) => {
+        this.statistics = response;
+      },
+      error: (error) => {
+        console.error(error);
+      }
+    });
+  }
 }

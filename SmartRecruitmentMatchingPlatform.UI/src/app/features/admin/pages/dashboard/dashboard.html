@@ -8,28 +8,44 @@
     Welcome to the Smart Recruitment Matching Platform Admin Panel.
   </p>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+  @if (statistics) {
 
-    @for (card of cards(); track card.title) {
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
 
       <div class="bg-white rounded-xl shadow p-6">
-
-        <div class="text-3xl mb-2">
-          {{ card.icon }}
-        </div>
-
-        <h3 class="text-gray-500">
-          {{ card.title }}
-        </h3>
-
+        <h3 class="text-gray-500">Users</h3>
         <p class="text-3xl font-bold">
-          {{ card.value }}
+          {{ statistics.totalUsers }}
         </p>
-
       </div>
 
-    }
+      <div class="bg-white rounded-xl shadow p-6">
+        <h3 class="text-gray-500">Employers</h3>
+        <p class="text-3xl font-bold">
+          {{ statistics.totalEmployers }}
+        </p>
+      </div>
 
-  </div>
+      <div class="bg-white rounded-xl shadow p-6">
+        <h3 class="text-gray-500">Job Seekers</h3>
+        <p class="text-3xl font-bold">
+          {{ statistics.totalJobSeekers }}
+        </p>
+      </div>
+
+      <div class="bg-white rounded-xl shadow p-6">
+        <h3 class="text-gray-500">Vacancies</h3>
+        <p class="text-3xl font-bold">
+          {{ statistics.totalVacancies }}
+        </p>
+      </div>
+
+    </div>
+
+  } @else {
+
+    <p>Loading...</p>
+
+  }
 
 </div>
