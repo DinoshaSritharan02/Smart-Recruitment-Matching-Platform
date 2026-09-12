@@ -1,8 +1,16 @@
 import { inject, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Vacancy } from '../models/vacancy.model';
+import { environment } from '../../../../environments/environment';
+
+import {
+  CreateVacancyRequest,
+  UpdateVacancyRequest,
+  VacancyListItem,
+  VacancyResponse,
+  VacancySearchRequest
+} from '../models/vacancy.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,30 +19,76 @@ export class VacancyService {
 
   private readonly http = inject(HttpClient);
 
-  private readonly apiUrl = '/api/vacancies';
+  private readonly apiUrl = `${environment.apiUrl}/vacancies`;
 
-  getAllVacancies(): Observable<Vacancy[]> {
-    return this.http.get<Vacancy[]>(this.apiUrl);
+  getById(id: number): Observable<VacancyResponse> {
+    return this.http.get<VacancyResponse>(`${this.apiUrl}/${id}`);
   }
 
-  getVacancyById(id: number): Observable<Vacancy> {
-    return this.http.get<Vacancy>(`${this.apiUrl}/${id}`);
+  search(request: VacancySearchRequest): Observable<VacancyListItem[]> {
+
+    let params = new HttpParams();
+
+    if (request.keyword) {
+      params = params.set('keyword', request.keyword);
+    }
+
+    if (request.location) {
+      params = params.set('location', request.location);
+    }
+
+    if (request.minExperienceYears !== undefined) {
+      params = params.set(
+        'minExperienceYears',
+        request.minExperienceYears
+      );
+    }
+
+    if (request.maxExperienceYears !== undefined) {
+      params = params.set(
+        'maxExperienceYears',
+        request.maxExperienceYears
+      );
+    }
+
+    if (request.skillId !== undefined) {
+      params = params.set(
+        'skillId',
+        request.skillId
+      );
+    }
+
+    return this.http.get<VacancyListItem[]>(
+      `${this.apiUrl}/search`,
+      { params }
+    );
   }
 
-  createVacancy(request: Vacancy): Observable<Vacancy> {
-    return this.http.post<Vacancy>(this.apiUrl, request);
+  getMyVacancies(): Observable<VacancyListItem[]> {
+    return this.http.get<VacancyListItem[]>(
+      `${this.apiUrl}/employer/mine`
+    );
   }
 
-  updateVacancy(id: number, request: Vacancy): Observable<void> {
-    return this.http.put<void>(`${this.apiUrl}/${id}`, request);
+  create(
+    request: CreateVacancyRequest
+  ): Observable<VacancyResponse> {
+
+    return this.http.post<VacancyResponse>(
+      this.apiUrl,
+      request
+    );
   }
 
-  closeVacancy(id: number): Observable<void> {
-    return this.http.patch<void>(`${this.apiUrl}/${id}/close`, {});
-  }
+  update(
+    id: number,
+    request: UpdateVacancyRequest
+  ): Observable<VacancyResponse> {
 
-  deleteVacancy(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+    return this.http.put<VacancyResponse>(
+      `${this.apiUrl}/${id}`,
+      request
+    );
   }
 
 }
