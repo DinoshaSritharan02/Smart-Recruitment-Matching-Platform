@@ -1,9 +1,4 @@
-export interface RequiredSkill {
-
+export interface SkillResponse {
   id: number;
-
-  skillName: string;
-
-  skillLevel: string;
-
+  name: string;
 }
