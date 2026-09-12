@@ -47,17 +47,33 @@
       </div>
 
       <!-- Desktop Buttons -->
-      <div class="hidden lg:flex items-center gap-3">
-        <button
-          class="px-5 py-2 rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-50 transition">
-          Login
-        </button>
+<div class="hidden lg:flex items-center gap-3">
 
-        <button
-          class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition">
-          Register
-        </button>
-      </div>
+  @if (!isLoggedIn()) {
+
+    <button
+      routerLink="/login"
+      class="px-5 py-2 rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-50 transition">
+      Login
+    </button>
+
+    <button
+      routerLink="/register"
+      class="px-5 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700 transition">
+      Register
+    </button>
+
+  } @else {
+
+    <button
+      (click)="logout()"
+      class="px-5 py-2 rounded-lg bg-red-600 text-white hover:bg-red-700 transition">
+      Logout
+    </button>
+
+  }
+
+</div>
 
       <!-- Mobile Button -->
       <button
@@ -98,25 +114,44 @@
             Contact
           </a>
           <a
-  routerLink="/jobs"
-  routerLinkActive="text-blue-600 font-semibold"
-  class="text-gray-700 hover:text-blue-600 transition">
-  Browse Jobs
-</a>
-
+            routerLink="/jobs"
+            routerLinkActive="text-blue-600 font-semibold"
+            class="text-gray-700 hover:text-blue-600 transition">
+           Browse Jobs
+         </a>
           <hr>
 
-          <button class="w-full rounded-lg border border-blue-600 py-2 text-blue-600">
-            Login
-          </button>
+@if (!isLoggedIn()) {
 
-          <button class="w-full rounded-lg bg-blue-600 py-2 text-white">
-            Register
-          </button>
+  <button
+    routerLink="/login"
+    (click)="closeMenu()"
+    class="w-full rounded-lg border border-blue-600 py-2 text-blue-600">
+    Login
+  </button>
+
+  <button
+    routerLink="/register"
+    (click)="closeMenu()"
+    class="w-full rounded-lg bg-blue-600 py-2 text-white">
+    Register
+  </button>
+
+} @else {
+
+  <button
+    (click)="logout()"
+    class="w-full rounded-lg bg-red-600 py-2 text-white">
+    Logout
+  </button>
+
+}
+
+</div>
 
         </div>
 
-      </div>
+      
 
     }
 

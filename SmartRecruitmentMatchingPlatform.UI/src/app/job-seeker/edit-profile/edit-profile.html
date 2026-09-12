@@ -1,0 +1,167 @@
+@if (loading) {
+
+<div class="flex min-h-screen items-center justify-center">
+
+    <p class="text-lg text-gray-500">
+        Loading...
+    </p>
+
+</div>
+
+} @else {
+
+<div class="min-h-screen bg-slate-100 p-6">
+
+    <div class="mx-auto max-w-3xl rounded-xl bg-white p-8 shadow">
+
+        <h1 class="mb-8 text-3xl font-bold">
+
+            Edit Profile
+
+        </h1>
+
+        <form
+            [formGroup]="form"
+            (ngSubmit)="save()"
+            class="space-y-6">
+
+            <div>
+
+                <label class="mb-2 block font-medium">
+
+                    Phone Number
+
+                </label>
+
+                <input
+                    type="text"
+                    formControlName="phoneNumber"
+                    class="w-full rounded-lg border p-3">
+
+            </div>
+
+            <div>
+
+                <label class="mb-2 block font-medium">
+
+                    Date of Birth
+
+                </label>
+
+                <input
+                    type="date"
+                    formControlName="dateOfBirth"
+                    class="w-full rounded-lg border p-3">
+
+            </div>
+
+            <div>
+
+                <label class="mb-2 block font-medium">
+
+                    Gender
+
+                </label>
+
+                <select
+                    formControlName="gender"
+                    class="w-full rounded-lg border p-3">
+
+                    <option value="">Select</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+
+                </select>
+
+            </div>
+
+            <div>
+
+                <label class="mb-2 block font-medium">
+
+                    Address
+
+                </label>
+
+                <input
+                    type="text"
+                    formControlName="address"
+                    class="w-full rounded-lg border p-3">
+
+            </div>
+
+            <div>
+
+                <label class="mb-2 block font-medium">
+
+                    City
+
+                </label>
+
+                <input
+                    type="text"
+                    formControlName="city"
+                    class="w-full rounded-lg border p-3">
+
+            </div>
+
+            <div>
+
+                <label class="mb-2 block font-medium">
+
+                    Country
+
+                </label>
+
+                <input
+                    type="text"
+                    formControlName="country"
+                    class="w-full rounded-lg border p-3">
+
+            </div>
+
+            <div>
+
+                <label class="mb-2 block font-medium">
+
+                    Professional Summary
+
+                </label>
+
+                <textarea
+                    rows="5"
+                    formControlName="professionalSummary"
+                    class="w-full rounded-lg border p-3"></textarea>
+
+            </div>
+
+            <div class="flex gap-4">
+
+                <button
+                    type="submit"
+                    [disabled]="saving"
+                    class="rounded-lg bg-blue-600 px-6 py-3 text-white hover:bg-blue-700">
+
+                    Save Changes
+
+                </button>
+
+                <button
+                    type="button"
+                    (click)="cancel()"
+                    class="rounded-lg bg-gray-300 px-6 py-3">
+
+                    Cancel
+
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+}

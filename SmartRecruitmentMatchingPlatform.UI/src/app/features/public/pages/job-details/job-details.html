@@ -1,44 +1,51 @@
-<section class="bg-gray-50 py-16 min-h-screen">
+@if (vacancy) {
 
-  <div class="max-w-6xl mx-auto px-6">
+<section class="min-h-screen bg-gray-50 py-10">
 
-    <!-- Job Header -->
-    <div class="bg-white rounded-2xl shadow-md p-8">
+  <div class="mx-auto max-w-6xl px-6">
 
-      <div class="flex flex-col lg:flex-row justify-between gap-6">
+    <!-- Header Card -->
+    <div class="rounded-2xl bg-white p-8 shadow">
+
+      <div class="flex flex-col justify-between gap-8 lg:flex-row">
 
         <div>
 
-          <div class="flex items-center gap-4">
+          <div class="flex items-center gap-5">
 
-            <div class="h-16 w-16 rounded-xl bg-blue-100 flex items-center justify-center text-2xl font-bold text-blue-600">
-              G
+            <div
+              class="flex h-16 w-16 items-center justify-center rounded-xl bg-blue-100 text-3xl font-bold text-blue-600">
+
+              {{ vacancy.title.charAt(0) }}
+
             </div>
 
             <div>
+
               <h1 class="text-4xl font-bold text-gray-900">
-                Software Engineer
+                {{ vacancy.title }}
               </h1>
 
-              <p class="text-gray-500 mt-1">
-                Google • Colombo • Hybrid
+              <p class="mt-2 text-gray-500">
+                Vacancy #{{ vacancy.id }}
               </p>
+
             </div>
 
           </div>
 
-          <div class="flex flex-wrap gap-3 mt-6">
+          <div class="mt-6 flex flex-wrap gap-3">
 
-            <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full">
-              Full Time
+            <span class="rounded-full bg-blue-100 px-4 py-2 text-blue-700">
+              {{ vacancy.location }}
             </span>
 
-            <span class="bg-green-100 text-green-700 px-4 py-2 rounded-full">
-              LKR 250,000
+            <span class="rounded-full bg-green-100 px-4 py-2 text-green-700">
+              {{ vacancy.requiredExperienceYears }} Years Experience
             </span>
 
-            <span class="bg-purple-100 text-purple-700 px-4 py-2 rounded-full">
-              Posted 2 Days Ago
+            <span class="rounded-full bg-purple-100 px-4 py-2 text-purple-700">
+              {{ vacancy.status }}
             </span>
 
           </div>
@@ -46,49 +53,65 @@
         </div>
 
         <div class="flex items-start">
-          <button class="bg-blue-600 text-white px-8 py-4 rounded-xl hover:bg-blue-700 transition">
-            Apply Now
+
+          <button
+            (click)="apply()"
+            [disabled]="applied"
+            class="rounded-xl px-8 py-4 font-semibold text-white transition"
+            [class.bg-blue-600]="!applied"
+            [class.hover:bg-blue-700]="!applied"
+            [class.bg-gray-400]="applied">
+
+            {{ applied ? 'Applied' : 'Apply Now' }}
+
           </button>
+
         </div>
 
       </div>
 
     </div>
 
-    <!-- About Job -->
+    <!-- Description -->
 
-    <div class="bg-white rounded-2xl shadow-md p-8 mt-8">
+    <div class="mt-8 rounded-2xl bg-white p-8 shadow">
 
-      <h2 class="text-2xl font-bold mb-4">
+      <h2 class="mb-5 text-2xl font-bold">
         Job Description
       </h2>
 
-      <p class="text-gray-600 leading-8">
-        We are looking for a passionate Software Engineer to develop modern web applications using Angular and ASP.NET Core.
-        You will collaborate with cross-functional teams to design, build, and maintain scalable solutions.
+      <p class="leading-8 text-gray-700">
+
+        {{ vacancy.description }}
+
       </p>
 
     </div>
 
     <!-- Requirements -->
 
-    <div class="bg-white rounded-2xl shadow-md p-8 mt-8">
+    <div class="mt-8 rounded-2xl bg-white p-8 shadow">
 
-      <h2 class="text-2xl font-bold mb-4">
+      <h2 class="mb-5 text-2xl font-bold">
         Requirements
       </h2>
 
-      <ul class="space-y-3 text-gray-600 list-disc ml-6">
+      <ul class="list-disc space-y-3 pl-6 text-gray-700">
 
-        <li>Degree in Computer Science or related field</li>
+        <li>
+          Experience Required:
+          {{ vacancy.requiredExperienceYears }} Years
+        </li>
 
-        <li>Experience with Angular and ASP.NET Core</li>
+        <li>
+          Education:
+          {{ vacancy.educationRequirement }}
+        </li>
 
-        <li>Knowledge of SQL Server</li>
-
-        <li>Strong communication skills</li>
-
-        <li>Team player with problem-solving mindset</li>
+        <li>
+          Vacancy Status:
+          {{ vacancy.status }}
+        </li>
 
       </ul>
 
@@ -96,29 +119,86 @@
 
     <!-- Skills -->
 
-    <div class="bg-white rounded-2xl shadow-md p-8 mt-8">
+    <div class="mt-8 rounded-2xl bg-white p-8 shadow">
 
-      <h2 class="text-2xl font-bold mb-6">
+      <h2 class="mb-5 text-2xl font-bold">
         Required Skills
       </h2>
 
       <div class="flex flex-wrap gap-3">
 
-        <span class="bg-blue-100 text-blue-700 px-4 py-2 rounded-full">
-          Angular
-        </span>
+        @if (vacancy.skillIds.length > 0) {
 
-        <span class="bg-green-100 text-green-700 px-4 py-2 rounded-full">
-          ASP.NET Core
-        </span>
+          @for (skill of vacancy.skillIds; track skill) {
 
-        <span class="bg-yellow-100 text-yellow-700 px-4 py-2 rounded-full">
-          SQL Server
-        </span>
+            <span
+              class="rounded-full bg-blue-100 px-4 py-2 text-blue-700">
 
-        <span class="bg-purple-100 text-purple-700 px-4 py-2 rounded-full">
-          REST API
-        </span>
+              Skill ID {{ skill }}
+
+            </span>
+
+          }
+
+        } @else {
+
+          <span class="text-gray-500">
+
+            No skills specified.
+
+          </span>
+
+        }
+
+      </div>
+
+    </div>
+
+    <!-- Additional Information -->
+
+    <div class="mt-8 rounded-2xl bg-white p-8 shadow">
+
+      <h2 class="mb-5 text-2xl font-bold">
+        Vacancy Information
+      </h2>
+
+      <div class="grid gap-6 md:grid-cols-2">
+
+        <div>
+
+          <p class="font-semibold text-gray-700">
+            Employer ID
+          </p>
+
+          <p class="text-gray-600">
+            {{ vacancy.employerId }}
+          </p>
+
+        </div>
+
+        <div>
+
+          <p class="font-semibold text-gray-700">
+            Created Date
+          </p>
+
+          <p class="text-gray-600">
+            {{ vacancy.createdAt | date:'medium' }}
+          </p>
+
+        </div>
+
+        <div>
+
+          <p class="font-semibold text-gray-700">
+            Last Updated
+          </p>
+
+          <p class="text-gray-600">
+            {{ vacancy.updatedAt | date:'medium' }}
+          </p>
+
+        </div>
 
       </div>
 
@@ -127,3 +207,25 @@
   </div>
 
 </section>
+
+} @else {
+
+<div class="flex min-h-screen items-center justify-center">
+
+  <div class="text-center">
+
+    <div
+      class="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-4 border-blue-600 border-t-transparent">
+    </div>
+
+    <p class="text-lg text-gray-500">
+
+      Loading vacancy...
+
+    </p>
+
+  </div>
+
+</div>
+
+}

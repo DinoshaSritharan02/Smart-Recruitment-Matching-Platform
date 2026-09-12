@@ -3,6 +3,8 @@ import { Routes } from '@angular/router';
 import { PublicLayout } from './layouts/public-layout/public-layout';
 
 import { EmployerLayout } from './features/employer/layout/employer-layout/employer-layout';
+import { authGuard } from './core/guards/auth.guard';
+import { roleGuard } from './core/guards/role.guard';
 
 export const routes: Routes = [
   {
@@ -152,7 +154,29 @@ export const routes: Routes = [
 },
 
   {
-    path: '**',
-    redirectTo: ''
-  }
+  path: 'login',
+  loadComponent: () =>
+    import('./features/auth/login/login')
+      .then(m => m.Login)
+},
+{
+  path: 'register',
+  loadComponent: () =>
+    import('./features/auth/register/register')
+      .then(m => m.Register)
+},
+
+{
+  path: 'job-seeker',
+  canActivate: [authGuard, roleGuard('JobSeeker')],
+  loadChildren: () =>
+    import('./job-seeker/job-seeker.routes')
+      .then(m => m.JOB_SEEKER_ROUTES)
+},
+
+
+{
+  path: '**',
+  redirectTo: ''
+}
 ];
