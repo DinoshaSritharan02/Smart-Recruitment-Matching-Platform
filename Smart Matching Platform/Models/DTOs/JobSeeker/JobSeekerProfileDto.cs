@@ -1,4 +1,6 @@
-﻿namespace SmartRecruitmentMatchingPlatform.API.Models.DTOs.JobSeeker;
+﻿using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Skill;
+
+namespace SmartRecruitmentMatchingPlatform.API.Models.DTOs.JobSeeker;
 
 public class JobSeekerProfileDto
 {
@@ -24,7 +26,7 @@ public class JobSeekerProfileDto
 
     public string ProfessionalSummary { get; set; } = string.Empty;
 
-    public List<string> Skills { get; set; } = new();
+    public List<SkillResponseDto> Skills { get; set; } = new();
 
     public List<EducationDto> Educations { get; set; } = new();
 

@@ -7,5 +7,7 @@ namespace SmartRecruitmentMatchingPlatform.API.Services
         Task<List<SkillResponseDto>> GetAllSkillsAsync();
 
         Task<SkillResponseDto?> GetSkillByIdAsync(int id);
+
+        Task<SkillResponseDto> CreateSkillAsync(CreateSkillDto dto);
     }
 }

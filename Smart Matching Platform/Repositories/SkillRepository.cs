@@ -31,5 +31,14 @@ namespace SmartRecruitmentMatchingPlatform.API.Repositories
             return await _context.Set<Skill>()
                 .FirstOrDefaultAsync(s => s.Name == name);
         }
+        public async Task AddAsync(Skill skill)
+        {
+            await _context.Skills.AddAsync(skill);
+        }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
     }
 }

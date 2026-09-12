@@ -87,6 +87,19 @@ namespace SmartRecruitmentMatchingPlatform.API.Controllers
                 message = "Application status updated successfully."
             });
         }
+        [HttpGet("my")]
+        [Authorize(Roles = "JobSeeker")]
+        public async Task<IActionResult> GetMyApplications()
+        {
+            var userId = GetUserId();
+
+            if (userId == null)
+                return Unauthorized();
+
+            var applications = await _applicationService.GetMyApplicationsAsync(userId.Value);
+
+            return Ok(applications);
+        }
 
         private Guid? GetUserId()
         {

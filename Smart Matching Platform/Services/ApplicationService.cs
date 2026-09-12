@@ -145,5 +145,25 @@ namespace SmartRecruitmentMatchingPlatform.API.Services
 
             return true;
         }
+        public async Task<List<ApplicationResponseDto>> GetMyApplicationsAsync(Guid userId)
+        {
+            var profile = await _jobSeekerRepository.GetByUserIdAsync(userId);
+
+            if (profile == null)
+                return new List<ApplicationResponseDto>();
+
+            var applications = await _applicationRepository.GetByJobSeekerProfileIdAsync(profile.Id);
+
+            return applications.Select(application => new ApplicationResponseDto
+            {
+                Id = application.Id,
+                JobSeekerProfileId = application.JobSeekerProfileId,
+                VacancyId = application.VacancyId,
+                Status = application.Status,
+                MatchScore = application.MatchScore,
+                AppliedAt = application.AppliedAt,
+                UpdatedAt = application.UpdatedAt
+            }).ToList();
+        }
     }
 }

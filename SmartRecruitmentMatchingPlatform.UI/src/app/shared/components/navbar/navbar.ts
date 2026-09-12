@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
-
+import { Component, inject } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { AuthService } from '../../../features/auth/services/auth.service';
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -10,13 +10,26 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class Navbar {
 
+  private authService = inject(AuthService);
+  private router = inject(Router);
+
   isMenuOpen = false;
 
-  toggleMenu() {
+  toggleMenu(): void {
     this.isMenuOpen = !this.isMenuOpen;
   }
 
-  closeMenu() {
+  closeMenu(): void {
     this.isMenuOpen = false;
+  }
+
+  isLoggedIn(): boolean {
+  return this.authService.isLoggedIn();
+}
+
+  logout(): void {
+    this.authService.logout();
+    this.closeMenu();
+    this.router.navigate(['/login']);
   }
 }

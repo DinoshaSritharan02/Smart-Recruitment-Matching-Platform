@@ -1,0 +1,20 @@
+<div class="min-h-screen bg-slate-100">
+
+  <app-sidebar
+    [isOpen]="sidebarOpen"
+    (closeSidebar)="closeSidebar()">
+  </app-sidebar>
+
+  <div class="lg:ml-64">
+
+    <app-header
+      (toggleSidebar)="toggleSidebar()">
+    </app-header>
+
+    <main class="p-6">
+      <router-outlet></router-outlet>
+    </main>
+
+  </div>
+
+</div>

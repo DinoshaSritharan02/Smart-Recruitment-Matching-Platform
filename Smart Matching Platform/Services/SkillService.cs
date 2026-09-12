@@ -1,4 +1,6 @@
-﻿using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Skill;
+﻿using Microsoft.EntityFrameworkCore;
+using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Skill;
+using SmartRecruitmentMatchingPlatform.API.Models.Entities;
 using SmartRecruitmentMatchingPlatform.API.Repositories;
 
 namespace SmartRecruitmentMatchingPlatform.API.Services
@@ -29,6 +31,34 @@ namespace SmartRecruitmentMatchingPlatform.API.Services
 
             if (skill == null)
                 return null;
+
+            return new SkillResponseDto
+            {
+                Id = skill.Id,
+                Name = skill.Name
+            };
+        }
+        public async Task<SkillResponseDto> CreateSkillAsync(CreateSkillDto dto)
+        {
+            var existing = await _skillRepository.GetByNameAsync(dto.Name);
+
+            if (existing != null)
+            {
+                return new SkillResponseDto
+                {
+                    Id = existing.Id,
+                    Name = existing.Name
+                };
+            }
+
+            var skill = new Skill
+            {
+                Name = dto.Name.Trim()
+            };
+
+            await _skillRepository.AddAsync(skill);
+
+            await _skillRepository.SaveChangesAsync();
 
             return new SkillResponseDto
             {

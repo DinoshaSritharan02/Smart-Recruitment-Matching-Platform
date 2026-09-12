@@ -1,0 +1,59 @@
+<div class="min-h-screen bg-slate-100 p-6">
+
+  <h1 class="mb-2 text-3xl font-bold">
+    Dashboard
+  </h1>
+
+  <p class="mb-8 text-gray-600">
+    Welcome back! Here's an overview of your activity.
+  </p>
+
+  <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+
+    @for (item of stats; track item.title) {
+
+      <div class="rounded-xl bg-white p-6 shadow">
+
+        <div class="text-4xl">
+          {{ item.icon }}
+        </div>
+
+        <h2 class="mt-4 text-lg font-semibold">
+          {{ item.title }}
+        </h2>
+
+        <p class="mt-2 text-3xl font-bold text-blue-600">
+          {{ item.value }}
+        </p>
+
+      </div>
+
+    }
+
+  </div>
+
+  <div class="mt-10 rounded-xl bg-white p-8 shadow">
+
+    <h2 class="mb-4 text-2xl font-semibold">
+      Recent Activity
+    </h2>
+
+    <ul class="space-y-4">
+
+      <li class="border-b pb-3">
+        ✅ Applied for Senior .NET Developer
+      </li>
+
+      <li class="border-b pb-3">
+        📅 Interview scheduled with ABC Technologies
+      </li>
+
+      <li>
+        🔔 Your profile was viewed by 5 employers today
+      </li>
+
+    </ul>
+
+  </div>
+
+</div>
