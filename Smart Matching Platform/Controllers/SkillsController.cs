@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SmartRecruitmentMatchingPlatform.API.Models.DTOs.Skill;
 using SmartRecruitmentMatchingPlatform.API.Services;
 
 
@@ -35,6 +36,15 @@ namespace SmartRecruitmentMatchingPlatform.API.Controllers
                 {
                     message = "Skill not found."
                 });
+
+            return Ok(skill);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Admin,JobSeeker")]
+        public async Task<IActionResult> CreateSkill(CreateSkillDto dto)
+        {
+            var skill = await _skillService.CreateSkillAsync(dto);
 
             return Ok(skill);
         }

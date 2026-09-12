@@ -10,6 +10,9 @@ namespace SmartRecruitmentMatchingPlatform.API.Services.Interfaces
     int applicationId,
     ApplicationStatus status);
 
+
+        Task<List<ApplicationResponseDto>> GetMyApplicationsAsync(Guid userId);
+
         Task<bool> ApplyForVacancyAsync(Guid userId, int vacancyId);
 
         Task<List<ApplicationResponseDto>> GetApplicantsByVacancyAsync(

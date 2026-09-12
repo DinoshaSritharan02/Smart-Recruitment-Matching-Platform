@@ -9,5 +9,9 @@ namespace SmartRecruitmentMatchingPlatform.API.Repositories
         Task<Skill?> GetByIdAsync(int id);
 
         Task<Skill?> GetByNameAsync(string name);
+
+        Task AddAsync(Skill skill);
+
+        Task SaveChangesAsync();
     }
 }
