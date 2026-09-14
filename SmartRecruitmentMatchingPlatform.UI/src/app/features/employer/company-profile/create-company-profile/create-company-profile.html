@@ -13,7 +13,7 @@
   <form
     [formGroup]="form"
     (ngSubmit)="save()"
-    class="rounded-xl bg-white shadow-lg p-8 space-y-6">
+    class="rounded-2xl border border-slate-200 bg-white shadow-sm-lg p-8 space-y-6">
 
     <!-- Company Name -->
     <div>
@@ -24,7 +24,7 @@
       <input
         type="text"
         formControlName="companyName"
-        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-blue-500 focus:outline-none">
+        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-emerald-500 focus:outline-none">
 
       @if(form.controls.companyName.touched &&
       form.controls.companyName.invalid){
@@ -48,7 +48,7 @@
       <textarea
         rows="5"
         formControlName="companyDescription"
-        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-blue-500 focus:outline-none">
+        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-emerald-500 focus:outline-none">
       </textarea>
 
     </div>
@@ -66,7 +66,7 @@
         <input
           type="text"
           formControlName="industry"
-          class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-blue-500 focus:outline-none">
+          class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-emerald-500 focus:outline-none">
 
       </div>
 
@@ -81,7 +81,7 @@
         <input
           type="text"
           formControlName="companyLocation"
-          class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-blue-500 focus:outline-none">
+          class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-emerald-500 focus:outline-none">
 
       </div>
 
@@ -99,7 +99,7 @@
         type="url"
         formControlName="website"
         placeholder="https://example.com"
-        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-blue-500 focus:outline-none">
+        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-emerald-500 focus:outline-none">
 
     </div>
 
@@ -118,7 +118,7 @@
 
       <button
         type="submit"
-        class="rounded-lg bg-blue-600 px-6 py-3 font-medium text-white hover:bg-blue-700">
+        class="rounded-lg btn-primary px-6 py-3 font-medium text-white hover:bg-emerald-700">
 
         Save Company Profile
 

@@ -51,16 +51,12 @@ export class JobSearch {
   }
 
   viewDetails(id: number): void {
-
-    this.router.navigate(['/job-details', id]);
-
-  }
+  this.router.navigate(['/job-seeker/job-detail', id]);
+}
 
   apply(id: number): void {
-
-    this.router.navigate(['/job-seeker/apply', id]);
-
-  }
+  this.router.navigate(['/job-seeker/job-detail', id]);
+}
 
   ngOnInit(): void {
 

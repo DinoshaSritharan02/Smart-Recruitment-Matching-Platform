@@ -1,140 +1,106 @@
-<div class="max-w-7xl mx-auto p-6">
+<div class="max-w-7xl mx-auto space-y-8">
 
-  <div class="flex items-center justify-between mb-8">
+  <div class="flex items-center justify-between">
 
     <div>
-      <h1 class="text-3xl font-bold text-slate-900">
+
+      <h1 class="page-title">
         Applicants
       </h1>
 
-      <p class="mt-2 text-slate-500">
-        View and manage applicants for this vacancy.
+      <p class="page-description">
+        Review and manage candidates.
       </p>
+
     </div>
 
   </div>
 
-  @if (applicants().length > 0) {
+  <div class="table-wrapper">
 
-    <div class="overflow-hidden rounded-xl bg-white shadow">
+    <table class="min-w-full">
 
-      <table class="min-w-full">
+      <thead class="table-header">
 
-        <thead class="bg-slate-100">
+        <tr>
 
-          <tr>
-            <th class="px-6 py-4 text-left">Applicant</th>
-            <th class="px-6 py-4 text-left">Education</th>
-            <th class="px-6 py-4 text-left">Experience</th>
-            <th class="px-6 py-4 text-center">Match Score</th>
-            <th class="px-6 py-4 text-center">Status</th>
-            <th class="px-6 py-4 text-center">Actions</th>
-          </tr>
+          <th class="table-th">Applicant</th>
+          <th class="table-th">Match</th>
+          <th class="table-th">Status</th>
+          <th class="table-th">Actions</th>
 
-        </thead>
+        </tr>
 
-        <tbody>
+      </thead>
 
-          @for (applicant of applicants(); track applicant.id) {
+      <tbody>
 
-            <tr class="border-t">
+        @for(applicant of applicants(); track applicant.applicationId){
 
-              <td class="px-6 py-4">
+        <tr class="border-t border-slate-100 hover:bg-emerald-50 transition">
+          <td class="table-td">
 
-                <div>
-                  <p class="font-semibold text-slate-900">
-                    {{ applicant.fullName }}
-                  </p>
+            <div>
 
-                  <p class="text-sm text-slate-500">
-                    {{ applicant.email }}
-                  </p>
+              <p class="font-semibold text-slate-900">
+                {{ applicant.fullName }}
+              </p>
 
-                  <p class="text-sm text-slate-500">
-                    {{ applicant.phoneNumber }}
-                  </p>
-                </div>
+              <p class="text-sm text-slate-500">
+                {{ applicant.email }}
+              </p>
 
-              </td>
+            </div>
 
-              <td class="px-6 py-4">
-                {{ applicant.education }}
-              </td>
+          </td>
 
-              <td class="px-6 py-4">
-                {{ applicant.experience }}
-              </td>
+          <td class="table-td">
 
-              <td class="px-6 py-4 text-center">
+            <span class="badge-success">
 
-                <span class="rounded-full bg-green-100 px-3 py-1 font-semibold text-green-700">
-                  {{ applicant.matchScore }}%
-                </span>
+             {{ applicant.matchScore }}
+            </span>
 
-              </td>
+          </td>
 
-              <td class="px-6 py-4 text-center">
+          <td class="table-td">
 
-                <span
-                  class="rounded-full px-3 py-1 text-sm font-semibold"
-                  [class.bg-yellow-100]="applicant.applicationStatus === 'Pending'"
-                  [class.text-yellow-700]="applicant.applicationStatus === 'Pending'"
-                  [class.bg-green-100]="applicant.applicationStatus === 'Shortlisted'"
-                  [class.text-green-700]="applicant.applicationStatus === 'Shortlisted'">
+            {{ applicant.status }}
 
-                  {{ applicant.applicationStatus }}
+          </td>
 
-                </span>
+          <td class="table-td">
 
-              </td>
+            <div class="flex gap-2">
 
-              <td class="px-6 py-4">
+              <button
+                class="btn-primary"
+                (click)="updateStatus(applicant.applicationId,'Shortlisted')">
 
-                <div class="flex justify-center gap-2">
+                Shortlist
 
-                  <button
-                    class="rounded bg-blue-600 px-3 py-2 text-white hover:bg-blue-700">
-                    View
-                  </button>
+              </button>
 
-                  <button
-                    class="rounded bg-green-600 px-3 py-2 text-white hover:bg-green-700">
-                    Update Status
-                  </button>
+              <button
+                class="rounded-xl bg-red-600 px-4 py-2 text-white hover:bg-red-700"
+                (click)="updateStatus(applicant.applicationId,'Rejected')">
 
-                  <button
-                    class="rounded bg-purple-600 px-3 py-2 text-white hover:bg-purple-700">
-                    Contact
-                  </button>
+                Reject
 
-                </div>
+              </button>
 
-              </td>
+            </div>
 
-            </tr>
+          </td>
 
-          }
+        </tr>
 
-        </tbody>
+        }
 
-      </table>
+      </tbody>
 
-    </div>
+    </table>
 
-  } @else {
-
-    <div class="rounded-xl bg-white p-10 text-center shadow">
-
-      <h2 class="text-xl font-semibold">
-        No Applicants Found
-      </h2>
-
-      <p class="mt-2 text-slate-500">
-        Applicants will appear here after candidates apply.
-      </p>
-
-    </div>
-
-  }
+  </div>
 
 </div>

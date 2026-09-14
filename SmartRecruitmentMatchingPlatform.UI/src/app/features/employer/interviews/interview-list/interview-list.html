@@ -1,50 +1,43 @@
-<div class="max-w-7xl mx-auto p-6">
+<div class="max-w-6xl mx-auto space-y-8">
 
-  <div class="flex items-center justify-between mb-8">
+  <div class="flex items-center justify-between">
 
     <div>
 
-      <h1 class="text-3xl font-bold text-slate-900">
+      <h1 class="page-title">
         Interviews
       </h1>
 
-      <p class="mt-2 text-slate-500">
+      <p class="page-description">
         Manage scheduled interviews.
       </p>
 
     </div>
 
-    <a
+    <button
       routerLink="/employer/schedule-interview"
-      class="rounded-lg bg-blue-600 px-5 py-3 text-white hover:bg-blue-700">
+      class="btn-primary">
 
-      + Schedule Interview
+      Schedule Interview
 
-    </a>
+    </button>
 
   </div>
 
-  <div class="overflow-hidden rounded-xl bg-white shadow">
+  <div class="table-wrapper">
 
     <table class="min-w-full">
 
-      <thead class="bg-slate-100">
+      <thead class="table-header">
 
         <tr>
 
-          <th class="px-6 py-4 text-left">Applicant</th>
-
-          <th class="px-6 py-4 text-left">Vacancy</th>
-
-          <th class="px-6 py-4 text-left">Date</th>
-
-          <th class="px-6 py-4 text-left">Time</th>
-
-          <th class="px-6 py-4 text-left">Mode</th>
-
-          <th class="px-6 py-4 text-left">Interviewer</th>
-
-          <th class="px-6 py-4 text-center">Status</th>
+          <th class="table-th">Candidate</th>
+          <th class="table-th">Position</th>
+          <th class="table-th">Date</th>
+          <th class="table-th">Time</th>
+          <th class="table-th">Mode</th>
+          <th class="table-th">Status</th>
 
         </tr>
 
@@ -54,40 +47,40 @@
 
         @for(interview of interviews(); track interview.id){
 
-        <tr class="border-t">
-
-          <td class="px-6 py-4">
+       <tr class="border-t border-slate-100 hover:bg-emerald-50 transition">
+          <td class="table-td">
             {{ interview.applicant }}
           </td>
 
-          <td class="px-6 py-4">
+          <td class="table-td">
             {{ interview.vacancy }}
           </td>
 
-          <td class="px-6 py-4">
+          <td class="table-td">
             {{ interview.interviewDate }}
           </td>
 
-          <td class="px-6 py-4">
+          <td class="table-td">
             {{ interview.interviewTime }}
           </td>
 
-          <td class="px-6 py-4">
+          <td class="table-td">
             {{ interview.mode }}
           </td>
 
-          <td class="px-6 py-4">
-            {{ interview.interviewer }}
-          </td>
+          <td class="table-td">
 
-          <td class="px-6 py-4 text-center">
+            @if(interview.status==='Scheduled'){
 
-            <span
-              class="rounded-full bg-green-100 px-3 py-1 text-green-700">
+            <span class="badge-success">Scheduled</span>
 
-              {{ interview.status }}
+            } @else {
 
+            <span class="badge-warning">
+              Pending
             </span>
+
+            }
 
           </td>
 

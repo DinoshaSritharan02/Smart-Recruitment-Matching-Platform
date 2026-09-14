@@ -1,51 +1,66 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  inject,
+  signal
+} from '@angular/core';
+
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
-interface Vacancy {
-  id: number;
-  jobTitle: string;
-  location: string;
-  salary: number;
-  status: string;
-  applications: number;
-}
+import { VacancyService } from '../../services/vacancy.service';
+import { VacancyResponse } from '../../models/vacancy.model';
 
 @Component({
   selector: 'app-vacancy-list',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [
+    CommonModule,
+    RouterLink
+  ],
   templateUrl: './vacancy-list.html',
   styleUrl: './vacancy-list.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class VacancyList {
+export class VacancyList implements OnInit {
 
-  readonly vacancies = signal<Vacancy[]>([
-    {
-      id: 1,
-      jobTitle: 'Frontend Developer',
-      location: 'Colombo',
-      salary: 180000,
-      status: 'Active',
-      applications: 12
-    },
-    {
-      id: 2,
-      jobTitle: 'Backend Developer',
-      location: 'Jaffna',
-      salary: 200000,
-      status: 'Active',
-      applications: 8
-    },
-    {
-      id: 3,
-      jobTitle: 'UI/UX Designer',
-      location: 'Kandy',
-      salary: 150000,
-      status: 'Closed',
-      applications: 15
-    }
-  ]);
+  private readonly vacancyService = inject(VacancyService);
+
+  readonly loading = signal(true);
+
+  readonly vacancies = signal<VacancyResponse[]>([]);
+
+  ngOnInit(): void {
+    this.loadVacancies();
+  }
+
+  loadVacancies(): void {
+
+    this.loading.set(true);
+
+    this.vacancyService.getMyVacancies().subscribe({
+
+      next: (data) => {
+
+        this.vacancies.set(data);
+
+        this.loading.set(false);
+
+      },
+
+      error: (err) => {
+
+        console.error(err);
+
+        this.loading.set(false);
+
+        alert('Failed to load vacancies.');
+
+      }
+
+    });
+
+  }
 
 }

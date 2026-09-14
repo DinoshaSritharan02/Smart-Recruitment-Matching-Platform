@@ -1,238 +1,141 @@
-@if (loading) {
+<div class="max-w-5xl mx-auto space-y-8">
 
-<div class="flex min-h-screen items-center justify-center">
+  <div>
 
-  <div class="text-center">
+    <h1 class="page-title">
+      My Profile
+    </h1>
 
-    <div
-      class="mx-auto mb-4 h-12 w-12 animate-spin rounded-full border-4 border-blue-600 border-t-transparent">
-    </div>
-
-    <p class="text-lg text-gray-500">
-      Loading profile...
+    <p class="page-description">
+      Keep your professional profile up to date.
     </p>
 
   </div>
 
-</div>
+  <form class="space-y-8">
 
-} @else if (profile) {
+    <div class="card">
 
-<div class="min-h-screen bg-slate-100 p-6">
+      <div class="card-header">
 
-  <div class="mx-auto max-w-6xl">
-
-    <div class="rounded-2xl bg-white p-8 shadow">
-
-      <div class="flex items-center justify-between">
-
-        <div>
-
-          <h1 class="text-3xl font-bold">
-            {{ profile.firstName }} {{ profile.lastName }}
-          </h1>
-
-          <p class="mt-2 text-gray-500">
-            {{ profile.email }}
-          </p>
-
-        </div>
-
-        <a
-          routerLink="/job-seeker/settings"
-          class="rounded-lg bg-blue-600 px-6 py-3 text-white hover:bg-blue-700">
-
-          Edit Profile
-
-        </a>
-
-      </div>
-
-    </div>
-
-    <!-- Personal Information -->
-
-    <div class="mt-8 rounded-2xl bg-white p-8 shadow">
-
-      <h2 class="mb-6 text-2xl font-bold">
-        Personal Information
-      </h2>
-
-      <div class="grid gap-6 md:grid-cols-2">
-
-        <div>
-          <p class="font-semibold">Phone</p>
-          <p>{{ profile.phoneNumber }}</p>
-        </div>
-
-        <div>
-          <p class="font-semibold">Gender</p>
-          <p>{{ profile.gender }}</p>
-        </div>
-
-        <div>
-          <p class="font-semibold">Date of Birth</p>
-          <p>{{ profile.dateOfBirth | date }}</p>
-        </div>
-
-        <div>
-          <p class="font-semibold">Country</p>
-          <p>{{ profile.country }}</p>
-        </div>
-
-        <div>
-          <p class="font-semibold">City</p>
-          <p>{{ profile.city }}</p>
-        </div>
-
-        <div>
-          <p class="font-semibold">Address</p>
-          <p>{{ profile.address }}</p>
-        </div>
-
-      </div>
-
-    </div>
-
-    <!-- Professional Summary -->
-
-    <div class="mt-8 rounded-2xl bg-white p-8 shadow">
-
-      <h2 class="mb-4 text-2xl font-bold">
-        Professional Summary
-      </h2>
-
-      <p class="leading-7 text-gray-700">
-        {{ profile.professionalSummary }}
-      </p>
-
-    </div>
-
-    <!-- Skills -->
-
-    <div class="mt-8 rounded-2xl bg-white p-8 shadow">
-
-      <div class="mb-6 flex items-center justify-between">
-
-        <h2 class="text-2xl font-bold">
-          Skills
+        <h2 class="text-xl font-semibold">
+          Personal Information
         </h2>
 
-        <a
-          routerLink="/job-seeker/skills"
-          class="text-blue-600 hover:underline">
-
-          Manage Skills
-
-        </a>
-
       </div>
 
-      <div class="flex flex-wrap gap-3">
+      <div class="card-body grid gap-6 md:grid-cols-2">
 
-        @for (skill of profile.skills; track skill.id) {
+        <div>
 
-          <span
-            class="rounded-full bg-blue-100 px-4 py-2 text-blue-700">
+          <label class="mb-2 block font-medium">
+            First Name
+          </label>
 
-            {{ skill.name }}
+          <input
+            class="input"
+            type="text"
+            formControlName="firstName">
 
-          </span>
+        </div>
 
-        }
+        <div>
+
+          <label class="mb-2 block font-medium">
+            Last Name
+          </label>
+
+          <input
+            class="input"
+            type="text"
+            formControlName="lastName">
+
+        </div>
+
+        <div>
+
+          <label class="mb-2 block font-medium">
+            Email
+          </label>
+
+          <input
+            class="input"
+            type="email"
+            formControlName="email">
+
+        </div>
+
+        <div>
+
+          <label class="mb-2 block font-medium">
+            Phone Number
+          </label>
+
+          <input
+            class="input"
+            type="text"
+            formControlName="phoneNumber">
+
+        </div>
+
+        <div class="md:col-span-2">
+
+          <label class="mb-2 block font-medium">
+            Professional Summary
+          </label>
+
+          <textarea
+            rows="6"
+            class="input"
+            formControlName="professionalSummary">
+          </textarea>
+
+        </div>
 
       </div>
 
     </div>
 
-    <!-- Education -->
+    <div class="card">
 
-    <div class="mt-8 rounded-2xl bg-white p-8 shadow">
+      <div class="card-header">
 
-      <div class="mb-6 flex items-center justify-between">
-
-        <h2 class="text-2xl font-bold">
-          Education
+        <h2 class="text-xl font-semibold">
+          Resume
         </h2>
 
-        <a
-          routerLink="/job-seeker/education"
-          class="text-blue-600 hover:underline">
-
-          Manage Education
-
-        </a>
-
       </div>
 
-      @for (edu of profile.educations; track edu.id) {
+      <div class="card-body">
 
-      <div class="mb-6 border-b pb-4 last:border-0">
-
-        <h3 class="text-xl font-semibold">
-          {{ edu.degree }}
-        </h3>
-
-        <p>{{ edu.institution }}</p>
-
-        <p>{{ edu.fieldOfStudy }}</p>
-
-        <p class="text-gray-500">
-          {{ edu.startDate | date }} -
-          {{ edu.endDate ? (edu.endDate | date) : 'Present' }}
-        </p>
+        <input
+          type="file"
+          class="input">
 
       </div>
-
-      }
 
     </div>
 
-    <!-- Experience -->
+    <div class="flex justify-end gap-4">
 
-    <div class="mt-8 rounded-2xl bg-white p-8 shadow">
+      <button
+        type="button"
+        class="btn-secondary">
 
-      <div class="mb-6 flex items-center justify-between">
+        Cancel
 
-        <h2 class="text-2xl font-bold">
-          Experience
-        </h2>
+      </button>
 
-        <a
-          routerLink="/job-seeker/experience"
-          class="text-blue-600 hover:underline">
+      <button
+        type="submit"
+        class="btn-primary">
 
-          Manage Experience
+        Save Profile
 
-        </a>
-
-      </div>
-
-      @for (exp of profile.experiences; track exp.id) {
-
-      <div class="mb-6 border-b pb-4 last:border-0">
-
-        <h3 class="text-xl font-semibold">
-          {{ exp.jobTitle }}
-        </h3>
-
-        <p>{{ exp.companyName }}</p>
-
-        <p>{{ exp.description }}</p>
-
-        <p class="text-gray-500">
-          {{ exp.startDate | date }} -
-          {{ exp.endDate ? (exp.endDate | date) : 'Present' }}
-        </p>
-
-      </div>
-
-      }
+      </button>
 
     </div>
 
-  </div>
+  </form>
 
 </div>
-
-}

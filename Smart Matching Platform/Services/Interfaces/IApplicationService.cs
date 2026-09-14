@@ -11,7 +11,7 @@ namespace SmartRecruitmentMatchingPlatform.API.Services.Interfaces
     ApplicationStatus status);
 
 
-        Task<List<ApplicationResponseDto>> GetMyApplicationsAsync(Guid userId);
+        Task<List<MyApplicationDto>> GetMyApplicationsAsync(Guid userId);
 
         Task<bool> ApplyForVacancyAsync(Guid userId, int vacancyId);
 
@@ -22,5 +22,7 @@ namespace SmartRecruitmentMatchingPlatform.API.Services.Interfaces
         Task<List<RankedApplicantResponseDto>> GetRankedApplicantsAsync(
             Guid userId,
             int vacancyId);
+
+        
     }
 }

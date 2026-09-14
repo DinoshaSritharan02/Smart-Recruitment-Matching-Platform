@@ -1,92 +1,77 @@
-<div class="max-w-3xl mx-auto p-6">
+<div class="max-w-3xl mx-auto space-y-8">
 
-  <div class="rounded-xl bg-white shadow-lg p-8">
+  <div>
 
-    <h1 class="text-3xl font-bold mb-2">
-      Contact Applicant
+    <h1 class="page-title">
+      Send Contact Request
     </h1>
 
-    <p class="text-gray-500 mb-8">
-      Send a message to the selected applicant.
+    <p class="page-description">
+      Send a message to the selected job seeker.
     </p>
 
-    <form
-      [formGroup]="form"
-      (ngSubmit)="send()"
-      class="space-y-6">
+  </div>
 
-      <div>
+  <div class="card">
 
-        <label
-          for="subject"
-          class="mb-2 block font-medium">
+    <div class="card-header">
 
-          Subject
+      <h2 class="text-xl font-semibold">
+        Contact Request
+      </h2>
 
-        </label>
+    </div>
 
-        <input
-          id="subject"
-          type="text"
-          formControlName="subject"
-          class="w-full rounded-lg border border-gray-300 px-4 py-3">
+    <div class="card-body">
 
-        @if(form.controls.subject.invalid &&
-            form.controls.subject.touched){
+      <form
+        [formGroup]="form"
+        (ngSubmit)="send()"
+        class="space-y-6">
 
-          <p class="mt-2 text-sm text-red-600">
+        <div>
 
-            Subject is required.
+          <label class="mb-2 block font-medium">
 
-          </p>
+            Message
 
-        }
+          </label>
 
-      </div>
+          <textarea
+            rows="6"
+            formControlName="message"
+            class="input"
+            placeholder="Write your message to the candidate...">
+          </textarea>
 
-      <div>
+          @if (form.controls.message.invalid && form.controls.message.touched) {
 
-        <label
-          for="message"
-          class="mb-2 block font-medium">
+            <p class="mt-2 text-sm text-red-600">
 
-          Message
+              Message must be at least 10 characters.
 
-        </label>
+            </p>
 
-        <textarea
-          id="message"
-          rows="6"
-          formControlName="message"
-          class="w-full rounded-lg border border-gray-300 px-4 py-3">
-        </textarea>
+          }
 
-        @if(form.controls.message.invalid &&
-            form.controls.message.touched){
+        </div>
 
-          <p class="mt-2 text-sm text-red-600">
+        <div class="flex justify-end">
 
-            Enter at least 10 characters.
+          <button
+            type="submit"
+            class="btn-primary"
+            [disabled]="form.invalid">
 
-          </p>
+            Send Request
 
-        }
+          </button>
 
-      </div>
+        </div>
 
-      <div class="flex justify-end">
+      </form>
 
-        <button
-          type="submit"
-          class="rounded-lg bg-blue-600 px-6 py-3 text-white hover:bg-blue-700">
-
-          Send Request
-
-        </button>
-
-      </div>
-
-    </form>
+    </div>
 
   </div>
 

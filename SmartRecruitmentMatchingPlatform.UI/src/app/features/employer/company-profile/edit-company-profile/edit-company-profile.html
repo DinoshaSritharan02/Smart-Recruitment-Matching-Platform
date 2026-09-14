@@ -21,7 +21,7 @@
   <form
     [formGroup]="form"
     (ngSubmit)="updateProfile()"
-    class="rounded-xl bg-white shadow-md p-8 space-y-6">
+    class="rounded-2xl border border-slate-200 bg-white shadow-sm-md p-8 space-y-6">
 
     <!-- Company Name -->
     <div>
@@ -36,7 +36,7 @@
         type="text"
         formControlName="companyName"
         placeholder="ABC Technologies"
-        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-blue-600 focus:outline-none">
+        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-emerald-600 focus:outline-none">
 
       @if(form.controls.companyName.invalid &&
       form.controls.companyName.touched){
@@ -61,7 +61,7 @@
         rows="5"
         formControlName="companyDescription"
         placeholder="Describe your company..."
-        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-blue-600 focus:outline-none">
+        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-emerald-600 focus:outline-none">
       </textarea>
     </div>
 
@@ -80,7 +80,7 @@
           type="text"
           formControlName="industry"
           placeholder="Software"
-          class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-blue-600 focus:outline-none">
+          class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-emerald-600 focus:outline-none">
       </div>
 
       <!-- Location -->
@@ -96,7 +96,7 @@
           type="text"
           formControlName="companyLocation"
           placeholder="Colombo"
-          class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-blue-600 focus:outline-none">
+          class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-emerald-600 focus:outline-none">
       </div>
 
     </div>
@@ -114,7 +114,7 @@
         type="url"
         formControlName="website"
         placeholder="https://company.com"
-        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-blue-600 focus:outline-none">
+        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-emerald-600 focus:outline-none">
     </div>
 
     <!-- Buttons -->
@@ -129,7 +129,7 @@
 
       <button
         type="submit"
-        class="rounded-lg bg-blue-600 px-6 py-3 text-white hover:bg-blue-700 transition">
+        class="rounded-lg btn-primary px-6 py-3 text-white hover:bg-emerald-700 transition">
         Save Changes
       </button>
 

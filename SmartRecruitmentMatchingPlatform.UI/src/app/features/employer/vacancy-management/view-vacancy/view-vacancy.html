@@ -1,14 +1,16 @@
-<div class="max-w-5xl mx-auto p-6">
+<div class="max-w-5xl mx-auto space-y-8">
 
-  <div class="flex items-center justify-between mb-8">
+  <!-- Header -->
+
+  <div class="flex items-center justify-between">
 
     <div>
 
-      <h1 class="text-4xl font-bold text-slate-900">
+      <h1 class="page-title">
         Vacancy Details
       </h1>
 
-      <p class="text-slate-500 mt-2">
+      <p class="page-description">
         View complete vacancy information.
       </p>
 
@@ -16,7 +18,7 @@
 
     <a
       routerLink="/employer/vacancies"
-      class="rounded-lg border border-gray-300 px-5 py-3 hover:bg-gray-100">
+      class="btn-secondary">
 
       Back
 
@@ -24,109 +26,140 @@
 
   </div>
 
-  <div class="rounded-xl bg-white shadow-lg p-8">
+  <!-- Card -->
 
-    <div class="grid md:grid-cols-2 gap-6">
+  <div class="card">
 
-      <div>
+    <div class="card-body">
 
-        <p class="text-gray-500">Job Title</p>
+      <div class="grid gap-8 md:grid-cols-2">
 
-        <h2 class="text-xl font-semibold">
-          {{ vacancy().jobTitle }}
-        </h2>
+        <div>
+
+          <p class="page-description">
+            Job Title
+          </p>
+
+          <h2 class="mt-1 text-2xl font-bold text-slate-900">
+            {{ vacancy().jobTitle }}
+          </h2>
+
+        </div>
+
+        <div>
+
+          <p class="page-description">
+            Status
+          </p>
+
+          <span class="badge-success">
+
+            {{ vacancy().status }}
+
+          </span>
+
+        </div>
+
+        <div>
+
+          <p class="page-description">
+            Employment Type
+          </p>
+
+          <p class="font-medium text-slate-800">
+            {{ vacancy().employmentType }}
+          </p>
+
+        </div>
+
+        <div>
+
+          <p class="page-description">
+            Experience Level
+          </p>
+
+          <p class="font-medium text-slate-800">
+            {{ vacancy().experienceLevel }}
+          </p>
+
+        </div>
+
+        <div>
+
+          <p class="page-description">
+            Location
+          </p>
+
+          <p class="font-medium text-slate-800">
+            {{ vacancy().location }}
+          </p>
+
+        </div>
+
+        <div>
+
+          <p class="page-description">
+            Salary
+          </p>
+
+          <p class="font-medium text-slate-800">
+            Rs. {{ vacancy().salaryMin }} - {{ vacancy().salaryMax }}
+          </p>
+
+        </div>
+
+        <div>
+
+          <p class="page-description">
+            Application Deadline
+          </p>
+
+          <p class="font-medium text-slate-800">
+            {{ vacancy().applicationDeadline }}
+          </p>
+
+        </div>
 
       </div>
 
-      <div>
+      <div class="mt-10 border-t border-slate-200 pt-8">
 
-        <p class="text-gray-500">Status</p>
+        <h3 class="mb-3 text-xl font-bold text-slate-900">
+          Job Description
+        </h3>
 
-        <span
-          class="rounded-full bg-green-100 text-green-700 px-3 py-1">
-
-          {{ vacancy().status }}
-
-        </span>
-
-      </div>
-
-      <div>
-
-        <p class="text-gray-500">Employment Type</p>
-
-        <p>{{ vacancy().employmentType }}</p>
-
-      </div>
-
-      <div>
-
-        <p class="text-gray-500">Experience Level</p>
-
-        <p>{{ vacancy().experienceLevel }}</p>
-
-      </div>
-
-      <div>
-
-        <p class="text-gray-500">Location</p>
-
-        <p>{{ vacancy().location }}</p>
-
-      </div>
-
-      <div>
-
-        <p class="text-gray-500">Salary</p>
-
-        <p>
-          Rs. {{ vacancy().salaryMin }} - {{ vacancy().salaryMax }}
+        <p class="leading-7 text-slate-600">
+          {{ vacancy().description }}
         </p>
 
       </div>
 
-      <div>
+      <div class="mt-10 flex flex-wrap justify-end gap-4">
 
-        <p class="text-gray-500">
-          Application Deadline
-        </p>
+        <a
+          [routerLink]="['/employer/vacancies', vacancy().id, 'applicants']"
+          class="btn-secondary">
 
-        <p>
-          {{ vacancy().applicationDeadline }}
-        </p>
+          View Applicants
+
+        </a>
+
+        <a
+          [routerLink]="['/employer/edit-vacancy', vacancy().id]"
+          class="btn-primary">
+
+          Edit Vacancy
+
+        </a>
+
+        <button
+          class="rounded-xl bg-red-600 px-5 py-3 font-semibold text-white transition hover:bg-red-700">
+
+          Close Vacancy
+
+        </button>
 
       </div>
-
-    </div>
-
-    <div class="mt-8">
-
-      <h3 class="font-semibold text-lg mb-3">
-        Job Description
-      </h3>
-
-      <p class="text-gray-600 leading-7">
-        {{ vacancy().description }}
-      </p>
-
-    </div>
-
-    <div class="mt-8 flex justify-end gap-4">
-
-      <a
-        routerLink="/employer/edit-vacancy"
-        class="rounded-lg bg-yellow-500 px-6 py-3 text-white hover:bg-yellow-600">
-
-        Edit Vacancy
-
-      </a>
-
-      <button
-        class="rounded-lg bg-red-600 px-6 py-3 text-white hover:bg-red-700">
-
-        Close Vacancy
-
-      </button>
 
     </div>
 

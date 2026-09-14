@@ -1,20 +1,18 @@
-<div class="min-h-screen bg-slate-100">
+<div class="flex min-h-screen bg-slate-100">
 
   <app-employer-sidebar
     [isOpen]="sidebarOpen()"
     (closeSidebar)="closeSidebar()">
   </app-employer-sidebar>
 
-  <div class="lg:ml-64">
+  <div class="flex flex-1 flex-col lg:ml-64">
 
     <app-employer-header
       (menuClicked)="toggleSidebar()">
     </app-employer-header>
 
-    <main class="p-6">
-
+    <main class="flex-1 overflow-y-auto bg-[#F5F7F5] p-8">
       <router-outlet></router-outlet>
-
     </main>
 
   </div>

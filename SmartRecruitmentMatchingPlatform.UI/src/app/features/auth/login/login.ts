@@ -46,9 +46,11 @@ export class Login {
 
           switch (response.role) {
 
-            case 'Admin':
-              this.router.navigate(['/admin']);
-              break;
+            case 'Adminstrater':
+case 'Administrator':
+case 'Admin':
+  this.router.navigate(['/admin']);
+  break;
 
             case 'Employer':
               this.router.navigate(['/employer']);

@@ -1,9 +1,21 @@
 export interface Application {
+
   id: number;
-  jobSeekerProfileId: string;
+
   vacancyId: number;
+
+  jobTitle: string;
+
+  companyName: string;
+
+  location: string;
+
   status: string;
+
   matchScore: number | null;
+
   appliedAt: string;
+
   updatedAt: string;
+
 }

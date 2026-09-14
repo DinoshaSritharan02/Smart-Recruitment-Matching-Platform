@@ -36,6 +36,27 @@ public static class AuthenticationExtensions
 
                 ClockSkew = TimeSpan.Zero
             };
+            options.Events = new JwtBearerEvents
+            {
+                OnAuthenticationFailed = context =>
+                {
+                    Console.WriteLine("AUTH FAILED:");
+                    Console.WriteLine(context.Exception.Message);
+                    return Task.CompletedTask;
+                },
+
+                OnTokenValidated = context =>
+                {
+                    Console.WriteLine("TOKEN VALIDATED");
+                    return Task.CompletedTask;
+                },
+
+                OnChallenge = context =>
+                {
+                    Console.WriteLine("CHALLENGE: " + context.ErrorDescription);
+                    return Task.CompletedTask;
+                }
+            };
 
         }
         

@@ -2,15 +2,15 @@ export interface ContactRequestResponse {
   id: number;
   employerName: string;
   message: string;
-  status: number;
+  status: string;
   createdAt: string;
 }
 
 export interface CreateContactRequestRequest {
   jobSeekerProfileId: string;
-  message: string | null;
+  message: string;
 }
 
 export interface UpdateContactRequestStatusRequest {
-  status: number;
+  status: string;
 }
