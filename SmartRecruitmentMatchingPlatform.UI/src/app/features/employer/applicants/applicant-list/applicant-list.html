@@ -1,0 +1,106 @@
+<div class="max-w-7xl mx-auto space-y-8">
+
+  <div class="flex items-center justify-between">
+
+    <div>
+
+      <h1 class="page-title">
+        Applicants
+      </h1>
+
+      <p class="page-description">
+        Review and manage candidates.
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="table-wrapper">
+
+    <table class="min-w-full">
+
+      <thead class="table-header">
+
+        <tr>
+
+          <th class="table-th">Applicant</th>
+          <th class="table-th">Match</th>
+          <th class="table-th">Status</th>
+          <th class="table-th">Actions</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        @for(applicant of applicants(); track applicant.applicationId){
+
+        <tr class="border-t border-slate-100 hover:bg-emerald-50 transition">
+          <td class="table-td">
+
+            <div>
+
+              <p class="font-semibold text-slate-900">
+                {{ applicant.fullName }}
+              </p>
+
+              <p class="text-sm text-slate-500">
+                {{ applicant.email }}
+              </p>
+
+            </div>
+
+          </td>
+
+          <td class="table-td">
+
+            <span class="badge-success">
+
+             {{ applicant.matchScore }}
+            </span>
+
+          </td>
+
+          <td class="table-td">
+
+            {{ applicant.status }}
+
+          </td>
+
+          <td class="table-td">
+
+            <div class="flex gap-2">
+
+              <button
+                class="btn-primary"
+                (click)="updateStatus(applicant.applicationId,'Shortlisted')">
+
+                Shortlist
+
+              </button>
+
+              <button
+                class="rounded-xl bg-red-600 px-4 py-2 text-white hover:bg-red-700"
+                (click)="updateStatus(applicant.applicationId,'Rejected')">
+
+                Reject
+
+              </button>
+
+            </div>
+
+          </td>
+
+        </tr>
+
+        }
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

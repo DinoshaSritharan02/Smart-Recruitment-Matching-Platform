@@ -1,0 +1,36 @@
+@if(user){
+
+<div class="bg-white rounded-xl shadow p-6">
+
+    <h2 class="text-2xl font-bold mb-6">
+        User Details
+    </h2>
+
+    <div class="space-y-3">
+
+        <p><strong>Name:</strong> {{user.firstName}} {{user.lastName}}</p>
+
+        <p><strong>Email:</strong> {{user.email}}</p>
+
+        <p><strong>Role:</strong> {{user.role}}</p>
+
+        <p><strong>Status:</strong>
+            {{user.isActive ? 'Active' : 'Inactive'}}
+        </p>
+
+        <p><strong>Created:</strong> {{user.createdAt}}</p>
+
+    </div>
+    <div class="mt-6">
+    <button
+        (click)="toggleStatus()"
+        class="rounded-lg btn-primary px-4 py-2 text-white hover:bg-emerald-700">
+
+        {{ user.isActive ? 'Deactivate User' : 'Activate User' }}
+
+    </button>
+</div>
+
+</div>
+
+}

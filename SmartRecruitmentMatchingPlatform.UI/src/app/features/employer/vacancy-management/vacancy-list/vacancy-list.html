@@ -1,0 +1,110 @@
+<div class="page-container">
+
+  <div class="flex items-center justify-between">
+
+  <div>
+
+    <h1 class="page-title">
+      Vacancy Management
+    </h1>
+
+    <p class="page-description">
+      Manage and monitor all published vacancies.
+    </p>
+
+  </div>
+
+  <a
+    routerLink="/employer/create-vacancy"
+    class="btn-primary">
+
+    + Create Vacancy
+
+  </a>
+
+</div>
+
+  <div class="table-wrapper">
+
+    <table class="min-w-full">
+
+      <thead class="table-header">
+
+        <tr>
+
+          <th class="table-th">Title</th>
+          <th class="table-th">Location</th>
+          <th class="table-th">Experience</th>
+          <th class="table-th">Status</th>
+          <th class="px-6 py-4 text-right">Actions</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        @for(v of vacancies(); track v.id){
+
+       <tr class="border-t border-slate-100 hover:bg-emerald-50 transition">
+          <td class="table-td font-semibold">
+            {{ v.title }}
+          </td>
+
+          <td class="table-td">
+            {{ v.location }}
+          </td>
+
+          <td class="table-td">
+            {{ v.requiredExperienceYears }} Years
+          </td>
+
+          <td class="table-td">
+
+            <span
+              class="rounded-full badge-success px-3 py-1 text-sm text-green-700">
+
+              {{ v.status }}
+
+            </span>
+
+          </td>
+
+          <td class="table-td text-right space-x-2">
+
+            <a
+              [routerLink]="['/employer/view-vacancy',v.id]"
+              class="btn-secondary">
+
+              View
+
+            </a>
+
+            <a
+              [routerLink]="['/employer/edit-vacancy',v.id]"
+              class="btn-secondary">
+
+              Edit
+
+            </a>
+            <a        
+  [routerLink]="['/employer/vacancies', v.id, 'applicants']"
+  class="rounded-lg bg-green-600 px-4 py-2 text-white">
+
+  Applicants
+
+</a>
+
+          </td>
+
+        </tr>
+
+        }
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

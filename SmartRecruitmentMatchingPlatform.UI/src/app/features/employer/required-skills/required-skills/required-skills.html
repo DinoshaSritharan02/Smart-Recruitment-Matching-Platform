@@ -1,0 +1,79 @@
+<div class="max-w-6xl mx-auto p-6">
+
+  <div class="flex items-center justify-between mb-8">
+
+    <div>
+      <h1 class="text-3xl font-bold text-slate-900">
+        Required Skills
+      </h1>
+
+      <p class="mt-2 text-slate-500">
+        Manage the required skills for this vacancy.
+      </p>
+    </div>
+
+    <button
+      type="button"
+      class="rounded-lg btn-primary px-5 py-3 text-white hover:bg-emerald-700">
+      + Add Skill
+    </button>
+
+  </div>
+
+  <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+
+    <table class="min-w-full">
+
+      <thead class="bg-slate-100">
+
+        <tr>
+          <th class="table-th">Skill</th>
+          <th class="table-th">Level</th>
+          <th class="px-6 py-4 text-center">Actions</th>
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        @for(skill of skills(); track skill.id){
+          
+<tr class="border-t border-slate-100 hover:bg-emerald-50 transition">
+
+          <td class="px-6 py-4 font-medium">
+            {{ skill.skillName }}
+          </td>
+
+          <td class="px-6 py-4">
+            {{ skill.skillLevel }}
+          </td>
+
+          <td class="px-6 py-4">
+
+            <div class="flex justify-center gap-2">
+
+              <button
+                class="rounded bg-yellow-500 px-4 py-2 text-white hover:bg-yellow-600">
+                Edit
+              </button>
+
+              <button
+                class="rounded bg-red-600 px-4 py-2 text-white hover:bg-red-700">
+                Delete
+              </button>
+
+            </div>
+
+          </td>
+
+        </tr>
+
+        }
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

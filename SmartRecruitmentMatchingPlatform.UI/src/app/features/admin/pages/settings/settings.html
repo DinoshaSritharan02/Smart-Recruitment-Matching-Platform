@@ -1,0 +1,57 @@
+<div class="space-y-6">
+
+  <h1 class="page-title">
+    System Settings
+  </h1>
+
+  <div class="rounded-xl bg-white p-6 shadow">
+
+    <div class="space-y-6">
+
+      <div>
+        <p class="text-sm text-gray-500">Platform Name</p>
+        <p class="text-lg font-semibold">
+          {{ systemSettings.platformName }}
+        </p>
+      </div>
+
+      <div>
+        <p class="text-sm text-gray-500">Version</p>
+        <p class="text-lg font-semibold">
+          {{ systemSettings.version }}
+        </p>
+      </div>
+
+      <div class="flex items-center justify-between border-t pt-4">
+        <span>Email Notifications</span>
+
+        @if(systemSettings.emailNotifications){
+          <span class="rounded-full badge-success px-3 py-1 text-green-700">
+            Enabled
+          </span>
+        } @else {
+          <span class="rounded-full badge-danger px-3 py-1 text-red-700">
+            Disabled
+          </span>
+        }
+      </div>
+
+      <div class="flex items-center justify-between border-t pt-4">
+        <span>Maintenance Mode</span>
+
+        @if(systemSettings.maintenanceMode){
+          <span class="rounded-full badge-warning px-3 py-1 text-yellow-700">
+            Enabled
+          </span>
+        } @else {
+          <span class="rounded-full badge-success px-3 py-1 text-green-700">
+            Disabled
+          </span>
+        }
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

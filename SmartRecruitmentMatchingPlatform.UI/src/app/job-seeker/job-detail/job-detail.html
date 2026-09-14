@@ -1,0 +1,93 @@
+<div class="min-h-screen bg-slate-100 p-6">
+
+  <div class="mx-auto max-w-5xl rounded-xl bg-white p-8 shadow">
+
+    <h1 class="page-title">
+      {{ job.title }}
+    </h1>
+
+    <p class="mt-2 text-lg text-gray-600">
+      {{ job.company }}
+    </p>
+
+    <div class="mt-6 flex flex-wrap gap-3">
+
+      <span class="rounded-full bg-emerald-100 px-4 py-2 text-emerald-700">
+        {{ job.location }}
+      </span>
+
+      <span class="rounded-full badge-success px-4 py-2 text-green-700">
+        {{ job.employmentType }}
+      </span>
+
+      <span class="rounded-full badge-warning px-4 py-2 text-yellow-700">
+        {{ job.salary }}
+      </span>
+
+      <span class="rounded-full bg-purple-100 px-4 py-2 text-purple-700">
+        {{ job.experience }}
+      </span>
+
+    </div>
+
+    <hr class="my-8">
+
+    <h2 class="mb-3 text-2xl font-semibold">
+      Job Description
+    </h2>
+
+    <p class="text-gray-700">
+      {{ job.description }}
+    </p>
+
+    <h2 class="mt-8 mb-3 text-2xl font-semibold">
+      Responsibilities
+    </h2>
+
+    <ul class="list-disc space-y-2 pl-6">
+
+      @for(item of job.responsibilities; track item){
+
+        <li>{{ item }}</li>
+
+      }
+
+    </ul>
+
+    <h2 class="mt-8 mb-3 text-2xl font-semibold">
+      Required Skills
+    </h2>
+
+    <div class="flex flex-wrap gap-3">
+
+      @for(skill of job.skills; track skill){
+
+        <span class="rounded-full bg-slate-200 px-4 py-2">
+
+          {{ skill }}
+
+        </span>
+
+      }
+
+    </div>
+
+    <div class="mt-10">
+
+      <button
+  (click)="apply()"
+  [disabled]="applied"
+  class="rounded-lg px-8 py-3 text-white"
+  [class.btn-primary]="!applied"
+  [class.hover:bg-emerald-700]="!applied"
+  [class.bg-gray-400]="applied">
+
+  {{ applied ? 'Applied' : 'Apply Now' }}
+
+</button>
+
+    </div>
+
+  </div>
+
+</div>

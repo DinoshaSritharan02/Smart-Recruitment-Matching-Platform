@@ -1,0 +1,131 @@
+<div class="max-w-4xl mx-auto p-6">
+
+  <div class="mb-8">
+    <h1 class="text-3xl font-bold text-gray-800">
+      Create Company Profile
+    </h1>
+
+    <p class="mt-2 text-gray-500">
+      Enter your company information.
+    </p>
+  </div>
+
+  <form
+    [formGroup]="form"
+    (ngSubmit)="save()"
+    class="rounded-2xl border border-slate-200 bg-white shadow-sm-lg p-8 space-y-6">
+
+    <!-- Company Name -->
+    <div>
+      <label class="block mb-2 text-sm font-medium text-gray-700">
+        Company Name *
+      </label>
+
+      <input
+        type="text"
+        formControlName="companyName"
+        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-emerald-500 focus:outline-none">
+
+      @if(form.controls.companyName.touched &&
+      form.controls.companyName.invalid){
+
+      <p class="mt-2 text-sm text-red-600">
+        Company name is required.
+      </p>
+
+      }
+
+    </div>
+
+    <!-- Description -->
+
+    <div>
+
+      <label class="block mb-2 text-sm font-medium text-gray-700">
+        Company Description
+      </label>
+
+      <textarea
+        rows="5"
+        formControlName="companyDescription"
+        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-emerald-500 focus:outline-none">
+      </textarea>
+
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2">
+
+      <!-- Industry -->
+
+      <div>
+
+        <label class="block mb-2 text-sm font-medium text-gray-700">
+          Industry
+        </label>
+
+        <input
+          type="text"
+          formControlName="industry"
+          class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-emerald-500 focus:outline-none">
+
+      </div>
+
+      <!-- Location -->
+
+      <div>
+
+        <label class="block mb-2 text-sm font-medium text-gray-700">
+          Company Location
+        </label>
+
+        <input
+          type="text"
+          formControlName="companyLocation"
+          class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-emerald-500 focus:outline-none">
+
+      </div>
+
+    </div>
+
+    <!-- Website -->
+
+    <div>
+
+      <label class="block mb-2 text-sm font-medium text-gray-700">
+        Website
+      </label>
+
+      <input
+        type="url"
+        formControlName="website"
+        placeholder="https://example.com"
+        class="w-full rounded-lg border border-gray-300 px-4 py-3 focus:border-emerald-500 focus:outline-none">
+
+    </div>
+
+    <!-- Buttons -->
+
+    <div class="flex justify-end gap-4 pt-4">
+
+      <button
+        type="button"
+        (click)="cancel()"
+        class="rounded-lg border border-gray-300 px-6 py-3 hover:bg-gray-100">
+
+        Cancel
+
+      </button>
+
+      <button
+        type="submit"
+        class="rounded-lg btn-primary px-6 py-3 font-medium text-white hover:bg-emerald-700">
+
+        Save Company Profile
+
+      </button>
+
+    </div>
+
+  </form>
+
+</div>

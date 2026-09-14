@@ -1,0 +1,135 @@
+<div class="max-w-5xl mx-auto space-y-8">
+
+  <div>
+
+    <h1 class="page-title">
+      Company Profile
+    </h1>
+
+    <p class="page-description">
+      Manage your company information.
+    </p>
+
+  </div>
+
+  <form
+    [formGroup]="form"
+    (ngSubmit)="save()"
+    class="space-y-8">
+
+    <div class="card">
+
+      <div class="card-header">
+        <h2 class="text-xl font-semibold">
+          Company Information
+        </h2>
+      </div>
+
+      <div class="card-body grid gap-6 md:grid-cols-2">
+
+        <div>
+
+          <label class="mb-2 block font-medium">
+            Company Name
+          </label>
+
+          <input
+            type="text"
+            formControlName="companyName"
+            class="input">
+
+        </div>
+
+        <div>
+
+          <label class="mb-2 block font-medium">
+            Industry
+          </label>
+
+          <input
+            type="text"
+            formControlName="industry"
+            class="input">
+
+        </div>
+
+        <div>
+
+          <label class="mb-2 block font-medium">
+            Company Email
+          </label>
+
+          <input
+            type="email"
+            formControlName="email"
+            class="input">
+
+        </div>
+
+        <div>
+
+          <label class="mb-2 block font-medium">
+            Phone Number
+          </label>
+
+          <input
+            type="text"
+            formControlName="phoneNumber"
+            class="input">
+
+        </div>
+
+        <div class="md:col-span-2">
+
+          <label class="mb-2 block font-medium">
+            Website
+          </label>
+
+          <input
+            type="text"
+            formControlName="website"
+            class="input">
+
+        </div>
+
+        <div class="md:col-span-2">
+
+          <label class="mb-2 block font-medium">
+            Company Description
+          </label>
+
+          <textarea
+            rows="6"
+            formControlName="description"
+            class="input">
+          </textarea>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="flex justify-end gap-4">
+
+      <button
+        type="button"
+        class="btn-secondary">
+
+        Cancel
+
+      </button>
+
+      <button
+        type="submit"
+        class="btn-primary">
+
+        Save Profile
+
+      </button>
+
+    </div>
+
+  </form>
+
+</div>

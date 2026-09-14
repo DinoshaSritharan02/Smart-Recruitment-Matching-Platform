@@ -1,0 +1,153 @@
+<div class="max-w-5xl mx-auto space-y-8">
+
+  <div>
+
+    <h1 class="page-title">
+      Edit Vacancy
+    </h1>
+
+    <p class="page-description">
+      Update vacancy information.
+    </p>
+
+  </div>
+
+  <form
+    [formGroup]="form"
+    (ngSubmit)="updateVacancy()"
+    class="space-y-8">
+
+    <div class="card">
+
+      <div class="card-header">
+        <h2 class="text-xl font-semibold">
+          Vacancy Details
+        </h2>
+      </div>
+
+      <div class="card-body grid gap-6">
+
+        <div>
+
+          <label class="mb-2 block font-medium">
+            Job Title
+          </label>
+
+          <input
+            type="text"
+            formControlName="title"
+            class="input">
+
+        </div>
+
+        <div>
+
+          <label class="mb-2 block font-medium">
+            Description
+          </label>
+
+          <textarea
+            rows="7"
+            formControlName="description"
+            class="input">
+          </textarea>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <div class="card-header">
+        <h2 class="text-xl font-semibold">
+          Requirements
+        </h2>
+      </div>
+
+      <div class="card-body grid gap-6 md:grid-cols-2">
+
+        <div>
+
+          <label class="mb-2 block font-medium">
+            Location
+          </label>
+
+          <input
+            type="text"
+            formControlName="location"
+            class="input">
+
+        </div>
+
+        <div>
+
+          <label class="mb-2 block font-medium">
+            Experience (Years)
+          </label>
+
+          <input
+            type="number"
+            formControlName="requiredExperienceYears"
+            class="input">
+
+        </div>
+
+        <div class="md:col-span-2">
+
+          <label class="mb-2 block font-medium">
+            Education Requirement
+          </label>
+
+          <input
+            type="text"
+            formControlName="educationRequirement"
+            class="input">
+
+        </div>
+
+        <div class="md:col-span-2">
+
+          <label class="flex items-center gap-3">
+
+            <input
+              type="checkbox"
+              formControlName="isClosed">
+
+            <span class="font-medium">
+              Close Vacancy
+            </span>
+
+          </label>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="flex justify-end gap-4">
+
+      <button
+        type="button"
+        (click)="cancel()"
+        class="btn-secondary">
+
+        Cancel
+
+      </button>
+
+      <button
+        type="submit"
+        class="btn-primary">
+
+        Save Changes
+
+      </button>
+
+    </div>
+
+  </form>
+
+</div>

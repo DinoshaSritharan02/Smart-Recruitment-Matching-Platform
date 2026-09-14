@@ -1,0 +1,96 @@
+<div class="min-h-screen bg-slate-100 py-10">
+
+  <div class="mx-auto max-w-4xl">
+
+    <div class="rounded-2xl bg-white p-8 shadow">
+
+      <h1 class="mb-8 text-3xl font-bold">
+        CV Management
+      </h1>
+
+      <!-- Current CV -->
+
+      <div class="rounded-xl border border-slate-200 p-6">
+
+        <h2 class="mb-4 text-xl font-semibold">
+          Current CV
+        </h2>
+
+        @if (cvInfo) {
+
+          <div class="space-y-2">
+
+            <p>
+              <span class="font-semibold">File:</span>
+              {{ cvInfo.fileName }}
+            </p>
+
+            <p>
+              <span class="font-semibold">Uploaded:</span>
+              {{ cvInfo.uploadedAt | date:'medium' }}
+            </p>
+
+            <button
+              (click)="download()"
+              class="mt-4 rounded-lg bg-green-600 px-6 py-3 text-white hover:bg-green-700">
+
+              Download CV
+
+            </button>
+
+          </div>
+
+        } @else {
+
+          <p class="page-description">
+
+            No CV has been uploaded yet.
+
+          </p>
+
+        }
+
+      </div>
+
+      <!-- Upload New CV -->
+
+      <div class="mt-8 rounded-xl border border-slate-200 p-6">
+
+        <h2 class="mb-4 text-xl font-semibold">
+          Upload New CV
+        </h2>
+
+        <input
+          type="file"
+          accept=".pdf"
+          (change)="onFileSelected($event)"
+          class="block w-full rounded-lg border p-3">
+
+        @if (selectedFile) {
+
+          <p class="mt-4 text-gray-600">
+
+            Selected File:
+            <span class="font-semibold">
+              {{ selectedFile.name }}
+            </span>
+
+          </p>
+
+        }
+
+        <button
+          (click)="upload()"
+          class="mt-6 rounded-lg btn-primary px-8 py-3 text-white hover:bg-emerald-700">
+
+          Upload CV
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

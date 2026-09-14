@@ -1,0 +1,87 @@
+<div class="min-h-screen bg-slate-100 p-6">
+
+  <div class="mx-auto max-w-4xl">
+
+    <h1 class="mb-8 text-3xl font-bold">
+      Settings
+    </h1>
+
+    <div class="space-y-6">
+
+      <!-- Profile -->
+
+      <div class="rounded-xl bg-white p-6 shadow">
+
+        <h2 class="text-xl font-semibold mb-2">
+          Profile
+        </h2>
+
+        <p class="text-gray-600 mb-4">
+          Update your personal information.
+        </p>
+
+        <a
+          routerLink="/job-seeker/edit-profile"
+          class="rounded-lg btn-primary px-5 py-2 text-white hover:bg-emerald-700">
+
+          Edit Profile
+
+        </a>
+
+      </div>
+
+      <!-- Password -->
+
+      <div class="rounded-xl bg-white p-6 shadow">
+
+        <h2 class="text-xl font-semibold mb-2">
+          Password
+        </h2>
+
+        <p class="text-gray-600">
+
+          Password changing will be available in a future update.
+
+        </p>
+
+      </div>
+
+      <!-- Notifications -->
+
+      <div class="rounded-xl bg-white p-6 shadow">
+
+        <h2 class="text-xl font-semibold mb-2">
+          Notifications
+        </h2>
+
+        <p class="text-gray-600">
+
+          Notification preferences will be available soon.
+
+        </p>
+
+      </div>
+
+      <!-- Logout -->
+
+      <div class="rounded-xl bg-white p-6 shadow">
+
+        <h2 class="text-xl font-semibold mb-4">
+          Account
+        </h2>
+
+        <button
+          (click)="logout()"
+          class="rounded-lg bg-red-600 px-6 py-3 text-white hover:bg-red-700">
+
+          Logout
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

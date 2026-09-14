@@ -1,0 +1,172 @@
+<div class="max-w-5xl mx-auto space-y-8">
+
+  <div>
+
+    <h1 class="page-title">
+      Create Vacancy
+    </h1>
+
+    <p class="page-description">
+      Publish a new job vacancy for candidates.
+    </p>
+
+  </div>
+
+  <form
+    [formGroup]="form"
+    (ngSubmit)="submit()"
+    class="space-y-8">
+
+    <div class="card">
+
+      <div class="card-header">
+        <h2 class="text-xl font-semibold">
+          Job Details
+        </h2>
+      </div>
+
+      <div class="card-body space-y-6">
+
+        <div>
+
+          <label class="mb-2 block font-medium">
+            Job Title
+          </label>
+
+          <input
+            type="text"
+            formControlName="title"
+            class="input">
+
+        </div>
+
+        <div>
+
+          <label class="mb-2 block font-medium">
+            Description
+          </label>
+
+          <textarea
+            rows="7"
+            formControlName="description"
+            class="input">
+          </textarea>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <div class="card-header">
+        <h2 class="text-xl font-semibold">
+          Requirements
+        </h2>
+      </div>
+
+      <div class="card-body grid gap-6 md:grid-cols-2">
+
+        <div>
+
+          <label class="mb-2 block font-medium">
+            Location
+          </label>
+
+          <input
+            type="text"
+            formControlName="location"
+            class="input">
+
+        </div>
+
+        <div>
+
+          <label class="mb-2 block font-medium">
+            Experience
+          </label>
+
+          <input
+            type="number"
+            formControlName="requiredExperienceYears"
+            class="input">
+
+        </div>
+
+        <div class="md:col-span-2">
+
+          <label class="mb-2 block font-medium">
+            Education Requirement
+          </label>
+
+          <input
+            type="text"
+            formControlName="educationRequirement"
+            class="input">
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="card">
+
+      <div class="card-header">
+        <h2 class="text-xl font-semibold">
+          Required Skills
+        </h2>
+      </div>
+
+      <div class="card-body">
+
+        <div class="grid gap-4 md:grid-cols-3">
+
+          @for(skill of skills(); track skill.id){
+
+          <label
+            class="flex cursor-pointer items-center gap-3 rounded-xl border border-slate-200 p-4 transition hover:border-emerald-600 hover:bg-emerald-50">
+
+            <input
+              type="checkbox"
+              [value]="skill.id">
+
+            <span class="font-medium">
+              {{skill.name}}
+            </span>
+
+          </label>
+
+          }
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="flex justify-end gap-4">
+
+      <button
+        type="button"
+        (click)="cancel()"
+        class="btn-secondary">
+
+        Cancel
+
+      </button>
+
+      <button
+        type="submit"
+        class="btn-primary">
+
+        Publish Vacancy
+
+      </button>
+
+    </div>
+
+  </form>
+
+</div>

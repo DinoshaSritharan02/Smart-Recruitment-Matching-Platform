@@ -1,0 +1,59 @@
+<div class="space-y-6">
+
+  <div>
+    <h2 class="text-2xl font-bold">
+      Job Seekers
+    </h2>
+
+    <p class="page-description">
+      Manage registered job seekers
+    </p>
+  </div>
+
+  <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+
+    <table class="min-w-full">
+
+      <thead class="bg-gray-100">
+
+        <tr>
+          <th class="px-6 py-3 text-left">Name</th>
+          <th class="px-6 py-3 text-left">Email</th>
+          <th class="px-6 py-3 text-left">Skills</th>
+          <th class="px-6 py-3 text-left">Experience</th>
+          <th class="px-6 py-3 text-left">Status</th>
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        @for(seeker of seekers; track seeker.id){
+
+       <tr class="border-t border-slate-100 hover:bg-emerald-50 transition">
+
+          <td class="px-6 py-4">{{ seeker.name }}</td>
+
+          <td class="px-6 py-4">{{ seeker.email }}</td>
+
+          <td class="px-6 py-4">{{ seeker.skills }}</td>
+
+          <td class="px-6 py-4">{{ seeker.experience }} Years</td>
+
+          <td class="px-6 py-4">
+            <span class="rounded-full badge-success px-3 py-1 text-sm">
+              {{ seeker.status }}
+            </span>
+          </td>
+
+        </tr>
+
+        }
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

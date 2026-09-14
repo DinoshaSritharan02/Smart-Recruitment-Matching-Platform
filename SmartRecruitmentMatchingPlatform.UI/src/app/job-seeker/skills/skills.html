@@ -1,0 +1,59 @@
+<div class="min-h-screen bg-slate-100 p-6">
+
+  <div class="mx-auto max-w-5xl rounded-xl bg-white p-8 shadow">
+
+    <h1 class="page-title">
+      Skills
+    </h1>
+
+    <p class="page-description">
+      Manage your professional skills.
+    </p>
+
+    <div class="mt-8 flex gap-3">
+
+      <input
+        [(ngModel)]="newSkill"
+        type="text"
+        placeholder="Enter a skill"
+        class="flex-1 rounded-lg border p-3">
+
+      <button
+        (click)="addSkill()"
+        class="rounded-lg btn-primary px-6 py-3 text-white hover:bg-emerald-700">
+
+        Add Skill
+
+      </button>
+
+    </div>
+
+    <div class="mt-8 flex flex-wrap gap-3">
+
+      @for(skill of skills; track skill; let i = $index){
+
+        <div class="flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-2">
+
+          <span class="text-emerald-700">
+
+            {{ skill }}
+
+          </span>
+
+          <button
+            (click)="removeSkill(i)"
+            class="font-bold text-red-600 hover:text-red-800">
+
+            ✕
+
+          </button>
+
+        </div>
+
+      }
+
+    </div>
+
+  </div>
+
+</div>

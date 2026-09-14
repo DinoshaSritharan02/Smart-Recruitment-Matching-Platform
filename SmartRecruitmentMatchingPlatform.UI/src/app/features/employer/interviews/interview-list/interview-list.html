@@ -1,0 +1,97 @@
+<div class="max-w-6xl mx-auto space-y-8">
+
+  <div class="flex items-center justify-between">
+
+    <div>
+
+      <h1 class="page-title">
+        Interviews
+      </h1>
+
+      <p class="page-description">
+        Manage scheduled interviews.
+      </p>
+
+    </div>
+
+    <button
+      routerLink="/employer/schedule-interview"
+      class="btn-primary">
+
+      Schedule Interview
+
+    </button>
+
+  </div>
+
+  <div class="table-wrapper">
+
+    <table class="min-w-full">
+
+      <thead class="table-header">
+
+        <tr>
+
+          <th class="table-th">Candidate</th>
+          <th class="table-th">Position</th>
+          <th class="table-th">Date</th>
+          <th class="table-th">Time</th>
+          <th class="table-th">Mode</th>
+          <th class="table-th">Status</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        @for(interview of interviews(); track interview.id){
+
+       <tr class="border-t border-slate-100 hover:bg-emerald-50 transition">
+          <td class="table-td">
+            {{ interview.applicant }}
+          </td>
+
+          <td class="table-td">
+            {{ interview.vacancy }}
+          </td>
+
+          <td class="table-td">
+            {{ interview.interviewDate }}
+          </td>
+
+          <td class="table-td">
+            {{ interview.interviewTime }}
+          </td>
+
+          <td class="table-td">
+            {{ interview.mode }}
+          </td>
+
+          <td class="table-td">
+
+            @if(interview.status==='Scheduled'){
+
+            <span class="badge-success">Scheduled</span>
+
+            } @else {
+
+            <span class="badge-warning">
+              Pending
+            </span>
+
+            }
+
+          </td>
+
+        </tr>
+
+        }
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

@@ -1,0 +1,79 @@
+<div class="max-w-6xl mx-auto space-y-8">
+
+  <div class="flex items-center justify-between">
+
+    <div>
+
+      <h1 class="page-title">
+        Notifications
+      </h1>
+
+      <p class="page-description">
+        Recruitment updates and system alerts.
+      </p>
+
+    </div>
+
+    <button class="btn-primary">
+
+      Mark All as Read
+
+    </button>
+
+  </div>
+
+  <div class="card">
+
+    <div class="card-body">
+
+      <div class="space-y-4">
+
+        @for(notification of notifications(); track notification.id){
+
+        <div class="flex items-start justify-between rounded-xl border border-slate-200 p-5 transition hover:border-emerald-500 hover:bg-emerald-50">
+
+          <div>
+
+            <h3 class="font-semibold text-slate-900">
+              {{ notification.title }}
+            </h3>
+
+            <p class="mt-1 text-slate-600">
+              {{ notification.message }}
+            </p>
+
+            <p class="mt-2 text-sm text-slate-400">
+              {{ notification.createdAt }}
+            </p>
+
+          </div>
+
+          @if(notification.isRead){
+
+          <span class="badge-success">
+
+            Read
+
+          </span>
+
+          } @else {
+
+          <span class="badge-warning">
+
+            New
+
+          </span>
+
+          }
+
+        </div>
+
+        }
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

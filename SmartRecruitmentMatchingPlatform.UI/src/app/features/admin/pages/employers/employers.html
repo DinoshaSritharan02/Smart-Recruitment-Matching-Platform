@@ -1,0 +1,63 @@
+<div class="space-y-6">
+
+  <div class="flex items-center justify-between">
+    <h1 class="text-2xl font-bold">Employers</h1>
+
+    <button
+      class="rounded-lg btn-primary px-4 py-2 text-white hover:bg-emerald-700">
+      Add Employer
+    </button>
+  </div>
+
+  <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+
+    <table class="min-w-full">
+
+      <thead class="bg-slate-100">
+
+        <tr>
+
+          <th class="px-6 py-3 text-left">Company</th>
+
+          <th class="px-6 py-3 text-left">Email</th>
+
+          <th class="px-6 py-3 text-left">Contact</th>
+
+          <th class="px-6 py-3 text-left">Status</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        @for(emp of employers; track emp.id){
+
+        <tr class="border-t border-slate-100 hover:bg-emerald-50 transition">
+
+          <td class="px-6 py-4">{{emp.companyName}}</td>
+
+          <td class="px-6 py-4">{{emp.email}}</td>
+
+          <td class="px-6 py-4">{{emp.contact}}</td>
+
+          <td class="px-6 py-4">
+
+            <span
+              class="rounded-full badge-success px-3 py-1 text-sm text-green-700">
+              {{emp.status}}
+            </span>
+
+          </td>
+
+        </tr>
+
+        }
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

@@ -1,0 +1,108 @@
+<div class="space-y-6">
+
+    <div class="flex items-center justify-between">
+
+        <h2 class="text-2xl font-bold">
+
+            Users
+
+        </h2>
+
+        <button
+            class="rounded-lg btn-primary px-4 py-2 text-white hover:bg-emerald-700">
+
+            Add User
+
+        </button>
+
+    </div>
+
+    <div class="mb-6">
+  <app-search-bar
+    (search)="onSearch($event)">
+  </app-search-bar>
+</div>
+
+    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+
+        <table class="min-w-full">
+
+            <thead class="bg-gray-100">
+
+                <tr>
+
+                    <th class="px-6 py-3 text-left">ID</th>
+
+                    <th class="px-6 py-3 text-left">Name</th>
+
+                    <th class="px-6 py-3 text-left">Email</th>
+
+                    <th class="px-6 py-3 text-left">Role</th>
+
+                    <th class="px-6 py-3 text-left">Status</th>
+
+                    <th class="px-6 py-3 text-left">Created</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+@for(user of users; track user.id){
+
+<tr class="border-t border-slate-100 hover:bg-emerald-50 transition">
+
+    <td class="px-6 py-4">
+        {{ user.id }}
+    </td>
+
+    <td class="px-6 py-4">
+    <a
+      [routerLink]="['/admin/users', user.id]"
+      class="text-emerald-600 hover:underline">
+
+      {{ user.fullName }}
+
+    </a>
+</td>
+
+    <td class="px-6 py-4">
+        {{ user.email }}
+    </td>
+
+    <td class="px-6 py-4">
+        {{ user.role }}
+    </td>
+
+    <td class="px-6 py-4">
+        <button
+(click)="toggleStatus(user)"
+class="rounded-full px-3 py-1 text-sm"
+
+[class.badge-success]="user.isActive"
+[class.text-green-700]="user.isActive"
+
+[class.badge-danger]="!user.isActive"
+[class.text-red-700]="!user.isActive">
+
+{{ user.isActive ? 'Active' : 'Inactive' }}
+
+</button>
+    </td>
+
+    <td class="px-6 py-4">
+        {{ user.createdAt | date:'yyyy-MM-dd' }}
+    </td>
+
+</tr>
+
+}
+
+</tbody>
+
+        </table>
+
+    </div>
+
+</div>

@@ -1,0 +1,17 @@
+<div class="flex gap-3">
+
+  <input
+    type="text"
+    [(ngModel)]="keyword"
+    placeholder="Search..."
+    class="w-full rounded-lg border border-gray-300 px-4 py-2 focus:border-emerald-500 focus:outline-none">
+
+  <button
+    (click)="onSearch()"
+    class="rounded-lg btn-primary px-5 py-2 text-white hover:bg-emerald-700">
+
+    Search
+
+  </button>
+
+</div>
