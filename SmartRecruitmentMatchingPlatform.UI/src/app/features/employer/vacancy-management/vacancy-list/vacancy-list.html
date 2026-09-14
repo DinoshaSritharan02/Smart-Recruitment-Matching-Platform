@@ -1,42 +1,42 @@
-<div class="max-w-7xl mx-auto p-6">
+<div class="page-container">
 
-  <div class="flex items-center justify-between mb-8">
-    <div>
-      <h1 class="text-4xl font-bold text-slate-900">
-        My Vacancies
-      </h1>
+  <div class="flex items-center justify-between">
 
-      <p class="mt-2 text-lg text-slate-600">
-        Manage all your published job vacancies.
-      </p>
-    </div>
+  <div>
 
-    <a
-      routerLink="/employer/create-vacancy"
-      class="rounded-lg bg-blue-600 px-6 py-3 text-white font-semibold hover:bg-blue-700">
-      + Create Vacancy
-    </a>
+    <h1 class="page-title">
+      Vacancy Management
+    </h1>
+
+    <p class="page-description">
+      Manage and monitor all published vacancies.
+    </p>
+
   </div>
 
-  <div class="overflow-x-auto rounded-xl bg-white shadow-lg">
+  <a
+    routerLink="/employer/create-vacancy"
+    class="btn-primary">
+
+    + Create Vacancy
+
+  </a>
+
+</div>
+
+  <div class="table-wrapper">
 
     <table class="min-w-full">
 
-      <thead class="bg-slate-100">
+      <thead class="table-header">
 
         <tr>
 
-          <th class="px-6 py-4 text-left">Job Title</th>
-
-          <th class="px-6 py-4 text-left">Location</th>
-
-          <th class="px-6 py-4 text-left">Salary</th>
-
-          <th class="px-6 py-4 text-left">Applications</th>
-
-          <th class="px-6 py-4 text-left">Status</th>
-
-          <th class="px-6 py-4 text-center">Actions</th>
+          <th class="table-th">Title</th>
+          <th class="table-th">Location</th>
+          <th class="table-th">Experience</th>
+          <th class="table-th">Status</th>
+          <th class="px-6 py-4 text-right">Actions</th>
 
         </tr>
 
@@ -44,64 +44,56 @@
 
       <tbody>
 
-        @for(vacancy of vacancies(); track vacancy.id){
+        @for(v of vacancies(); track v.id){
 
-        <tr class="border-b">
-
-          <td class="px-6 py-4">
-            {{ vacancy.jobTitle }}
+       <tr class="border-t border-slate-100 hover:bg-emerald-50 transition">
+          <td class="table-td font-semibold">
+            {{ v.title }}
           </td>
 
-          <td class="px-6 py-4">
-            {{ vacancy.location }}
+          <td class="table-td">
+            {{ v.location }}
           </td>
 
-          <td class="px-6 py-4">
-            Rs. {{ vacancy.salary }}
+          <td class="table-td">
+            {{ v.requiredExperienceYears }} Years
           </td>
 
-          <td class="px-6 py-4">
-            {{ vacancy.applications }}
-          </td>
-
-          <td class="px-6 py-4">
+          <td class="table-td">
 
             <span
-              class="rounded-full px-3 py-1 text-sm font-semibold"
-              [class.bg-green-100]="vacancy.status==='Active'"
-              [class.text-green-700]="vacancy.status==='Active'"
-              [class.bg-red-100]="vacancy.status==='Closed'"
-              [class.text-red-700]="vacancy.status==='Closed'">
+              class="rounded-full badge-success px-3 py-1 text-sm text-green-700">
 
-              {{ vacancy.status }}
+              {{ v.status }}
 
             </span>
 
           </td>
 
-          <td class="px-6 py-4">
+          <td class="table-td text-right space-x-2">
 
-            <div class="flex justify-center gap-2">
+            <a
+              [routerLink]="['/employer/view-vacancy',v.id]"
+              class="btn-secondary">
 
-              <a
-                [routerLink]="['/employer/view-vacancy', vacancy.id]"
-                class="rounded bg-sky-600 px-3 py-2 text-white">
-                View
-              </a>
+              View
 
-              <a
-                [routerLink]="['/employer/edit-vacancy', vacancy.id]"
-                class="rounded bg-yellow-500 px-3 py-2 text-white">
-                Edit
-              </a>
+            </a>
 
-              <button
-                type="button"
-                class="rounded bg-red-600 px-3 py-2 text-white">
-                Delete
-              </button>
+            <a
+              [routerLink]="['/employer/edit-vacancy',v.id]"
+              class="btn-secondary">
 
-            </div>
+              Edit
+
+            </a>
+            <a        
+  [routerLink]="['/employer/vacancies', v.id, 'applicants']"
+  class="rounded-lg bg-green-600 px-4 py-2 text-white">
+
+  Applicants
+
+</a>
 
           </td>
 

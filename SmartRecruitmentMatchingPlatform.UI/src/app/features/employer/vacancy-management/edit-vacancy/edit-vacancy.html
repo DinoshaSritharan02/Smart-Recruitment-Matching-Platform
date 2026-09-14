@@ -1,129 +1,128 @@
-<div class="max-w-5xl mx-auto p-6">
+<div class="max-w-5xl mx-auto space-y-8">
 
-  <div class="mb-8">
-    <h1 class="text-3xl font-bold text-gray-900">
+  <div>
+
+    <h1 class="page-title">
       Edit Vacancy
     </h1>
 
-    <p class="mt-2 text-gray-500">
+    <p class="page-description">
       Update vacancy information.
     </p>
+
   </div>
 
   <form
     [formGroup]="form"
     (ngSubmit)="updateVacancy()"
-    class="space-y-6 rounded-xl bg-white p-8 shadow-lg">
+    class="space-y-8">
 
-    <div>
-      <label class="mb-2 block font-medium">
-        Job Title
-      </label>
+    <div class="card">
 
-      <input
-        type="text"
-        formControlName="jobTitle"
-        class="w-full rounded-lg border px-4 py-3">
-    </div>
-
-    <div>
-      <label class="mb-2 block font-medium">
-        Job Description
-      </label>
-
-      <textarea
-        rows="6"
-        formControlName="jobDescription"
-        class="w-full rounded-lg border px-4 py-3">
-      </textarea>
-    </div>
-
-    <div class="grid gap-6 md:grid-cols-2">
-
-      <div>
-        <label class="mb-2 block font-medium">
-          Employment Type
-        </label>
-
-        <select
-          formControlName="employmentType"
-          class="w-full rounded-lg border px-4 py-3">
-
-          <option value="">Select</option>
-          <option>Full Time</option>
-          <option>Part Time</option>
-          <option>Contract</option>
-
-        </select>
+      <div class="card-header">
+        <h2 class="text-xl font-semibold">
+          Vacancy Details
+        </h2>
       </div>
 
-      <div>
-        <label class="mb-2 block font-medium">
-          Experience Level
-        </label>
+      <div class="card-body grid gap-6">
 
-        <select
-          formControlName="experienceLevel"
-          class="w-full rounded-lg border px-4 py-3">
+        <div>
 
-          <option value="">Select</option>
-          <option>Entry Level</option>
-          <option>Mid Level</option>
-          <option>Senior Level</option>
+          <label class="mb-2 block font-medium">
+            Job Title
+          </label>
 
-        </select>
+          <input
+            type="text"
+            formControlName="title"
+            class="input">
+
+        </div>
+
+        <div>
+
+          <label class="mb-2 block font-medium">
+            Description
+          </label>
+
+          <textarea
+            rows="7"
+            formControlName="description"
+            class="input">
+          </textarea>
+
+        </div>
+
       </div>
 
     </div>
 
-    <div class="grid gap-6 md:grid-cols-2">
+    <div class="card">
 
-      <div>
-        <label class="mb-2 block font-medium">
-          Location
-        </label>
-
-        <input
-          type="text"
-          formControlName="location"
-          class="w-full rounded-lg border px-4 py-3">
+      <div class="card-header">
+        <h2 class="text-xl font-semibold">
+          Requirements
+        </h2>
       </div>
 
-      <div>
-        <label class="mb-2 block font-medium">
-          Application Deadline
-        </label>
+      <div class="card-body grid gap-6 md:grid-cols-2">
 
-        <input
-          type="date"
-          formControlName="applicationDeadline"
-          class="w-full rounded-lg border px-4 py-3">
-      </div>
+        <div>
 
-    </div>
+          <label class="mb-2 block font-medium">
+            Location
+          </label>
 
-    <div class="grid gap-6 md:grid-cols-2">
+          <input
+            type="text"
+            formControlName="location"
+            class="input">
 
-      <div>
-        <label class="mb-2 block font-medium">
-          Minimum Salary
-        </label>
+        </div>
 
-        <input
-          type="number"
-          formControlName="salaryMin"
-          class="w-full rounded-lg border px-4 py-3">
-      </div>
+        <div>
 
-      <div>
-        <label class="mb-2 block font-medium">
-          Maximum Salary
-        </label>
+          <label class="mb-2 block font-medium">
+            Experience (Years)
+          </label>
 
-        <input
-          type="number"
-          formControlName="salaryMax"
-          class="w-full rounded-lg border px-4 py-3">
+          <input
+            type="number"
+            formControlName="requiredExperienceYears"
+            class="input">
+
+        </div>
+
+        <div class="md:col-span-2">
+
+          <label class="mb-2 block font-medium">
+            Education Requirement
+          </label>
+
+          <input
+            type="text"
+            formControlName="educationRequirement"
+            class="input">
+
+        </div>
+
+        <div class="md:col-span-2">
+
+          <label class="flex items-center gap-3">
+
+            <input
+              type="checkbox"
+              formControlName="isClosed">
+
+            <span class="font-medium">
+              Close Vacancy
+            </span>
+
+          </label>
+
+        </div>
+
       </div>
 
     </div>
@@ -133,14 +132,18 @@
       <button
         type="button"
         (click)="cancel()"
-        class="rounded-lg border px-6 py-3">
+        class="btn-secondary">
+
         Cancel
+
       </button>
 
       <button
         type="submit"
-        class="rounded-lg bg-blue-600 px-6 py-3 text-white hover:bg-blue-700">
+        class="btn-primary">
+
         Save Changes
+
       </button>
 
     </div>

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SmartRecruitmentMatchingPlatform.API.DTOs.ContactRequests;
 using SmartRecruitmentMatchingPlatform.API.Models.DTOs.ContactRequest;
 using SmartRecruitmentMatchingPlatform.API.Repositories;
+using SmartRecruitmentMatchingPlatform.API.Services;
 using SmartRecruitmentMatchingPlatform.API.Services.Interfaces;
 using System.Security.Claims;
 
@@ -15,13 +16,16 @@ namespace SmartRecruitmentMatchingPlatform.API.Controllers
     {
         private readonly IContactRequestService _contactRequestService;
         private readonly IJobSeekerRepository _jobSeekerRepository;
+        private readonly IEmployerService _employerService;
 
         public ContactRequestsController(
-            IContactRequestService contactRequestService,
-            IJobSeekerRepository jobSeekerRepository)
+     IContactRequestService contactRequestService,
+     IJobSeekerRepository jobSeekerRepository,
+     IEmployerService employerService)
         {
             _contactRequestService = contactRequestService;
             _jobSeekerRepository = jobSeekerRepository;
+            _employerService = employerService;
         }
 
         [HttpGet]
@@ -64,18 +68,22 @@ namespace SmartRecruitmentMatchingPlatform.API.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Employer")]
-        public async Task<IActionResult> Create(
-    CreateContactRequestDto dto)
+        public async Task<IActionResult> Create(CreateContactRequestDto dto)
         {
-            var employerIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userIdClaim = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-            if (string.IsNullOrEmpty(employerIdClaim))
+            if (string.IsNullOrWhiteSpace(userIdClaim))
                 return Unauthorized();
 
-            var employerId = int.Parse(employerIdClaim);
+            var userId = Guid.Parse(userIdClaim);
+
+            var employer = await _employerService.GetProfileAsync(userId);
+
+            if (employer == null)
+                return NotFound("Employer profile not found.");
 
             var result = await _contactRequestService.CreateAsync(
-                employerId,
+                employer.Id,
                 dto);
 
             return Ok(result);

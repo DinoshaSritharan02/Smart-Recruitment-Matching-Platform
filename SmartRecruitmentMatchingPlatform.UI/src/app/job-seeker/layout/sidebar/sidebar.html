@@ -1,6 +1,6 @@
-<div class="fixed left-0 top-0 h-screen w-64 bg-slate-900 text-white shadow-xl">
+<div class="fixed left-0 top-0 flex h-screen w-64 flex-col bg-slate-900 text-white shadow-xl">
 
-  <div class="border-b border-slate-700 p-6">
+  <div class="flex-shrink-0 border-b border-slate-700 p-6">
 
     <h2 class="text-2xl font-bold">
       SmartRecruit
@@ -12,78 +12,61 @@
 
   </div>
 
-  <nav class="mt-6 flex flex-col gap-2 px-4">
+  <nav class="flex-1 overflow-y-auto px-4 py-6">
 
-    <a
-      routerLink="/job-seeker/dashboard"
-      routerLinkActive="bg-blue-600"
-      class="rounded-lg px-4 py-3 hover:bg-slate-800">
-      📊 Dashboard
-    </a>
+    <div class="flex flex-col gap-2">
 
-    <a
-      routerLink="/job-seeker/profile"
-      routerLinkActive="bg-blue-600"
-      class="rounded-lg px-4 py-3 hover:bg-slate-800">
-      👤 Profile
-    </a>
+      <a routerLink="/job-seeker/dashboard" routerLinkActive="btn-primary"
+        class="rounded-lg px-4 py-3 hover:bg-slate-800">
+        📊 Dashboard
+      </a>
 
-    <a
-      routerLink="/job-seeker/education"
-      routerLinkActive="bg-blue-600"
-      class="rounded-lg px-4 py-3 hover:bg-slate-800">
-      🎓 Education
-    </a>
+      <a routerLink="/job-seeker/profile" routerLinkActive="btn-primary"
+        class="rounded-lg px-4 py-3 hover:bg-slate-800">
+        👤 Profile
+      </a>
 
-    <a
-      routerLink="/job-seeker/experience"
-      routerLinkActive="bg-blue-600"
-      class="rounded-lg px-4 py-3 hover:bg-slate-800">
-      💼 Experience
-    </a>
+      <a routerLink="/job-seeker/education" routerLinkActive="btn-primary"
+        class="rounded-lg px-4 py-3 hover:bg-slate-800">
+        🎓 Education
+      </a>
 
-    <a
-      routerLink="/job-seeker/skills"
-      routerLinkActive="bg-blue-600"
-      class="rounded-lg px-4 py-3 hover:bg-slate-800">
-      🛠 Skills
-    </a>
+      <a routerLink="/job-seeker/experience" routerLinkActive="btn-primary"
+        class="rounded-lg px-4 py-3 hover:bg-slate-800">
+        💼 Experience
+      </a>
 
-    <a
-      routerLink="/job-seeker/cv-upload"
-      routerLinkActive="bg-blue-600"
-      class="rounded-lg px-4 py-3 hover:bg-slate-800">
-      📄 CV Upload
-    </a>
+      <a routerLink="/job-seeker/skills" routerLinkActive="btn-primary"
+        class="rounded-lg px-4 py-3 hover:bg-slate-800">
+        🛠 Skills
+      </a>
 
-    <a
-      routerLink="/job-seeker/job-search"
-      routerLinkActive="bg-blue-600"
-      class="rounded-lg px-4 py-3 hover:bg-slate-800">
-      🔍 Find Jobs
-    </a>
+      <a routerLink="/job-seeker/cv-upload" routerLinkActive="btn-primary"
+        class="rounded-lg px-4 py-3 hover:bg-slate-800">
+        📄 CV Upload
+      </a>
 
-    <a
-      routerLink="/job-seeker/my-applications"
-      routerLinkActive="bg-blue-600"
-      class="rounded-lg px-4 py-3 hover:bg-slate-800">
-      📋 My Applications
-    </a>
+      <a routerLink="/job-seeker/job-search" routerLinkActive="btn-primary"
+        class="rounded-lg px-4 py-3 hover:bg-slate-800">
+        🔍 Find Jobs
+      </a>
 
-    <a
-      routerLink="/job-seeker/notifications"
-      routerLinkActive="bg-blue-600"
-      class="rounded-lg px-4 py-3 hover:bg-slate-800">
-      🔔 Notifications
-    </a>
-    <a
-  routerLink="/job-seeker/settings"
-  routerLinkActive="bg-blue-600"
-  class="rounded-lg px-4 py-3 hover:bg-slate-800">
+      <a routerLink="/job-seeker/my-applications" routerLinkActive="btn-primary"
+        class="rounded-lg px-4 py-3 hover:bg-slate-800">
+        📋 My Applications
+      </a>
 
-  ⚙️ Settings
+      <a routerLink="/job-seeker/notifications" routerLinkActive="btn-primary"
+        class="rounded-lg px-4 py-3 hover:bg-slate-800">
+        🔔 Notifications
+      </a>
 
-</a>
+      <a routerLink="/job-seeker/settings" routerLinkActive="btn-primary"
+        class="rounded-lg px-4 py-3 hover:bg-slate-800">
+        ⚙️ Settings
+      </a>
+
+    </div>
 
   </nav>
 

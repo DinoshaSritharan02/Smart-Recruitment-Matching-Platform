@@ -1,3 +1,191 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#F5F7F5] text-gray-800;
+  }
+}
+
+@layer components {
+
+  /* =========================
+     Page
+  ========================= */
+
+  .page-container {
+    @apply max-w-7xl mx-auto p-8 space-y-8;
+  }
+
+  .page-title {
+    @apply text-4xl font-bold tracking-tight text-gray-900;
+  }
+
+  .page-description {
+    @apply mt-2 text-gray-500 text-base;
+  }
+
+  /* =========================
+     Cards
+  ========================= */
+
+  .card {
+    @apply rounded-2xl bg-white border border-gray-200 shadow-sm transition hover:shadow-lg;
+  }
+
+  .card-header {
+    @apply px-6 py-5 border-b border-gray-100;
+  }
+
+  .card-body {
+    @apply p-6;
+  }
+
+  /* =========================
+     Buttons
+  ========================= */
+
+  .btn-primary {
+    @apply rounded-xl bg-green-700 px-5 py-3 font-semibold text-white transition duration-200 hover:bg-green-800;
+  }
+
+  .btn-secondary {
+    @apply rounded-xl border border-gray-300 bg-white px-5 py-3 font-semibold text-gray-700 transition duration-200 hover:bg-gray-50;
+  }
+
+  .btn-danger {
+    @apply rounded-xl bg-red-600 px-5 py-3 font-semibold text-white transition hover:bg-red-700;
+  }
+
+  /* =========================
+     Inputs
+  ========================= */
+
+  .input {
+    @apply w-full rounded-xl border border-gray-300 bg-white px-4 py-3 transition focus:border-green-700 focus:ring-4 focus:ring-green-100 focus:outline-none;
+  }
+
+  .textarea {
+    @apply w-full rounded-xl border border-gray-300 bg-white px-4 py-3 transition focus:border-green-700 focus:ring-4 focus:ring-green-100 focus:outline-none;
+  }
+
+  .select {
+    @apply w-full rounded-xl border border-gray-300 bg-white px-4 py-3 transition focus:border-green-700 focus:ring-4 focus:ring-green-100 focus:outline-none;
+  }
+
+  /* =========================
+     Tables
+  ========================= */
+
+  .table-wrapper {
+    @apply overflow-hidden rounded-2xl bg-white border border-gray-200 shadow-sm;
+  }
+
+  .table-header {
+    @apply bg-green-50;
+  }
+
+  .table-th {
+    @apply px-6 py-4 text-left text-xs font-bold uppercase tracking-wider text-gray-600;
+  }
+
+  .table-td {
+    @apply px-6 py-5 text-gray-700;
+  }
+
+  .table-row {
+    @apply border-t hover:bg-green-50 transition;
+  }
+
+  /* =========================
+     Badges
+  ========================= */
+
+  .badge-success {
+  border-radius: 9999px;
+  background-color: rgb(209 250 229);
+  color: rgb(4 120 87);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-warning {
+  border-radius: 9999px;
+  background-color: rgb(254 243 199);
+  color: rgb(180 83 9);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.badge-danger {
+  border-radius: 9999px;
+  background-color: rgb(254 226 226);
+  color: rgb(185 28 28);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+  .badge-info {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  background-color: rgb(209 250 229);
+  color: rgb(4 120 87);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+  /* =========================
+     Dashboard Cards
+  ========================= */
+
+  .stat-card {
+    @apply rounded-2xl bg-white border border-gray-200 p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  .stat-title {
+    @apply text-sm text-gray-500;
+  }
+
+  .stat-value {
+    @apply mt-2 text-4xl font-bold text-gray-900;
+  }
+
+  .stat-icon {
+    @apply flex h-14 w-14 items-center justify-center rounded-2xl bg-green-700 text-white;
+  }
+
+  /* =========================
+     Sections
+  ========================= */
+
+  .section-title {
+    @apply text-xl font-semibold text-gray-900;
+  }
+
+  /* =========================
+     Hero Banner
+  ========================= */
+
+  .hero-banner {
+    @apply rounded-3xl bg-gradient-to-r from-emerald-800 via-emerald-700 to-emerald-600;
+  }
+
+  /* =========================
+     Sidebar
+  ========================= */
+
+  .sidebar-link {
+    @apply flex items-center gap-3 rounded-xl px-4 py-3 text-gray-200 transition hover:bg-green-700;
+  }
+
+  .sidebar-link-active {
+    @apply bg-green-700 text-white;
+  }
+  
+
+}

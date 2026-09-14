@@ -1,15 +1,19 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  inject
+  inject,
+  Input
 } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
+
 import {
   FormBuilder,
   ReactiveFormsModule,
   Validators
 } from '@angular/forms';
+
+import { ContactRequestService } from '../../services/contact-request.service';
 
 @Component({
   selector: 'app-send-contact-request',
@@ -24,16 +28,21 @@ import {
 })
 export class SendContactRequest {
 
+  @Input() jobSeekerProfileId = '';
+
   private readonly fb = inject(FormBuilder);
+
+  private readonly service = inject(ContactRequestService);
 
   readonly form = this.fb.nonNullable.group({
 
-    subject: ['', Validators.required],
-
-    message: ['', [
-      Validators.required,
-      Validators.minLength(10)
-    ]]
+    message: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(10)
+      ]
+    ]
 
   });
 
@@ -47,7 +56,29 @@ export class SendContactRequest {
 
     }
 
-    console.log(this.form.getRawValue());
+    this.service.create({
+
+      jobSeekerProfileId: this.jobSeekerProfileId,
+
+      message: this.form.getRawValue().message
+
+    }).subscribe({
+
+      next: () => {
+
+        alert('Contact request sent successfully.');
+
+        this.form.reset();
+
+      },
+
+      error: () => {
+
+        alert('Failed to send contact request.');
+
+      }
+
+    });
 
   }
 

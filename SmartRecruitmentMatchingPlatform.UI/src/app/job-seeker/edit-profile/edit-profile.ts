@@ -6,16 +6,17 @@ import {
   Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { RouterLink } from '@angular/router';
 import { JobSeekerService } from '../services/job-seeker.service';
 
 @Component({
   selector: 'app-edit-profile',
   standalone: true,
   imports: [
-    CommonModule,
-    ReactiveFormsModule
-  ],
+  CommonModule,
+  ReactiveFormsModule,
+  RouterLink
+],
   templateUrl: './edit-profile.html',
   styleUrl: './edit-profile.css'
 })
@@ -48,43 +49,49 @@ export class EditProfile implements OnInit {
 
   ngOnInit(): void {
 
-    this.service.getProfile().subscribe({
+  console.log('Edit Profile Loaded');
 
-      next: profile => {
+  this.service.getProfile().subscribe({
 
-        this.form.patchValue({
+    next: profile => {
 
-          phoneNumber: profile.phoneNumber,
+      console.log('PROFILE RECEIVED', profile);
 
-          dateOfBirth: profile.dateOfBirth.substring(0, 10),
+      this.form.patchValue({
+        phoneNumber: profile.phoneNumber ?? '',
+        dateOfBirth: profile.dateOfBirth
+          ? profile.dateOfBirth.substring(0, 10)
+          : '',
+        gender: profile.gender ?? '',
+        address: profile.address ?? '',
+        city: profile.city ?? '',
+        country: profile.country ?? '',
+        professionalSummary: profile.professionalSummary ?? ''
+      });
 
-          gender: profile.gender,
+      this.loading = false;
+      
 
-          address: profile.address,
+    },
 
-          city: profile.city,
+    error: err => {
 
-          country: profile.country,
+      console.error('ERROR', err);
 
-          professionalSummary: profile.professionalSummary
+      this.loading = false;
 
-        });
+    },
 
-        this.loading = false;
+    complete: () => {
 
-      },
+      console.log('REQUEST COMPLETED');
 
-      error: () => {
+    }
 
-        alert('Failed to load profile.');
+  });
 
-        this.loading = false;
-
-      }
-
-    });
-
-  }
+}
+  
 
   save(): void {
 

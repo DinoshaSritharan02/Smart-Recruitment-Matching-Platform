@@ -11,15 +11,18 @@ public class AuthService : IAuthService
 {
     private readonly IUserRepository _userRepository;
     private readonly JwtTokenGenerator _jwtTokenGenerator;
+    private readonly IJobSeekerRepository _jobSeekerRepository;
 
     private readonly IMapper _mapper;
 
     public AuthService(
-        IUserRepository userRepository,
-        JwtTokenGenerator jwtTokenGenerator,
-        IMapper mapper)
+    IUserRepository userRepository,
+    IJobSeekerRepository jobSeekerRepository,
+    JwtTokenGenerator jwtTokenGenerator,
+    IMapper mapper)
     {
         _userRepository = userRepository;
+        _jobSeekerRepository = jobSeekerRepository;
         _jwtTokenGenerator = jwtTokenGenerator;
         _mapper = mapper;
     }
@@ -43,6 +46,23 @@ public class AuthService : IAuthService
 
         await _userRepository.AddAsync(user);
         await _userRepository.SaveChangesAsync();
+
+        // Automatically create an empty Job Seeker profile
+        var profile = new JobSeekerProfile
+        {
+            Id = Guid.NewGuid(),
+            UserId = user.Id,
+            PhoneNumber = string.Empty,
+            DateOfBirth = DateTime.UtcNow,
+            Gender = string.Empty,
+            Address = string.Empty,
+            City = string.Empty,
+            Country = string.Empty,
+            ProfessionalSummary = string.Empty
+        };
+
+        await _jobSeekerRepository.AddProfileAsync(profile);
+        await _jobSeekerRepository.SaveChangesAsync();
 
         var token = _jwtTokenGenerator.GenerateToken(user);
 
@@ -74,6 +94,15 @@ public class AuthService : IAuthService
 
         await _userRepository.AddAsync(user);
         await _userRepository.SaveChangesAsync();
+
+        var profile = new JobSeekerProfile
+        {
+            Id = Guid.NewGuid(),
+            UserId = user.Id
+        };
+
+        await _jobSeekerRepository.AddProfileAsync(profile);
+        await _jobSeekerRepository.SaveChangesAsync();
 
         var token = _jwtTokenGenerator.GenerateToken(user);
 

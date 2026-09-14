@@ -49,6 +49,7 @@ namespace SmartRecruitmentMatchingPlatform.API.Controllers
         [Authorize(Roles = "Employer")]
         public async Task<IActionResult> GetMyVacancies()
         {
+            Console.WriteLine("INSIDE GetMyVacancies");
             var userId = GetUserId();
 
             if (userId == null)

@@ -44,11 +44,7 @@ export const ADMIN_ROUTES: Routes = [
     import('./pages/jobs/jobs').then(m => m.Jobs)
 },
 
-{
-  path: 'job-seekers',
-  loadComponent: () =>
-    import('./pages/job-seekers/job-seekers').then(m => m.JobSeekers)
-},
+
 
 {
   path: 'reports',

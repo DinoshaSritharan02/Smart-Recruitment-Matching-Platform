@@ -1,95 +1,94 @@
-<div class="max-w-3xl mx-auto p-6">
+<div class="max-w-5xl mx-auto space-y-8">
 
-  <div class="rounded-xl bg-white shadow-lg p-8">
+  <div>
 
-    <h1 class="mb-6 text-3xl font-bold">
-      Employer Settings
+    <h1 class="page-title">
+      Settings
     </h1>
 
-    <form
-      [formGroup]="form"
-      (ngSubmit)="save()"
-      class="space-y-6">
+    <p class="page-description">
+      Manage your account preferences.
+    </p>
+
+  </div>
+
+  <div class="card">
+
+    <div class="card-header">
+
+      <h2 class="text-xl font-semibold">
+        Account Settings
+      </h2>
+
+    </div>
+
+    <div class="card-body space-y-6">
 
       <div>
 
-        <label
-          for="companyName"
-          class="mb-2 block font-medium">
-
-          Company Name
-
+        <label class="mb-2 block font-medium">
+          Full Name
         </label>
 
         <input
-          id="companyName"
           type="text"
-          formControlName="companyName"
-          class="w-full rounded-lg border border-gray-300 px-4 py-3">
+          class="input">
 
       </div>
 
       <div>
 
-        <label
-          for="website"
-          class="mb-2 block font-medium">
-
-          Website
-
+        <label class="mb-2 block font-medium">
+          Email Address
         </label>
 
         <input
-          id="website"
-          type="url"
-          formControlName="website"
-          class="w-full rounded-lg border border-gray-300 px-4 py-3">
+          type="email"
+          class="input">
 
       </div>
 
-      <div class="flex items-center gap-3">
+      <div>
 
-        <input
-          id="emailNotifications"
-          type="checkbox"
-          formControlName="emailNotifications">
-
-        <label for="emailNotifications">
-
-          Email Notifications
-
+        <label class="mb-2 block font-medium">
+          New Password
         </label>
 
+        <input
+          type="password"
+          class="input">
+
       </div>
 
-      <div class="flex items-center gap-3">
+      <div>
 
-        <input
-          id="interviewNotifications"
-          type="checkbox"
-          formControlName="interviewNotifications">
-
-        <label for="interviewNotifications">
-
-          Interview Notifications
-
+        <label class="mb-2 block font-medium">
+          Confirm Password
         </label>
 
+        <input
+          type="password"
+          class="input">
+
       </div>
 
-      <div class="flex justify-end">
+      <div class="flex justify-end gap-4">
 
-        <button
-          type="submit"
-          class="rounded-lg bg-blue-600 px-6 py-3 text-white hover:bg-blue-700">
+        <button class="btn-secondary">
 
-          Save Settings
+          Cancel
+
+        </button>
+
+        <button class="btn-primary">
+
+          Save Changes
 
         </button>
 
       </div>
 
-    </form>
+    </div>
 
   </div>
 

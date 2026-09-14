@@ -9,7 +9,7 @@
         </h2>
 
         <button
-            class="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700">
+            class="rounded-lg btn-primary px-4 py-2 text-white hover:bg-emerald-700">
 
             Add User
 
@@ -23,7 +23,7 @@
   </app-search-bar>
 </div>
 
-    <div class="overflow-hidden rounded-xl bg-white shadow">
+    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
 
         <table class="min-w-full">
 
@@ -51,7 +51,7 @@
 
 @for(user of users; track user.id){
 
-<tr class="border-t">
+<tr class="border-t border-slate-100 hover:bg-emerald-50 transition">
 
     <td class="px-6 py-4">
         {{ user.id }}
@@ -60,7 +60,7 @@
     <td class="px-6 py-4">
     <a
       [routerLink]="['/admin/users', user.id]"
-      class="text-blue-600 hover:underline">
+      class="text-emerald-600 hover:underline">
 
       {{ user.fullName }}
 
@@ -80,10 +80,10 @@
 (click)="toggleStatus(user)"
 class="rounded-full px-3 py-1 text-sm"
 
-[class.bg-green-100]="user.isActive"
+[class.badge-success]="user.isActive"
 [class.text-green-700]="user.isActive"
 
-[class.bg-red-100]="!user.isActive"
+[class.badge-danger]="!user.isActive"
 [class.text-red-700]="!user.isActive">
 
 {{ user.isActive ? 'Active' : 'Inactive' }}

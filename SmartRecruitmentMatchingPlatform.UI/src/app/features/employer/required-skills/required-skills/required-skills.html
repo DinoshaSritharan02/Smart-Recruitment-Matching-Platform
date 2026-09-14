@@ -14,21 +14,21 @@
 
     <button
       type="button"
-      class="rounded-lg bg-blue-600 px-5 py-3 text-white hover:bg-blue-700">
+      class="rounded-lg btn-primary px-5 py-3 text-white hover:bg-emerald-700">
       + Add Skill
     </button>
 
   </div>
 
-  <div class="overflow-hidden rounded-xl bg-white shadow">
+  <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
 
     <table class="min-w-full">
 
       <thead class="bg-slate-100">
 
         <tr>
-          <th class="px-6 py-4 text-left">Skill</th>
-          <th class="px-6 py-4 text-left">Level</th>
+          <th class="table-th">Skill</th>
+          <th class="table-th">Level</th>
           <th class="px-6 py-4 text-center">Actions</th>
         </tr>
 
@@ -37,8 +37,8 @@
       <tbody>
 
         @for(skill of skills(); track skill.id){
-
-        <tr class="border-t">
+          
+<tr class="border-t border-slate-100 hover:bg-emerald-50 transition">
 
           <td class="px-6 py-4 font-medium">
             {{ skill.skillName }}

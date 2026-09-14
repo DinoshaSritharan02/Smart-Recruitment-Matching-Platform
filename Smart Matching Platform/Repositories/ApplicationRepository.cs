@@ -34,6 +34,7 @@ namespace SmartRecruitmentMatchingPlatform.API.Repositories
         {
             return await _context.Set<Application>()
                 .Include(a => a.Vacancy)
+                    .ThenInclude(v => v.Employer)
                 .Where(a => a.JobSeekerProfileId == jobSeekerProfileId)
                 .OrderByDescending(a => a.AppliedAt)
                 .ToListAsync();

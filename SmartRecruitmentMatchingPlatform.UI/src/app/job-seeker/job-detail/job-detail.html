@@ -2,7 +2,7 @@
 
   <div class="mx-auto max-w-5xl rounded-xl bg-white p-8 shadow">
 
-    <h1 class="text-3xl font-bold">
+    <h1 class="page-title">
       {{ job.title }}
     </h1>
 
@@ -12,15 +12,15 @@
 
     <div class="mt-6 flex flex-wrap gap-3">
 
-      <span class="rounded-full bg-blue-100 px-4 py-2 text-blue-700">
+      <span class="rounded-full bg-emerald-100 px-4 py-2 text-emerald-700">
         {{ job.location }}
       </span>
 
-      <span class="rounded-full bg-green-100 px-4 py-2 text-green-700">
+      <span class="rounded-full badge-success px-4 py-2 text-green-700">
         {{ job.employmentType }}
       </span>
 
-      <span class="rounded-full bg-yellow-100 px-4 py-2 text-yellow-700">
+      <span class="rounded-full badge-warning px-4 py-2 text-yellow-700">
         {{ job.salary }}
       </span>
 
@@ -78,8 +78,8 @@
   (click)="apply()"
   [disabled]="applied"
   class="rounded-lg px-8 py-3 text-white"
-  [class.bg-blue-600]="!applied"
-  [class.hover:bg-blue-700]="!applied"
+  [class.btn-primary]="!applied"
+  [class.hover:bg-emerald-700]="!applied"
   [class.bg-gray-400]="applied">
 
   {{ applied ? 'Applied' : 'Apply Now' }}

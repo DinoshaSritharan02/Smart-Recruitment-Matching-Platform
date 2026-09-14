@@ -8,9 +8,13 @@ import { roleGuard } from './core/guards/role.guard';
 
 export const routes: Routes = [
   {
-    path: 'employer',
-    component: EmployerLayout,
-    children: [
+  path: 'employer',
+  component: EmployerLayout,
+  canActivate: [
+    authGuard,
+    roleGuard('Employer')
+  ],
+  children: [
       {
         path: '',
         redirectTo: 'dashboard',
@@ -37,6 +41,8 @@ export const routes: Routes = [
           import('./features/employer/vacancy-management/create-vacancy/create-vacancy')
             .then(m => m.CreateVacancy)
      },
+     
+  
      {
   path: 'vacancies',
   loadComponent: () =>
@@ -62,11 +68,12 @@ export const routes: Routes = [
       .then(m => m.RequiredSkills)
 },
 {
-  path: 'applicants',
+  path: 'vacancies/:vacancyId/applicants',
   loadComponent: () =>
     import('./features/employer/applicants/applicant-list/applicant-list')
       .then(m => m.ApplicantList)
 },
+
 {
   path: 'application-status',
   loadComponent: () =>
@@ -104,7 +111,10 @@ export const routes: Routes = [
     import('./features/employer/settings/employer-settings/employer-settings')
       .then(m => m.EmployerSettings)
 },
-
+{
+  path: '**',
+  redirectTo: 'dashboard'
+}
 
 
     ]

@@ -16,6 +16,7 @@ using SmartRecruitmentMatchingPlatform.API.Services.Interfaces;
 using SmartRecruitmentMatchingPlatform.API.Validators;
 using SmartRecruitmentMatchingPlatform.API.Validators.Auth;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 #region Database

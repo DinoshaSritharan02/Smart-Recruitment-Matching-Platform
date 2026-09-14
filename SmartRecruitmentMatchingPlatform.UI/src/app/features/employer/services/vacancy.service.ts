@@ -1,14 +1,13 @@
-import { inject, Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../../environments/environment';
 
 import {
+  VacancyResponse,
   CreateVacancyRequest,
   UpdateVacancyRequest,
-  VacancyListItem,
-  VacancyResponse,
   VacancySearchRequest
 } from '../models/vacancy.model';
 
@@ -21,55 +20,42 @@ export class VacancyService {
 
   private readonly apiUrl = `${environment.apiUrl}/vacancies`;
 
-  getById(id: number): Observable<VacancyResponse> {
-    return this.http.get<VacancyResponse>(`${this.apiUrl}/${id}`);
-  }
-
-  search(request: VacancySearchRequest): Observable<VacancyListItem[]> {
-
-    let params = new HttpParams();
-
-    if (request.keyword) {
-      params = params.set('keyword', request.keyword);
-    }
-
-    if (request.location) {
-      params = params.set('location', request.location);
-    }
-
-    if (request.minExperienceYears !== undefined) {
-      params = params.set(
-        'minExperienceYears',
-        request.minExperienceYears
-      );
-    }
-
-    if (request.maxExperienceYears !== undefined) {
-      params = params.set(
-        'maxExperienceYears',
-        request.maxExperienceYears
-      );
-    }
-
-    if (request.skillId !== undefined) {
-      params = params.set(
-        'skillId',
-        request.skillId
-      );
-    }
-
-    return this.http.get<VacancyListItem[]>(
-      `${this.apiUrl}/search`,
-      { params }
-    );
-  }
-
-  getMyVacancies(): Observable<VacancyListItem[]> {
-    return this.http.get<VacancyListItem[]>(
+  /**
+   * Employer - Get all vacancies created by the logged-in employer
+   */
+  getMyVacancies(): Observable<VacancyResponse[]> {
+    return this.http.get<VacancyResponse[]>(
       `${this.apiUrl}/employer/mine`
     );
   }
 
+  /**
+   * Public - Get vacancy by id
+   */
+  getById(id: number): Observable<VacancyResponse> {
+    return this.http.get<VacancyResponse>(
+      `${this.apiUrl}/${id}`
+    );
+  }
+
+  /**
+   * Public - Search vacancies
+   */
+  search(
+    request: VacancySearchRequest
+  ): Observable<VacancyResponse[]> {
+
+    return this.http.get<VacancyResponse[]>(
+      `${this.apiUrl}/search`,
+      {
+        params: request as any
+      }
+    );
+  }
+
+  /**
+   * Employer - Create vacancy
+   */
   create(
     request: CreateVacancyRequest
   ): Observable<VacancyResponse> {
@@ -80,6 +66,9 @@ export class VacancyService {
     );
   }
 
+  /**
+   * Employer - Update vacancy
+   */
   update(
     id: number,
     request: UpdateVacancyRequest
@@ -90,5 +79,4 @@ export class VacancyService {
       request
     );
   }
-
 }

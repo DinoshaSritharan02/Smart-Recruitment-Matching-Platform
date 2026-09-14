@@ -1,12 +1,16 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  OnInit,
+  inject,
   signal
 } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
-import { Applicant } from '../../models/applicant.model';
+import { EmployerService } from '../../services/employer.service';
+import { RankedApplicant } from '../../models/ranked-applicant.model';
 
 @Component({
   selector: 'app-applicant-list',
@@ -16,29 +20,72 @@ import { Applicant } from '../../models/applicant.model';
   styleUrl: './applicant-list.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ApplicantList {
+export class ApplicantList implements OnInit {
 
-  readonly applicants = signal<Applicant[]>([
-    {
-      id: 1,
-      fullName: 'John Silva',
-      email: 'john@example.com',
-      phoneNumber: '0771234567',
-      education: 'BSc Software Engineering',
-      experience: '3 Years',
-      matchScore: 91,
-      applicationStatus: 'Pending'
-    },
-    {
-      id: 2,
-      fullName: 'Nimal Perera',
-      email: 'nimal@example.com',
-      phoneNumber: '0719876543',
-      education: 'BSc Computer Science',
-      experience: '2 Years',
-      matchScore: 84,
-      applicationStatus: 'Shortlisted'
-    }
-  ]);
+  private readonly route = inject(ActivatedRoute);
+  private readonly employerService = inject(EmployerService);
+
+  readonly applicants = signal<RankedApplicant[]>([]);
+
+  loading = true;
+
+  ngOnInit(): void {
+
+    const vacancyId = Number(
+      this.route.snapshot.paramMap.get('vacancyId')
+    );
+
+    this.employerService
+      .getRankedApplicants(vacancyId)
+      .subscribe({
+
+        next: data => {
+
+          this.applicants.set(data);
+
+          this.loading = false;
+
+        },
+
+        error: err => {
+
+          console.error(err);
+
+          this.loading = false;
+
+          alert('Failed to load applicants.');
+
+        }
+
+      });
+
+  }
+  updateStatus(applicationId: number, status: string): void {
+
+  this.employerService
+    .updateApplicationStatus(applicationId, { status })
+    .subscribe({
+
+      next: () => {
+
+        const vacancyId = Number(
+          this.route.snapshot.paramMap.get('vacancyId')
+        );
+
+        this.employerService
+          .getRankedApplicants(vacancyId)
+          .subscribe(data => this.applicants.set(data));
+
+      },
+
+      error: () => {
+
+        alert('Failed to update application status.');
+
+      }
+
+    });
+
+}
 
 }

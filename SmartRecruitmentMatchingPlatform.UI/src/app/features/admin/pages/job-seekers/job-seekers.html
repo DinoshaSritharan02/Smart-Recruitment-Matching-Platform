@@ -5,12 +5,12 @@
       Job Seekers
     </h2>
 
-    <p class="text-gray-500">
+    <p class="page-description">
       Manage registered job seekers
     </p>
   </div>
 
-  <div class="overflow-hidden rounded-xl bg-white shadow">
+  <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
 
     <table class="min-w-full">
 
@@ -30,7 +30,7 @@
 
         @for(seeker of seekers; track seeker.id){
 
-        <tr class="border-t">
+       <tr class="border-t border-slate-100 hover:bg-emerald-50 transition">
 
           <td class="px-6 py-4">{{ seeker.name }}</td>
 
@@ -41,7 +41,7 @@
           <td class="px-6 py-4">{{ seeker.experience }} Years</td>
 
           <td class="px-6 py-4">
-            <span class="rounded-full bg-green-100 px-3 py-1 text-sm">
+            <span class="rounded-full badge-success px-3 py-1 text-sm">
               {{ seeker.status }}
             </span>
           </td>

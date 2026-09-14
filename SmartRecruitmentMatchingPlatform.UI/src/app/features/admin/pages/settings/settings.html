@@ -1,6 +1,6 @@
 <div class="space-y-6">
 
-  <h1 class="text-3xl font-bold">
+  <h1 class="page-title">
     System Settings
   </h1>
 
@@ -26,11 +26,11 @@
         <span>Email Notifications</span>
 
         @if(systemSettings.emailNotifications){
-          <span class="rounded-full bg-green-100 px-3 py-1 text-green-700">
+          <span class="rounded-full badge-success px-3 py-1 text-green-700">
             Enabled
           </span>
         } @else {
-          <span class="rounded-full bg-red-100 px-3 py-1 text-red-700">
+          <span class="rounded-full badge-danger px-3 py-1 text-red-700">
             Disabled
           </span>
         }
@@ -40,11 +40,11 @@
         <span>Maintenance Mode</span>
 
         @if(systemSettings.maintenanceMode){
-          <span class="rounded-full bg-yellow-100 px-3 py-1 text-yellow-700">
+          <span class="rounded-full badge-warning px-3 py-1 text-yellow-700">
             Enabled
           </span>
         } @else {
-          <span class="rounded-full bg-green-100 px-3 py-1 text-green-700">
+          <span class="rounded-full badge-success px-3 py-1 text-green-700">
             Disabled
           </span>
         }
